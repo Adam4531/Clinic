@@ -1,4 +1,4 @@
-# CLINIC X
+# CLINIC "U Zięby"
 
 ## PL
 
@@ -10,10 +10,10 @@ Project created for faculty subject need at UWM 2022/2023. Project subject: Clin
 
 Stworzone przez/Created by:
 
-- Jakub Okuła
-- Adrian Obrycki
-- Julia Rakiel
-- Norbert Nosek
-- Łukasz Kałamarski
-- Marta Horabik
-- Adam Rozwadowski
+- Julia Rakiel (Project Manager)
+- Jakub Okuła (Frontend)
+- Adrian Obrycki (Frontend)
+- Łukasz Kałamarski (Frontend)
+- Marta Horabik (Frontend)
+- Norbert Nosek (Backend)
+- Adam Rozwadowski (Backend)
