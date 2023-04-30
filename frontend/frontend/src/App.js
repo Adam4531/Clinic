@@ -1,3 +1,4 @@
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './UI/RootLayout';
 import ErrorPage from './misc/Error';
@@ -9,6 +10,7 @@ import RecommendationsPage from './patient/Recommendations'
 import LoginPage from './auth/LoginPage'
 import DetailVisit from './patient/DetailVisit'
 import RecommendationDetail from './patient/RecommendationDetail'
+import EditProfilePage from './patient/EditProfile' 
 
 const router = createBrowserRouter([
   {
@@ -27,11 +29,13 @@ const router = createBrowserRouter([
         { path: ':id', element: <RecommendationDetail />}
       ] },
       { path: 'auth', element: <LoginPage /> },
+      { path: 'edit', element: <EditProfilePage /> },
     ],
   },
 ]);
 
 function App() {
+
   return <RouterProvider router={router} />;
 }
 

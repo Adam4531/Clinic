@@ -1,4 +1,4 @@
-// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet} from 'react-router-dom';
 
 // import { getTokenDuration } from '../util/auth';
@@ -24,8 +24,9 @@ function RootLayout() {
   //   }, tokenDuration)
   // }, [token, submit])
 
-
+    
 return (
+
     <>
       <Navbar />
       <main>

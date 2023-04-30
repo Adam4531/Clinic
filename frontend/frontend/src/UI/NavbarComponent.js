@@ -2,8 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import styles from "./Navbar.module.css";
 import { Form, NavLink, useLoaderData } from 'react-router-dom';
+import SuccessEdit from "../patient/SuccessEdit";
+import { Route } from 'react-router-dom';
+import EditProfilePage from "../patient/EditProfile";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className={styles.navbar} style={{ backgroundColor: "#014FA1" }}>
       <div className={styles["navbar-logo"]}>
