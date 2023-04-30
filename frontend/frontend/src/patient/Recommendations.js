@@ -1,10 +1,10 @@
-function RecommendationsPage() {
+
+function RecommendationsPage(props) {
     
   
   
     return (
         <>
-          
         </>
       );
     }

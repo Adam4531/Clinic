@@ -2,8 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import styles from "./Navbar.module.css";
 import { Form, NavLink, useLoaderData } from 'react-router-dom';
+import RecommendationsPage from "../patient/Recommendations";
+import { Route } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = props => {
+  
   return (
     <nav className={styles.navbar} style={{ backgroundColor: "#014FA1" }}>
       <div className={styles["navbar-logo"]}>
@@ -42,9 +45,10 @@ const Navbar = () => {
             >
               Lista wizyt
             </NavLink>
+            
         </div>
         <div className={styles["navbar-option"]}>
-          <NavLink
+          {/* <NavLink
               to="/recommendations"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
@@ -52,7 +56,10 @@ const Navbar = () => {
               end
             >
               Lista zaleceń
-            </NavLink>
+            </NavLink> */}
+            <Route path="/recommendations">
+                <RecommendationsPage onModaleShow={props.showModalHandler} />
+            </Route>
         </div>
       </div>
       <div className={styles["navbar-buttons"]}>

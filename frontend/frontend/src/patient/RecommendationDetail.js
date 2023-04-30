@@ -1,10 +1,11 @@
+
+
 function RecommendationDetail() {
     
   
   
     return (
         <>
-          Check
         </>
       );
     }
