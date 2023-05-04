@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ReceptionConfig(AppConfig):
+class VisitsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'reception'
+    name = 'visit'
