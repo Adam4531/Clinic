@@ -6,7 +6,6 @@ from .models import Role, Degree, Employee
 
 
 class RoleSerializer(serializers.HyperlinkedModelSerializer):
-
     class Meta:
         model = Role
         fields = "__all__"
@@ -16,6 +15,7 @@ class RoleSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Field 'name' cannot be empty!")
         if len(value['name']) > 50:
             raise serializers.ValidationError("Field 'name' cannot be longer than 50 characters!")
+        return value
 
 
 class DegreeSerializer(serializers.HyperlinkedModelSerializer):
@@ -28,6 +28,7 @@ class DegreeSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Field 'name' cannot be empty!")
         if len(value['name']) > 100:
             raise serializers.ValidationError("Field 'name' cannot be longer than 100 characters!")
+        return value
 
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
@@ -44,9 +45,6 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Field 'last_name' cannot be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Field 'last_name' cannot be longer than 50 characters!")
-        if value['employed_at'] > datetime.datetime.now(): #TODO check if it's correct in logic way
+        if value['employed_at'] > datetime.datetime.now():  # TODO check if it's correct in logic way
             raise serializers.ValidationError("Field 'employed_at' cannot be placed in the future")
-
-
-
-
+        return value
