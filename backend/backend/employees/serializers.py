@@ -45,6 +45,6 @@ class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Field 'last_name' cannot be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Field 'last_name' cannot be longer than 50 characters!")
-        if value['employed_at'] > datetime.datetime.now():  # TODO check if it's correct in logic way
+        if value['employed_at'] > datetime.date.today():  # TODO check if it's correct in logic way
             raise serializers.ValidationError("Field 'employed_at' cannot be placed in the future")
         return value

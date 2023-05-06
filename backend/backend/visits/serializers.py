@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.visits.models import Dose, Medicine, Visit, Recommendation
+from ..visits.models import Dose, Medicine, Visit, Recommendation
 
 
 class DoseSerializer(serializers.HyperlinkedModelSerializer):

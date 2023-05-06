@@ -26,6 +26,6 @@ class Employee(models.Model):
     title_of_degree = models.ForeignKey(Degree, on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}, {self.title_of_degree} {self.role}, {self.employed_at}'
+        return f'{self.title_of_degree} {self.role} {self.first_name} {self.last_name}'
 
 

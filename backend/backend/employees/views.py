@@ -22,7 +22,7 @@ class RoleDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class DegreeList(generics.ListCreateAPIView):
     queryset = Degree.objects.all()
-    serializer_class = RoleSerializer
+    serializer_class = DegreeSerializer
     # permission_classes =
     name = 'degree-list'
 
@@ -36,16 +36,16 @@ class DegreeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class EmployeeList(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
-    serializer_class = RoleSerializer
+    serializer_class = EmployeeSerializer
     # permission_classes =
-    name = 'Employee-list'
+    name = 'employee-list'
 
 
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     # permission_classes =
-    name = 'Employee-detail'
+    name = 'employee-detail'
 
 
 class ApiRoot(generics.GenericAPIView):
