@@ -22,6 +22,7 @@
   .navbar-buttons button {
     background-color: transparent;
     border: 2px solid #fff;
+    border-radius: 20px;
     color: #fff;
     padding: 10px 20px;
     margin-left: 20px;

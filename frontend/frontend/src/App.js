@@ -9,8 +9,10 @@ import Visits from './patient/Visits'
 import RecommendationsPage from './patient/Recommendations'
 import LoginPage from './auth/LoginPage'
 import DetailVisit from './patient/DetailVisit'
-import RecommendationDetail from './patient/RecommendationDetail'
 import EditProfilePage from './patient/EditProfile' 
+import RegisterPage from './auth/RegisterPage';
+import DetailVisitPast from './patient/DetailVisitPast';
+import DetailVisitUpcoming from './patient/DetailVisitUpcoming';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +27,7 @@ const router = createBrowserRouter([
       { path: 'visits', element: <Visits />, children:[
         { path: ':id', element: <DetailVisit />}
       ] },
-      { path: 'recommendations', element: <RecommendationsPage />, children:[
-        { path: ':id', element: <RecommendationDetail />}
-      ] },
+      { path: 'recommendations', element: <RecommendationsPage />},
       { path: 'auth', element: <LoginPage /> },
       { path: 'edit', element: <EditProfilePage /> },
     ],

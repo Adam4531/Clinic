@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    position: relative;
+}
+
+.date, .doctor, .extra, .control_visit, .recommendations {
+    font-size: 0.9rem;
+    margin: 5px 15px;
+    color: #014FA1;
+    margin-bottom: 40px;
+}
+
+.details_box {
+    margin-top: 50px;
+    padding: 20px 10px;
+    width: 40%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.button_box {
+    align-self: center;
+    position: absolute;
+    bottom: 30px;
+}
+
+.btn_back {
+    background-color: transparent;
+    border: 1px solid #014FA1;
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: #014FA1;
+}
+
+.btn_back:hover {
+    background-color: #014FA1;
+    color: #fff;
+}
+
+.btn_cancel {
+    background-color: #A90303;
+    border: 1px solid #A90303;
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: #fff;
+    margin-left: 100px;
+}
+
+.btn_cancel:hover {
+    background-color: #fff;
+    color: #A90303;
+}

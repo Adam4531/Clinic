@@ -1,12 +1,8 @@
-function DetailVisitsPage() {
-    
-  
-  
-    return (
+function DetailVisit() {
+    return(
         <>
-          
         </>
-      );
-    }
-    
-    export default DetailVisitsPage;
+    );
+}
+
+export default DetailVisit;
