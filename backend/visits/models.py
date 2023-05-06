@@ -1,6 +1,6 @@
 from django.db import models
 
-from backend.doctor.models import Employee
+from backend.employees.models import Employee
 from backend.patient.models import Patient
 
 

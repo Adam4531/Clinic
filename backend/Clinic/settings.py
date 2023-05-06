@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'doctor.apps.DoctorConfig',
+    'employees.apps.EmployeesConfig',
+    'visits.apps.VisitsConfig'
     'django_filters'
 ]
 
