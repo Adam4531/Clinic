@@ -1,10 +1,22 @@
 from django.db import models
 
+# Create your models here.
+class Time_of_activity(models.Model):
+    date_start = models.DateField()
+    date_end = models.DateField()
+
+
+class Allergy(models.Model):
+    name = models.CharField(max_length=45)
+    time_of_activity = models.ForeignKey(Time_of_activity, on_delete=models.CASCADE)
+
+
 class Patient(models.Model):
     first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50, unique=True)
+    second_name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
     password = models.CharField(max_length=255)
     pesel = models.CharField(max_length=11)
     phone_number = models.CharField(max_length=11)
     age = models.IntegerField()
+    alergies = models.ManyToManyField(Allergy)
