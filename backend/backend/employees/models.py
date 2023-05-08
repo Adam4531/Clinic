@@ -18,7 +18,7 @@ class Degree(models.Model):
 class Employee(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=255)
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     employee_image = models.ImageField(upload_to='employees/')
