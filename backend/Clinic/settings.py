@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'backend.employees.apps.EmployeesConfig',
     'backend.visits.apps.VisitsConfig',
-    'backend.patient.apps.PatientConfig',
+    'backend.patients.apps.PatientConfig',
     'django_filters',
     'corsheaders',
 ]

@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('employees', '0001_initial'),
-        ('patient', '0001_initial'),
+        ('patients', '0001_initial'),
     ]
 
     operations = [
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField()),
                 ('description', models.TextField()),
                 ('doctor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='employees.employee')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='patient.patient')),
+                ('patients', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='patients.patients')),
             ],
         ),
         migrations.CreateModel(

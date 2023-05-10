@@ -1,7 +1,7 @@
 from django.db import models
 
 # from backend.employees.models import Employee
-from ..patient.models import Patient
+from ..patients.models import Patient
 from ..employees.models import Employee
 
 
