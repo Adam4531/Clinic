@@ -1,8 +1,29 @@
 import styles from "./MakeAppointment.module.css";
 import 'react-calendar/dist/Calendar.css';
-import Calendar from "react-calendar"
+// import Calendar from "react-calendar"
+import React, { useState } from "react";
+import DateTimePicker from "react-datetime-picker";
+import SuccessSubmit from "./SuccessSubmitAppointment";
+
+// function DateTimePickerExample() {
+//   const [date, setDate] = useState(new Date());
+
+//   const handleDateChange = (newDate) => {
+//     setDate(newDate);
+//   };
+// }
 
 function MakeAppointmentPage() {
+  const [succesIsShown, setSuccesIsShown]=useState(false);
+
+  const showSuccesHandler = (event) =>{
+    event.preventDefault();
+    setSuccesIsShown(true);
+  }
+  const hideSuccesHandler = () =>{
+    setSuccesIsShown(false);
+    console.log('dodano wizyte')
+  }
     return (
         <div className={styles.container}>
           <div>
@@ -36,17 +57,19 @@ function MakeAppointmentPage() {
                   <input type="text" className={styles.new_symptom} id="new_symptom" placeholder="Wprowadź objaw..."></input>
                   <button type="submit" className={styles.secondary_btn_submit}>Dodaj</button>
                 </form>
-                <button type="submit" className={styles.primary_btn_submit}>Zatwierdź</button>
+                {succesIsShown && <SuccessSubmit onHideCart={hideSuccesHandler}/>}
+                <button type="submit" className={styles.primary_btn_submit} onClick={showSuccesHandler}>Zatwierdź</button>
               
             </div>
             <div className={styles.right}>
               <h2 className={styles.h2_}>Kalendarz</h2>
-              <Calendar/>
+              {/* <Calendar/> */}
+              <DateTimePicker/>
             </div> 
           </div>
           </form>
         </div>
     );
 }
-    
+
 export default MakeAppointmentPage;
