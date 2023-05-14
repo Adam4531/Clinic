@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    background-color: #ECF5FF;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+}
+
+.edit_profile_window {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    top: 10vh;    
+    height: 60vh;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+table {
+    align-self: center;
+}
+
+td {
+    padding-right: 10px;
+}
+
+.btn_save_changes {
+    align-self: center;
+    background-color: #014FA1;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 30px;
+    height: 30px;
+    width: 40%;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #014FA1;
+}

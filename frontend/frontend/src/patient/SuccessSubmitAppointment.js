@@ -1,12 +1,12 @@
-import Modal from '../UI/Modal';
+import Modal from '../UI/Modal'
 import { Fragment } from 'react';
-import styles from "./Modal.css";
+import styles from './Modal.css'
 
-function SuccessCancel(props) {
+function SuccessSubmit(props) {
     
     const didSubmitModalContent = <Fragment>
         <div className='alert'>
-            <p>Wizyta dnia dd.mm.yyyy na godzinę XX:XX zostanie anulowana!</p>
+            <p>Wizyta dnia dd.mm.yyyy na godzinę: XX:XX została umówiona pomyślnie!</p>
             <button className='btn_confirm' onClick={props.onHideCart}>OK</button>
         </div>
 </Fragment>
@@ -20,4 +20,4 @@ console.log(props)
       );
     }
     
-    export default SuccessCancel;
+    export default SuccessSubmit;
