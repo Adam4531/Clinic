@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from datetime import datetime
+from datetime import date
 
 from ..patients.models import Patient, Allergy, Time_of_activity
 
@@ -45,7 +45,7 @@ class AllergySerializer(serializers.HyperlinkedModelSerializer):
     def validate(self, value):
         if value['name'] == 0:
             raise serializers.ValidationError("Field 'name' cannot be empty!")
-        if len(value['name'] > 45):
+        if len(value['name']) > 45:
             raise serializers.ValidationError("Field 'name' cannot have more than 11 characters!")
         return value
 
@@ -56,10 +56,10 @@ class TimeOfActivitySerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
     def validate(self, value):  # TODO Do we need additional validation here?
-        if value['date_start'] < datetime.now():  # TODO check if it's correct in logic way
+        if value['date_start'] < date.today():  # TODO check if it's correct in logic way
             raise serializers.ValidationError("Field 'date_start' cannot be placed in the future!")
         if value['date_start'] > value['date_end']:
             raise serializers.ValidationError("Field 'date_start' cannot be placed after date_end!")
-        if value['date_end'] < datetime.now():  # TODO check if it's correct in logic way
+        if value['date_end'] < date.today():  # TODO check if it's correct in logic way
             raise serializers.ValidationError("Field 'data_end' cannot be placed in the past!")
         return value

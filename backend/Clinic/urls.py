@@ -1,4 +1,3 @@
-
 """
 URL configuration for Clinic project.
 
@@ -21,6 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employees/', include('backend.employees.urls')),
+    path('patients/', include('backend.patients.urls')),
     path('visits/', include('backend.visits.urls')),
-    path('patients/', include('backend.patients.urls'))
 ]

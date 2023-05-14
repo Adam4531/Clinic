@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'backend.employees.apps.EmployeesConfig',
+    'backend.patients.apps.PatientsConfig',
     'backend.visits.apps.VisitsConfig',
-    'backend.patients.apps.PatientConfig',
     'django_filters',
     'corsheaders',
 ]
