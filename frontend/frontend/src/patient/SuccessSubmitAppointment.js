@@ -1,6 +1,5 @@
 import Modal from '../UI/Modal'
 import { Fragment } from 'react';
-import styles from './Modal.css'
 
 function SuccessSubmit(props) {
     
