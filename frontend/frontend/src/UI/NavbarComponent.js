@@ -57,10 +57,34 @@ const Navbar = (props) => {
               Lista zaleceń
             </NavLink>
         </div>
+        <div className={styles["navbar-option"]}>
+        <NavLink
+              to="/doctor"
+              className={({ isActive }) =>
+                isActive ? styles.active : undefined
+              }
+              end
+            >
+              Strona głowna lekarza
+            </NavLink>
+            {/* Potem będzie ukryte */}
+        </div>
+        <div className={styles["navbar-option"]}>
+        <NavLink
+              to="/history"
+              className={({ isActive }) =>
+                isActive ? styles.active : undefined
+              }
+              end
+            >
+              historia lekarza
+            </NavLink>
+            {/* Potem będzie ukryte */}
+        </div>
       </div>
       <div className={styles["navbar-buttons"]}>
-      <NavLink to="/auth"><button className={styles["btn-register"]}>Zarejestruj się</button></NavLink>
-      <NavLink to="/auth"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
+      <NavLink to="/auth/register"><button className={styles["btn-register"]}>Zarejestruj się</button></NavLink>
+      <NavLink to="/auth/login"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
       </div>
     </nav>
   );

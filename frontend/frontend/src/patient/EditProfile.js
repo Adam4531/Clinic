@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SuccessEdit from "./SuccessEdit";
-import styles from "./EditProfile.css"
 
 function EditProfilePage(props) {  
   const [succesIsShown, setSuccesIsShown]=useState(false);

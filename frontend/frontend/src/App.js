@@ -8,11 +8,13 @@ import MakeAppointmentPage from './patient/MakeAppointment'
 import Visits from './patient/Visits'
 import RecommendationsPage from './patient/Recommendations'
 import LoginPage from './auth/LoginPage'
-import DetailVisit from './patient/DetailVisit'
+
 import EditProfilePage from './patient/EditProfile' 
-import RegisterPage from './auth/RegisterPage';
+
 import DetailVisitPast from './patient/DetailVisitPast';
 import DetailVisitUpcoming from './patient/DetailVisitUpcoming';
+import HomeDoctor from './doctor/HomeDoctor';
+import HistoryDoctor from './doctor/HistoryDoctor';
 
 const router = createBrowserRouter([
   {
@@ -25,11 +27,15 @@ const router = createBrowserRouter([
       { path: 'crew', element: <CrewPage /> },
       { path: 'appointments-register', element: <MakeAppointmentPage /> },
       { path: 'visits', element: <Visits />, children:[
-        { path: ':id', element: <DetailVisit />}
+        { path: 'past/:id', element: <DetailVisitPast />},
+        { path: ':id', element: <DetailVisitUpcoming />}
       ] },
       { path: 'recommendations', element: <RecommendationsPage />},
-      { path: 'auth', element: <LoginPage /> },
+      { path: 'auth/:id', element: <LoginPage /> },
       { path: 'edit', element: <EditProfilePage /> },
+      
+      { path: 'doctor', element: <HomeDoctor />},
+      { path: 'history', element: <HistoryDoctor />}
     ],
   },
 ]);
