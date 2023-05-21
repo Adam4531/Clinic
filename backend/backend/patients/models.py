@@ -20,16 +20,12 @@ class Allergy(models.Model):
 
 
 class Patient(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=255)
     pesel = models.CharField(max_length=11, unique=True)
     phone_number = models.CharField(max_length=11, unique=True)
     age = models.IntegerField()
     alergies = models.ManyToManyField(Allergy)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.first_name}, {self.last_name}, {self.email}, {self.phone_number}, {self.age}'
+        return f'{self.user}, {self.phone_number}, {self.age}'
 

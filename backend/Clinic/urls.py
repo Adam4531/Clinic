@@ -22,4 +22,5 @@ urlpatterns = [
     path('employees/', include('backend.employees.urls')),
     path('patients/', include('backend.patients.urls')),
     path('visits/', include('backend.visits.urls')),
+    path('auth/', include('backend.authorization.urls'))
 ]

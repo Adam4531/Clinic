@@ -10,22 +10,6 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
     def validate(self, value):
-        if value['first_name'] == 0:
-            raise serializers.ValidationError("Field 'first_name' cannot be empty!")
-        if len(value['first_name']) > 50:
-            raise serializers.ValidationError("Field 'first_name' cannot have more than 50 characters!")
-        if value['last_name'] == 0:
-            raise serializers.ValidationError("Field 'last_name' cannot be empty!")
-        if len(value['last_name']) > 50:
-            raise serializers.ValidationError("Field 'last_name' cannot have more than 50 characters!")
-        if value['email'] == 0:
-            raise serializers.ValidationError("Field 'email' cannot be empty!")
-        if len(value['email']) > 50:
-            raise serializers.ValidationError("Field 'email' cannot have more than 50 characters!")
-        if value['password'] == 0:
-            raise serializers.ValidationError("Field 'password' cannot be empty!")
-        if len(value['password']) > 255:
-            raise serializers.ValidationError("Field 'password' cannot have more than 255 characters!")
         if len(value['pesel']) != 11:
             raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
         if len(value['phone_number']) != 11:
