@@ -55,11 +55,11 @@ class TimeOfActivitySerializer(serializers.HyperlinkedModelSerializer):
         model = Time_of_activity
         fields = "__all__"
 
-    def validate(self, value):  # TODO Do we need additional validation here?
-        if value['date_start'] < date.today():  # TODO check if it's correct in logic way
+    def validate(self, value):
+        if value['date_start'] < date.today():
             raise serializers.ValidationError("Field 'date_start' cannot be placed in the future!")
         if value['date_start'] > value['date_end']:
             raise serializers.ValidationError("Field 'date_start' cannot be placed after date_end!")
-        if value['date_end'] < date.today():  # TODO check if it's correct in logic way
+        if value['date_end'] < date.today():
             raise serializers.ValidationError("Field 'data_end' cannot be placed in the past!")
         return value
