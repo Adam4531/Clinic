@@ -28,7 +28,7 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Field 'password' cannot have more than 255 characters!")
         if len(value['pesel']) != 11:
             raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
-        if len(value['phone_number']) != 11:
+        if len(value['phone_number']) != 9:
             raise serializers.ValidationError("Field 'phone_number' has to be exactly 11 characters long!")
         if (value['age']) <= 0:
             raise serializers.ValidationError("Field 'age' cannot be empty or negative number!")
