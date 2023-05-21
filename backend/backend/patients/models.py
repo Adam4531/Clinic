@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+from ..authorization.models import User
 
 
 class Time_of_activity(models.Model):
@@ -28,6 +28,7 @@ class Patient(models.Model):
     phone_number = models.CharField(max_length=11, unique=True)
     age = models.IntegerField()
     alergies = models.ManyToManyField(Allergy)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.first_name}, {self.last_name}, {self.email}, {self.phone_number}, {self.age}'
