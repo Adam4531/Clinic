@@ -1,7 +1,6 @@
 from django.db import models
 
 from ..authorization.models import User
-from ..visits.models import Medicine
 
 
 class Time_of_activity(models.Model):
@@ -26,7 +25,6 @@ class Patient(models.Model):
     age = models.IntegerField()
     allergies = models.ManyToManyField(Allergy)
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
-    medicines = models.ManyToManyField(Medicine, related_name='user_medicines')
 
     def __str__(self):
         return f'{self.user}, {self.phone_number}, {self.age}'
