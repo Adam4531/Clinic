@@ -1,4 +1,3 @@
-
 """
 URL configuration for Clinic project.
 
@@ -16,8 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('employees/', include('backend.employees.urls')),
+    path('patients/', include('backend.patients.urls')),
+    path('visits/', include('backend.visits.urls')),
+    path('auth/', include('backend.authorization.urls'))
 ]
