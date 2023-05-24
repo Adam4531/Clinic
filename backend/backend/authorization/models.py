@@ -8,6 +8,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     is_employee = models.BooleanField()
+    is_receptionist = models.BooleanField()
     username = None
 
     USERNAME_FIELD = 'email'

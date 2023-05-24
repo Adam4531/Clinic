@@ -12,8 +12,8 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
     def validate(self, value):
         if len(value['pesel']) != 11:
             raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
-        if len(value['phone_number']) != 11:
-            raise serializers.ValidationError("Field 'phone_number' has to be exactly 11 characters long!")
+        if len(value['phone_number']) != 9:
+            raise serializers.ValidationError("Field 'phone_number' has to be exactly 9 characters long!")
         if (value['age']) <= 0:
             raise serializers.ValidationError("Field 'age' cannot be empty or negative number!")
         if value['age'] > 100:

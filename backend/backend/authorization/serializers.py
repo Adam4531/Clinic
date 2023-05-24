@@ -33,6 +33,8 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Last name field can not be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Last name field can have maximum 50 characters!")
+        if value['is_employee'] == 0 and value['is_receptionist'] == 1:
+            raise serializers.ValidationError("Field 'is_receptionist' can not be true while field 'is_employee' is false")
         return value
 
 
