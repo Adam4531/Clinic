@@ -20,9 +20,7 @@ from .serializers import UserSerializer
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # ordering_fields = ['email']
-    # filterset_fields = ['email']
-    # search_fields = ['email', 'first_name', 'last_name']
+    filterset_fields = ['email']
     name = 'user-list'
 
 
@@ -117,6 +115,75 @@ class LogoutView(APIView):
             "message": "You have been succesfully logout"
         }
         return response
+
+
+class ChangePasswordView(APIView):
+
+    def put(self, request):
+        request_email = request.data['email']
+        request_password = request.data['password']
+        user = authenticate(email=request_email, password=request_password)
+
+        new_password = request.data['new_password']
+        new_password2 = request.data['new_password2']
+
+        if not user.check_password(new_password):
+            if new_password == new_password2:
+                user.set_password(new_password)
+                user.save()
+                return Response({
+                    "status": status.HTTP_202_ACCEPTED,
+                    "message": "Password has been updated!"
+                })
+            else:
+                return Response({
+                    "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    "message": "New passwords are not the same"
+                })
+        return Response({
+            "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+            "message": "Current password is not the same as given"
+        })
+
+
+class AccountDeactivationView(APIView):
+    def put(self, request):
+        request_email = request.data['email']
+        request_first_name = request.data['first_name']
+        request_last_name = request.data['last_name']
+        request_password = request.data['password']
+
+        user = authenticate(email=request_email, password=request_password)
+        if user is None:
+            return Response({
+                "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "message": "Wrong password or email!"
+            })
+
+        if user.check_password(request_password):
+            if user.first_name == request_first_name:
+                if user.last_name == request_last_name:
+                    user.is_active = False
+                    user.save()
+                    return Response({
+                        "status": status.HTTP_200_OK,
+                        "message": "User has been deactivated"
+                    })
+                else:
+                    return Response({
+                        "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                        "message": "Last name is not equal to given last name"
+                    })
+            else:
+                return Response({
+                    "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    "message": "First name is not equal to given first name"
+                })
+
+        return Response({
+                    "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    "message": "Current password is not equal to given password"
+                })
 
 
 class ApiRoot(generics.GenericAPIView):
