@@ -22,25 +22,25 @@ class Medicine(models.Model):
         return f'{self.name} {self.quantity_of_tablets} {self.doses}'
 
 
-class Visit(models.Model):
-    date = models.DateTimeField(unique=True)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    description = models.TextField()
-
-    def __str__(self):
-        return f'Visit at: {self.date}, patient: {self.patient}, doctor: {self.doctor}, description: {self.description}'
-
-
 class Recommendation(models.Model):
     prescription_code = models.CharField(max_length=11)
     description = models.TextField()
-    visit = models.OneToOneField(Visit, on_delete=models.CASCADE)
     dosage = models.CharField(max_length=50)
     additional_information = models.TextField()
     medicines = models.ManyToManyField(Medicine)
 
     def __str__(self):
-        return f'Visit:{self.visit}, Prescription: {self.prescription_code}, Medicine and dosage: {self.medicines} {self.dosage}, {self.description} {self.additional_information}'
+        return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.medicines} {self.dosage}, {self.description} {self.additional_information}'
+
+
+class Visit(models.Model):
+    date = models.DateTimeField(unique=True)
+    patient = models.ForeignKey(Patient, on_delete=models.DO_NOTHING)
+    doctor = models.ForeignKey(Employee, on_delete=models.DO_NOTHING)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    description = models.TextField(blank=True, default='')
+    recommendation = models.OneToOneField(Recommendation, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f'Visit at: {self.date}, patient: {self.patient}, doctor: {self.doctor}, description: {self.description}'
