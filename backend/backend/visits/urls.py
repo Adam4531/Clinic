@@ -8,7 +8,7 @@ urlpatterns = [
     path('recomendations/<int:pk>', views.RecommendationDetail.as_view(), name=views.RecommendationDetail.name),
     path('medicines', views.MedicineList.as_view(), name=views.MedicineList.name),
     path('medicines/<int:pk>', views.MedicineDetail.as_view(), name=views.MedicineDetail.name),
-    path('doses', views.DoseList.as_view(), name=views.DoseList.name),
-    path('doses/<int:pk>', views.DoseDetail.as_view(), name=views.DoseDetail.name),
+    # path('doses', views.DoseList.as_view(), name=views.DoseList.name),
+    # path('doses/<int:pk>', views.DoseDetail.as_view(), name=views.DoseDetail.name),
     path('', views.ApiRoot.as_view(), name=views.ApiRoot.name)
 ]

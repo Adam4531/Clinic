@@ -1,6 +1,6 @@
 from django.db import models
 
-# from backend.employees.models import Employee
+from ..authorization.models import User
 from ..patients.models import Patient
 from ..employees.models import Employee
 
@@ -28,6 +28,7 @@ class Recommendation(models.Model):
     dosage = models.CharField(max_length=50, blank=True, default='')
     additional_information = models.TextField(blank=True, default='')
     medicines = models.ManyToManyField(Medicine, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.medicines} {self.dosage}, {self.description} {self.additional_information}'

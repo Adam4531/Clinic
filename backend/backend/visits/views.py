@@ -2,21 +2,21 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .serializers import DoseSerializer, MedicineSerializer, VisitSerializer, RecommendationSerializer
-from .models import Dose, Medicine, Visit, Recommendation
+from .serializers import MedicineSerializer, VisitSerializer, RecommendationSerializer
+from .models import Medicine, Visit, Recommendation
 
 
-class DoseList(generics.ListCreateAPIView):
-    queryset = Dose.objects.all()
-    serializer_class = DoseSerializer
-    filterset_fields = ['dose','grammage']
-    name = 'dose-list'
-
-
-class DoseDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Dose.objects.all()
-    serializer_class = DoseSerializer
-    name = 'dose-detail'
+# class DoseList(generics.ListCreateAPIView):
+#     queryset = Dose.objects.all()
+#     serializer_class = DoseSerializer
+#     filterset_fields = ['dose','grammage']
+#     name = 'dose-list'
+#
+#
+# class DoseDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Dose.objects.all()
+#     serializer_class = DoseSerializer
+#     name = 'dose-detail'
 
 
 class MedicineList(generics.ListCreateAPIView):
@@ -62,7 +62,8 @@ class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
 
     def get(self, request, *args, **kwargs):
-        return Response({'doses': reverse(DoseList.name, request=request),
+        return Response({
+                         # 'doses': reverse(DoseList.name, request=request),
                          'medicines': reverse(MedicineList.name, request=request),
                          'visits': reverse(VisitList.name, request=request),
                          'recommendations': reverse(RecommendationList.name, request=request)
