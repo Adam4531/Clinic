@@ -1,6 +1,6 @@
 import styles from "./MakeAppointment.module.css";
 import 'react-calendar/dist/Calendar.css';
-import Calendar from "react-calendar"
+import Calendar from "react-calendar";
 import React, { useState } from "react";
 import TimePicker from "./TimePicker";
 import SuccessSubmit from "./SuccessSubmitAppointment";

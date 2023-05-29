@@ -1,6 +1,6 @@
 import styles from "./HomeDoctor.module.css";
-import "react-calendar/dist/Calendar.css";
-// import Calendar from "react-calendar"
+import 'react-calendar/dist/Calendar.css';
+import Calendar from "react-calendar";
 import React, { useState } from "react";
 import DateTimePicker from "react-datetime-picker";
 import { NavLink} from 'react-router-dom';
@@ -16,6 +16,11 @@ import AddRecc from "./AddRecc";
 
 function HomeDoctor() {
   const [succesIsShown, setSuccesIsShown]=useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   const showSuccesHandler = (event) =>{
     event.preventDefault();
@@ -55,8 +60,7 @@ function HomeDoctor() {
           </div>
           <div className={styles.right}>
             <h2 className={styles.h2_}>Kalendarz</h2>
-            {/* <Calendar/> */}
-            <DateTimePicker />
+            <Calendar/>
           </div>
         </div>
       </form>

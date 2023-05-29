@@ -31,7 +31,7 @@ function EditDoctor(props) {
                         <input id="peselNumber" type="text" name="peselNumber" required />
                     </p>
                     </Form>
-              <button className='btn_confirm' onClick={false}>Zatwierdź</button>
+              <button className={styles.btn_confirm} onClick={false}>Zatwierdź</button>
             </div>
             <div className={styles.deleteDoctor}>
               <h2 className={styles.h2_}>Usuń lekarza</h2>
@@ -41,7 +41,7 @@ function EditDoctor(props) {
                         <input id="peselNumber" type="text" name="peselNumber" required />
                     </p>
                 </Form>
-              <button className='btn_confirm' onClick={false}>Zatwierdź</button>
+              <button className={styles.btn_confirm} onClick={false}>Zatwierdź</button>
             </div>
           </div>
         </div>
