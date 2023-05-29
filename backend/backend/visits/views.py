@@ -9,56 +9,52 @@ from .models import Dose, Medicine, Visit, Recommendation
 class DoseList(generics.ListCreateAPIView):
     queryset = Dose.objects.all()
     serializer_class = DoseSerializer
-    # permission_classes =
+    filterset_fields = ['dose','grammage']
     name = 'dose-list'
 
 
 class DoseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Dose.objects.all()
     serializer_class = DoseSerializer
-    # permission_classes =
     name = 'dose-detail'
 
 
 class MedicineList(generics.ListCreateAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
-    # permission_classes =
+    filterset_fields = ['name','quantity_of_tablets','doses']
     name = 'medicine-list'
 
 
 class MedicineDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
-    # permission_classes =
     name = 'medicine-detail'
 
 
 class VisitList(generics.ListCreateAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
-    # permission_classes =
-    name = 'visits-list'
+    filterset_fields = ['date','patient','doctor','recommendation']
+    name = 'visit-list'
 
 
 class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
-    # permission_classes =
-    name = 'visits-detail'
+    name = 'visit-detail'
 
 
 class RecommendationList(generics.ListCreateAPIView):
     queryset = Recommendation.objects.all()
     serializer_class = RecommendationSerializer
-    # permission_classes =
+    filterset_fields = ['prescription_code','dosage','medicines']
     name = 'recommendation-list'
 
 
 class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recommendation.objects.all()
     serializer_class = RecommendationSerializer
-    # permission_classes =
     name = 'recommendation-detail'
 
 

@@ -165,10 +165,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'backend.authorization.authenticate.CustomAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+
 }
 
 # REST_USE_JWT = True
-#
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -195,4 +198,3 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'authorization.User'
-
