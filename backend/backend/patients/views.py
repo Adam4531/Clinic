@@ -1,12 +1,9 @@
-from django.http import HttpResponse
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework.views import APIView
 
-from .serializers import PatientSerializer, AllergySerializer, TimeOfActivitySerializer
 from .models import Patient, Allergy, Time_of_activity
-from ..visits.models import Visit, Recommendation
+from .serializers import PatientSerializer, AllergySerializer, TimeOfActivitySerializer
 
 
 class PatientList(generics.ListCreateAPIView):

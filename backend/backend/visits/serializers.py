@@ -3,23 +3,6 @@ from rest_framework import serializers
 from ..visits.models import Medicine, Visit, Recommendation
 
 
-# class DoseSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = Dose
-#         fields = "__all__"
-#
-#     def validate(self, value):
-#         if value['dose'] < 0:
-#             raise serializers.ValidationError("Field 'dose' cannot be negative!")
-#         if value['dose'] == 0:
-#             raise serializers.ValidationError("Field 'dose' cannot be equal to zero!")
-#         if value['grammage'] == 0:
-#             raise serializers.ValidationError("Field 'grammage' cannot be empty!")
-#         if len(value['grammage']) > 50:
-#             raise serializers.ValidationError("Field 'grammage' cannot have more than 50 characters!")
-#         return value
-
-
 class MedicineSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Medicine
