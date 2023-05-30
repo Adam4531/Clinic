@@ -61,7 +61,6 @@ input {
 }
 
 #btn_forgotten_passwd, #btn_submit {
-    margin-top: 10%;
     align-self: flex-end;
     padding: 3px 0;
 }
@@ -70,14 +69,26 @@ input {
     background-color: transparent;
     border: 2px solid #014FA1;
     border-radius: 20px;
+    margin-top: 10%;
     width: 70%;
     color: #014FA1;
+}
+
+#btn_forgotten_passwd:hover {
+    background-color: #014FA1;
+    color: #fff;
 }
 
 #btn_submit {
     background-color: #014FA1;
     border: 2px solid #014FA1;
     border-radius: 20px;
+    margin-top: 5%;
     color: #fff;
     width: 40%;
+}
+
+#btn_submit:hover {
+    background-color: transparent;
+    color: #014FA1;
 }

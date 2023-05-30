@@ -1,7 +1,7 @@
 import { Form, useActionData, useNavigation, useParams } from 'react-router-dom';
 
 // import classes from './AuthForm.module.css';
-import classes from "./AuthModule.css";
+import classes from "./AuthModule.module.css";
 
 function AuthForm() {
   const data = useActionData();
@@ -18,38 +18,29 @@ function AuthForm() {
   
   return (
     <>
-    <div className="container">
-     <div className="login">
+    <div className={classes.container}>
+     <div className={isLogin ? classes.login : classes.register}>
       <Form method="post" className={classes.form}>
-        <h1>{isLogin ? 'Log in' : 'Register'}</h1>
+        <h3 className={classes.h3}>{isLogin ? 'Zaloguj się' : 'Zarejestruj się'}</h3>
         {data && data.errors && <ul>  
             {Object.values(data.errors).map(error => <li key={error}>{error}</li>)}
           </ul>}
           {data && data.message && <p>{data.message}</p>}
-        <p>
-          <label htmlFor="username">Username</label>
-          <input id="username" type="text" name="username" required />
-        </p>
-        {!isLogin && <p>
-          <label htmlFor="email">Email</label>
-          <input id="email-input" type="email" name="email" required/>
-        </p>}
-        {isLogin && <p>
-          <label htmlFor="password">Password</label>
-          <input id="passwd-input" type="password" name="password" required />
-        </p>}
-        {!isLogin && <p>
-          <label htmlFor="password1">Repeat Password</label>
-          <input id="passwd-input" type="password" name="password1" required />
-        </p>}
-        {!isLogin && <p>
-          <label htmlFor="password2">Repeat Password</label>
-          <input id="password2" type="password" name="password2" required />
-        </p>}
-        <button id="btn_forgotten_passwd">Zapomniałem hasła</button>
-        <div className={classes.actions}>
-          <button id="btn_submit" disabled={isSubmitting}>{isSubmitting ? 'Submitting..' : 'Autoryzacja'}</button>
-        </div>
+          <input type="text" id="username-input" name="username" placeholder="Wpisz login..." required></input>
+        {!isLogin &&
+          <input type="text" id="email-input" name="email" placeholder="Wpisz e-mail..." required></input>
+        }
+        {isLogin &&
+          <input type="password" id="passwd-input" name="passwd" placeholder="Wpisz hasło..." required></input>
+        }
+        {!isLogin &&
+          <input type="password" id="passwd-input1" name="passwd1" placeholder="Wpisz hasło ponownie..." required></input>
+        }
+        {!isLogin &&
+          <input type="password" id="passwd-input2" name="passwd2" placeholder="Wpisz hasło ponownie..." required></input>
+        }
+        <button id={classes.btn_forgotten_passwd}>Zapomniałem hasła</button>
+        <button id={classes.btn_submit} disabled={isSubmitting}>{isSubmitting ? 'Submitting..' : 'Autoryzacja'}</button>
       </Form>
       </div>
       </div>
