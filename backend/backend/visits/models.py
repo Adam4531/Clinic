@@ -1,8 +1,7 @@
 from django.db import models
 
-from ..authorization.models import User
-from ..patients.models import Patient
 from ..employees.models import Employee
+from ..patients.models import Patient
 
 
 class Medicine(models.Model):

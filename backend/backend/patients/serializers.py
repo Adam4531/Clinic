@@ -40,10 +40,6 @@ class TimeOfActivitySerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
     def validate(self, value):
-        if value['date_start'] < date.today():
-            raise serializers.ValidationError("Field 'date_start' cannot be placed in the future!")
         if value['date_start'] > value['date_end']:
             raise serializers.ValidationError("Field 'date_start' cannot be placed after date_end!")
-        if value['date_end'] < date.today():
-            raise serializers.ValidationError("Field 'data_end' cannot be placed in the past!")
         return value
