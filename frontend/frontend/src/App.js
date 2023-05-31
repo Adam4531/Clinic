@@ -15,6 +15,10 @@ import DetailVisitUpcoming from "./patient/DetailVisitUpcoming";
 import HomeDoctor from "./doctor/HomeDoctor";
 import HistoryDoctor from "./doctor/HistoryDoctor";
 
+import EditDoctor from "./reception/EditDoctor";
+import HomeReception from "./reception/HomeReception";
+import VisitsReception from "./reception/VisitsReception";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,12 +32,17 @@ const router = createBrowserRouter([
       { path: "visits", element: <Visits /> },
       { path: "visits/past/:id", element: <DetailVisitPast /> },
       { path: "visits/:id", element: <DetailVisitUpcoming /> },
+
       { path: "recommendations", element: <RecommendationsPage /> },
       { path: "auth/:id", element: <LoginPage /> },
       { path: "edit", element: <EditProfilePage /> },
 
       { path: "doctor", element: <HomeDoctor /> },
       { path: "history", element: <HistoryDoctor /> },
+
+      { path: "editdoctor", element: <EditDoctor /> },
+      { path: "homereception", element: <HomeReception /> },
+      { path: "visitsreception", element: <VisitsReception /> },
     ],
   },
 ]);

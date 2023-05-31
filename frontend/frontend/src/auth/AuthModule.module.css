@@ -14,7 +14,7 @@
     /* position: absolute;
     right: 5%; */
     top: 20vh;    
-    height: 50vh;
+    max-height: 50vh;
     width: 20%;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -29,7 +29,7 @@
     /* position: absolute;
     right: 0; */
     top: 10vh;    
-    height: 70vh;
+    max-height: 90vh;
     width: 20%;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -61,7 +61,6 @@ input {
 }
 
 #btn_forgotten_passwd, #btn_submit {
-    margin-top: 10%;
     align-self: flex-end;
     padding: 3px 0;
 }
@@ -70,14 +69,27 @@ input {
     background-color: transparent;
     border: 2px solid #014FA1;
     border-radius: 20px;
+    margin-top: 10%;
     width: 70%;
     color: #014FA1;
+}
+
+#btn_forgotten_passwd:hover {
+    background-color: #014FA1;
+    color: #fff;
 }
 
 #btn_submit {
     background-color: #014FA1;
     border: 2px solid #014FA1;
     border-radius: 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
     color: #fff;
     width: 40%;
+}
+
+#btn_submit:hover {
+    background-color: transparent;
+    color: #014FA1;
 }

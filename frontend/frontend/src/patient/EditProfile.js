@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SuccessEdit from "./SuccessEdit";
+import styles from "./EditProfile.module.css";
 
 function EditProfilePage(props) {  
   const [succesIsShown, setSuccesIsShown]=useState(false);
@@ -12,11 +13,11 @@ function EditProfilePage(props) {
     console.log('dziala')
   }
     return (
-        <div className="container">
-          <div className="edit_profile_window">
+        <div className={styles.container}>
+          <div className={styles.edit_profile_window}>
             <form>
-              <h3>Profil</h3>
-              <table>
+              <h3 className={styles.h3}>Profil</h3>
+              <table className={styles.table}>
                 <tr>
                   <td>
                     <input type="text" id="email-input" name="email" placeholder="Email"></input>
@@ -51,7 +52,7 @@ function EditProfilePage(props) {
                 </tr>
               </table>
               {succesIsShown && <SuccessEdit onHideCart={hideSuccesHandler}/>}
-              <button className="btn_save_changes" onClick={showSuccesHandler}>Zapisz</button>
+              <button className={styles.btn_save_changes} onClick={showSuccesHandler}>Zapisz</button>
             </form>
           </div>
         </div>

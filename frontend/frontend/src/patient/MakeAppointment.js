@@ -1,20 +1,18 @@
 import styles from "./MakeAppointment.module.css";
 import 'react-calendar/dist/Calendar.css';
-// import Calendar from "react-calendar"
+import Calendar from "react-calendar";
 import React, { useState } from "react";
-import DateTimePicker from "react-datetime-picker";
+import TimePicker from "./TimePicker";
 import SuccessSubmit from "./SuccessSubmitAppointment";
-
-// function DateTimePickerExample() {
-//   const [date, setDate] = useState(new Date());
-
-//   const handleDateChange = (newDate) => {
-//     setDate(newDate);
-//   };
-// }
 
 function MakeAppointmentPage() {
   const [succesIsShown, setSuccesIsShown]=useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
 
   const showSuccesHandler = (event) =>{
     event.preventDefault();
@@ -64,7 +62,11 @@ function MakeAppointmentPage() {
             <div className={styles.right}>
               <h2 className={styles.h2_}>Kalendarz</h2>
               {/* <Calendar/> */}
-              <DateTimePicker/>
+              <div className={styles.date}>
+                <TimePicker/>
+                <Calendar onChange={handleDateChange} value={selectedDate}/>
+                <p>Wybrana data: {selectedDate.toDateString()}</p>
+              </div>
             </div> 
           </div>
           </form>
