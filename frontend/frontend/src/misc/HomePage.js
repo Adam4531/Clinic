@@ -1,6 +1,4 @@
 import styles from "./HomePage.css";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
 
 function HomePage() {
   return (

@@ -65,7 +65,7 @@ class LoginView(APIView):
                                     value=data["access"],
                                     expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
                                     secure=True,
-                                    httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                                    httponly=False,
                                     samesite='None'
                                     )
                 payload = {
@@ -75,7 +75,7 @@ class LoginView(APIView):
                 }
 
                 token = jwt.encode(payload, 'secret', algorithm='HS256')
-                response.set_cookie(key='jwt', value=token, httponly=True, samesite='None', secure=True)
+                response.set_cookie(key='jwt', value=token, httponly=False, samesite='None', secure=True)
                 csrf.get_token(request)
                 response.data = {"Success": "Login succesfully!", "data": data}
                 return response

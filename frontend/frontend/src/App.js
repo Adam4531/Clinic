@@ -6,7 +6,9 @@ import CrewPage from "./misc/Crew";
 import MakeAppointmentPage from "./patient/MakeAppointment";
 import Visits from "./patient/Visits";
 import RecommendationsPage from "./patient/Recommendations";
-import LoginPage from "./auth/LoginPage";
+import LoginPage, {
+  action as authAction,
+}  from "./auth/LoginPage";
 
 import EditProfilePage from "./patient/EditProfile";
 
@@ -18,6 +20,8 @@ import HistoryDoctor from "./doctor/HistoryDoctor";
 import EditDoctor from "./reception/EditDoctor";
 import HomeReception from "./reception/HomeReception";
 import VisitsReception from "./reception/VisitsReception";
+import { checkAuthLoader, tokenLoader } from './util/auth';
+import {action as logoutAction} from './auth/logout'
 
 const router = createBrowserRouter([
   {
@@ -25,24 +29,26 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     id: "root",
+    loader: tokenLoader,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "logout", action: logoutAction},
       { path: "crew", element: <CrewPage /> },
-      { path: "appointments-register", element: <MakeAppointmentPage /> },
-      { path: "visits", element: <Visits /> },
-      { path: "visits/past/:id", element: <DetailVisitPast /> },
-      { path: "visits/:id", element: <DetailVisitUpcoming /> },
+      { path: "appointments-register", element: <MakeAppointmentPage />,loader: checkAuthLoader },
+      { path: "visits", element: <Visits />,loader: checkAuthLoader  },
+      { path: "visits/past/:id", element: <DetailVisitPast />,loader: checkAuthLoader  },
+      { path: "visits/:id", element: <DetailVisitUpcoming />,loader: checkAuthLoader  },
+      
+      { path: "recommendations", element: <RecommendationsPage />,loader: checkAuthLoader  },
+      { path: 'auth', element: <LoginPage />, action: authAction },
+      { path: "edit", element: <EditProfilePage />,loader: checkAuthLoader  },
 
-      { path: "recommendations", element: <RecommendationsPage /> },
-      { path: "auth/:id", element: <LoginPage /> },
-      { path: "edit", element: <EditProfilePage /> },
+      { path: "doctor", element: <HomeDoctor />,loader: checkAuthLoader  },
+      { path: "history", element: <HistoryDoctor />,loader: checkAuthLoader  },
 
-      { path: "doctor", element: <HomeDoctor /> },
-      { path: "history", element: <HistoryDoctor /> },
-
-      { path: "editdoctor", element: <EditDoctor /> },
-      { path: "homereception", element: <HomeReception /> },
-      { path: "visitsreception", element: <VisitsReception /> },
+      { path: "editdoctor", element: <EditDoctor />,loader: checkAuthLoader  },
+      { path: "homereception", element: <HomeReception />,loader: checkAuthLoader  },
+      { path: "visitsreception", element: <VisitsReception />,loader: checkAuthLoader  },
     ],
   },
 ]);

@@ -2,11 +2,10 @@ import React from "react";
 import logo from "./logo.svg";
 import styles from "./Navbar.module.css";
 import { Form, NavLink, useLoaderData } from 'react-router-dom';
-import SuccessEdit from "../patient/SuccessEdit";
-import { Route } from 'react-router-dom';
-import EditProfilePage from "../patient/EditProfile";
 
 const Navbar = (props) => {
+  const token = useLoaderData('root')
+
   return (
     <nav className={styles.navbar} style={{ backgroundColor: "#014FA1" }}>
       <div className={styles["navbar-logo"]}>
@@ -24,7 +23,7 @@ const Navbar = (props) => {
               Zespół
             </NavLink>
         </div>
-        <div className={styles["navbar-option"]}>
+        {token && localStorage.getItem('is_employee') === 'false' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
         <NavLink
               to="/appointments-register"
               className={({ isActive }) =>
@@ -34,8 +33,8 @@ const Navbar = (props) => {
             >
               Zarejestruj wizytę
             </NavLink>
-        </div>
-        <div className={styles["navbar-option"]}>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'false' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
         <NavLink
               to="/visits"
               className={({ isActive }) =>
@@ -45,8 +44,8 @@ const Navbar = (props) => {
             >
               Lista wizyt
             </NavLink>
-        </div>
-        <div className={styles["navbar-option"]}>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'false' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
           <NavLink
               to="/recommendations"
               className={({ isActive }) =>
@@ -56,8 +55,8 @@ const Navbar = (props) => {
             >
               Lista zaleceń
             </NavLink>
-        </div>
-        <div className={styles["navbar-option"]}>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
         <NavLink
               to="/doctor"
               className={({ isActive }) =>
@@ -68,8 +67,8 @@ const Navbar = (props) => {
               Strona głowna lekarza
             </NavLink>
             {/* Potem będzie ukryte */}
-        </div>
-        <div className={styles["navbar-option"]}>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
         <NavLink
               to="/history"
               className={({ isActive }) =>
@@ -79,13 +78,39 @@ const Navbar = (props) => {
             >
               historia lekarza
             </NavLink>
-            {/* Potem będzie ukryte */}
-        </div>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'true' && <div className={styles["navbar-option"]}>
+        <NavLink
+              to="/homereception"
+              className={({ isActive }) =>
+                isActive ? styles.active : undefined
+              }
+              end
+            >
+              Strona główna
+            </NavLink>
+        </div>}
+        {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'true' && <div className={styles["navbar-option"]}>
+        <NavLink
+              to="/visitsreception"
+              className={({ isActive }) =>
+                isActive ? styles.active : undefined
+              }
+              end
+            >
+              Historia leczenia
+            </NavLink>
+        </div>}
       </div>
-      <div className={styles["navbar-buttons"]}>
-      <NavLink to="/auth/register"><button className={styles["btn-register"]}>Zarejestruj się</button></NavLink>
-      <NavLink to="/auth/login"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
-      </div>
+      {!token && <div className={styles["navbar-buttons"]}>
+      <NavLink to="/auth?mode=register"><button className={styles["btn-register"]}>Zarejestruj się</button></NavLink>
+      <NavLink to="/auth?mode=login"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
+      </div>}
+      {token && <div>
+            <Form className={styles["navbar-buttons"]} action='/logout' method='post'>
+              <button className={styles["btn-login"]} >Wyloguj</button>
+            </Form>
+      </div>}
     </nav>
   );
 };
