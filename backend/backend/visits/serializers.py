@@ -21,7 +21,8 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
 class VisitSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Visit
-        fields = "__all__"
+        fields = ["id", "url", "date", "created_at", "updated_at",
+                  "description", "is_confirmed", "patient", "doctor", "recommendation"]
 
     def validate(self, value):  # TODO Do we need additional validation here?
         return value
