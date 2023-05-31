@@ -6,14 +6,15 @@ function SuccessCancel(props) {
     
     const didSubmitModalContent = <Fragment>
         <div className='alert'>
-            <p>Wizyta dnia dd.mm.yyyy na godzinę XX:XX zostanie anulowana!</p>
+            <p>Wizyta dnia {props.date} zostanie anulowana!</p>
             <button className='btn_confirm' onClick={props.onHideCart}>OK</button>
+            <button className='btn_confirm' onClick={props.back}>Anuluj</button>
         </div>
 </Fragment>
 console.log(props)
     return (
         <>
-        <Modal onClose={props.onHideCart}>
+        <Modal onClose={props.back}>
         {didSubmitModalContent}
         </Modal>
         </>

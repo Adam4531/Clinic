@@ -5,6 +5,7 @@ function VisitsPage() {
   const [visitUncomingFetch, setVisitUncoming] = useState([]);
   const [visitPastFetch, setVisitPast] = useState([]);
   useEffect(() => {
+    const currentDate = new Date();
     fetch(
       `http://127.0.0.1:8000/visits/visits?date=&patient=${localStorage.getItem(
         "owner"
@@ -22,20 +23,15 @@ function VisitsPage() {
       .then((data) => {
         console.log(data);
         data.forEach((element) => {
-          if (element.date > Date.now()) {
-            // if (!visitUncomingFetch.includes(element)) {
+          const fetchedDate = new Date(element.date);
+          if (fetchedDate > currentDate) {
               setVisitUncoming((current) => [...current, element]);
-            // }
           } else {
-            // if (!visitPastFetch.includes(element)) {
               setVisitPast((current) => [...current, element]);
-              console.log(visitPastFetch)
-            // }
           }
         });
       });
   }, []);
-console.log(visitPastFetch)
   return (
     <div className={styles.container}>
       <div>

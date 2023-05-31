@@ -1,28 +1,50 @@
 import styles from "./DetailVisit.css";
-
+import { useParams, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 function DetailVisitPast() {
+  const [visitFetch, setVisit] = useState();
+  const params = useParams();
+  useEffect(() => {
+    fetch(
+      `http://127.0.0.1:8000/visits/visits/${params.id}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          SameSite: "none",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setVisit(data)
+      });
+  }, [params]);
+  console.log(visitFetch)
     return (
         <div className="container">
-          <div className="details_box">
+          {visitFetch && <div className="details_box">
             <span class="date">
-              Data:
+               Data: {visitFetch.date}
             </span>
             <span className="doctor">
-              Lekarz:
+              Lekarz: {visitFetch.doctor}
             </span>
             <span className="extra">
-              Dodatkowe informacje:
+              Dodatkowe informacje: {visitFetch.description}
             </span>
             <span className="control_visit">
-              Data wizyty kontrolnej:
+              Data wizyty kontrolnej: {visitFetch.updated_at}
             </span>
             <span className="recommendations">
-              Zalecenia:
+              Zalecenia: {visitFetch.recommendation}
             </span>
             <div className="button_box">
-              <button className="btn_back">Cofnij</button>
+              <NavLink to='/visits' className="btn_back">Cofnij</NavLink>
             </div>
-          </div>
+          </div>}
         </div>
       );
     }
