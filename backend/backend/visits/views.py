@@ -49,6 +49,7 @@ class VisitList(generics.ListCreateAPIView):
     #         "message": "Visit and recommendation not created!"
     #     })
 
+
 class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
