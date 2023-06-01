@@ -34,7 +34,7 @@ class DegreeSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Employee
-        fields = "__all__"
+        fields = ["id", 'url', 'employee_image', "specialization", "user", "title_of_degree", "role"]
 
     def validate(self, value):
         # if value['employed_at'] > datetime.date.today():  # TODO check if it's correct in logic way

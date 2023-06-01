@@ -1,13 +1,46 @@
 import styles from "./MakeAppointment.module.css";
 import 'react-calendar/dist/Calendar.css';
 import Calendar from "react-calendar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TimePicker from "./TimePicker";
 import SuccessSubmit from "./SuccessSubmitAppointment";
+import { Form } from "react-router-dom";
 
 function MakeAppointmentPage() {
   const [succesIsShown, setSuccesIsShown]=useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [visitFetch, setVisit] = useState([]);
+  const [crewFetch, setCrew] = useState([]);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/employees/employees', {
+      method: "GET",
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+        SameSite: "none",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCrew(data);
+      })
+    fetch(
+      `http://127.0.0.1:8000/visits/visits`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          SameSite: "none",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setVisit(data)
+      });
+  }, []);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -27,16 +60,15 @@ function MakeAppointmentPage() {
           <div>
             <h1 className={styles.h1_}>Zarejestruj wizytę</h1>
           </div>
-          <form>
+          {crewFetch && <Form method="post">
           <div className={styles.body}>
             <div className={styles.left}>
                 <h2 className={styles.h2_}>Wybierz Lekarza</h2>
-                <select className={styles.doctors} id="doctors" name="doctors">
-                  <option value="doc1">Doktor #1</option>
-                  <option value="doc2">Doktor #2</option>
-                  <option value="doc3">Doktor #3</option>
-                  <option value="doc4">Doktor #4</option>
-                  <option value="doc5">Doktor #5</option>
+                <select className={styles.doctors} id="doctors" name="doctor">
+                  {crewFetch.map((doctor)=>(
+                    <option value={doctor.url} key={doctor.id}>{doctor.specialization}</option>
+                  ))}
+                  
                 </select>
                 <h2 className={styles.h2_}>Wybierz objawy</h2>
                 <div className={styles.checkbox}>
@@ -69,7 +101,7 @@ function MakeAppointmentPage() {
               </div>
             </div> 
           </div>
-          </form>
+          </Form>}
         </div>
     );
 }

@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       { path: "logout", action: logoutAction},
       { path: "crew", element: <CrewPage /> },
       { path: "appointments-register", element: <MakeAppointmentPage />,loader: checkAuthLoader },
+      { path: "appointments-register/:id", element: <MakeAppointmentPage />,loader: checkAuthLoader },
       { path: "visits", element: <Visits />,loader: checkAuthLoader  },
       { path: "visits/past/:id", element: <DetailVisitPast />,loader: checkAuthLoader  },
       { path: "visits/:id", element: <DetailVisitUpcoming />,loader: checkAuthLoader  },
