@@ -19,13 +19,13 @@ class Allergy(models.Model):
         return f'{self.name}, {self.time_of_activity}'
 
 
-class Patient(models.Model):
-    pesel = models.CharField(max_length=11, unique=True)
-    phone_number = models.CharField(max_length=11, unique=True)
-    age = models.IntegerField()
-    allergies = models.ManyToManyField(Allergy, blank=True, null=True)
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return f'{self.user}, {self.phone_number}, {self.age}'
+# class Patient(models.Model):
+#     pesel = models.CharField(max_length=11, unique=True)
+#     phone_number = models.CharField(max_length=11, unique=True)
+#     age = models.IntegerField()
+#     allergies = models.ManyToManyField(Allergy, blank=True, null=True)
+#     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+#
+#     def __str__(self):
+#         return f'{self.user}, {self.phone_number}, {self.age}'
 

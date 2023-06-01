@@ -4,6 +4,8 @@ from rest_framework.reverse import reverse
 
 from .models import Employee, Role, Degree
 from .serializers import EmployeeSerializer, RoleSerializer, DegreeSerializer
+from ..authorization.models import User
+from ..authorization.serializers import UserSerializer
 
 
 class RoleList(generics.ListCreateAPIView):
@@ -31,14 +33,14 @@ class DegreeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class EmployeeList(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    queryset = User.objects.all().filter(is_staff=True)
+    serializer_class = UserSerializer
     name = 'employee-list'
 
 
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    queryset = User.objects.all().filter(is_staff=True)
+    serializer_class = UserSerializer
     name = 'employee-detail'
 
 

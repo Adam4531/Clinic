@@ -2,20 +2,20 @@ import datetime
 
 from rest_framework import serializers
 
-from .models import Employee, Role, Degree
+from .models import Role, Degree
 
 
-class RoleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Role
-        fields = "__all__"
-
-    def validate(self, value):
-        if len(value['name']) == 0:
-            raise serializers.ValidationError("Field 'name' cannot be empty!")
-        if len(value['name']) > 50:
-            raise serializers.ValidationError("Field 'name' cannot be longer than 50 characters!")
-        return value
+# class RoleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Role
+#         fields = "__all__"
+#
+#     def validate(self, value):
+#         if len(value['name']) == 0:
+#             raise serializers.ValidationError("Field 'name' cannot be empty!")
+#         if len(value['name']) > 50:
+#             raise serializers.ValidationError("Field 'name' cannot be longer than 50 characters!")
+#         return value
 
 
 class DegreeSerializer(serializers.ModelSerializer):

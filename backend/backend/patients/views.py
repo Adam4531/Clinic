@@ -4,18 +4,20 @@ from rest_framework.reverse import reverse
 
 from .models import Patient, Allergy, Time_of_activity
 from .serializers import PatientSerializer, AllergySerializer, TimeOfActivitySerializer
+from ..authorization.models import User
+from ..authorization.serializers import UserSerializer
 
 
 class PatientList(generics.ListCreateAPIView):
-    queryset = Patient.objects.all()
-    serializer_class = PatientSerializer
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     filterset_fields = ['user', 'age', 'phone_number', 'allergies', 'age', 'pesel']
     name = 'patient-list'
 
 
 class PatientDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Patient.objects.all()
-    serializer_class = PatientSerializer
+    queryset = User.objects.all().filter(is_staff=False)
+    serializer_class = UserSerializer
     name = 'patient-detail'
 
 
