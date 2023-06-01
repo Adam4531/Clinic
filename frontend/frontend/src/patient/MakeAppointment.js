@@ -70,26 +70,8 @@ function MakeAppointmentPage() {
                   ))}
                   
                 </select>
-                <h2 className={styles.h2_}>Wybierz objawy</h2>
-                <div className={styles.checkbox}>
-                  <label className={styles.checkbox_container} for="cb1">
-                    <input type="checkbox" id="cb1" name="symptoms" value="headache"></input>
-                     Ból głowy
-                  </label>
-                  </div>
-                  <div className={styles.checkbox}>
-                  <label className={styles.checkbox_container} for="cb2">
-                    <input type="checkbox" id="cb2" name="symptoms" value="fever"></input>
-                     Gorączka
-                  </label>
-                </div>
-                <form>
-                  <input type="text" className={styles.new_symptom} id="new_symptom" placeholder="Wprowadź objaw..."></input>
-                  <button type="submit" className={styles.secondary_btn_submit}>Dodaj</button>
-                </form>
-                {succesIsShown && <SuccessSubmit onHideCart={hideSuccesHandler}/>}
-                <button type="submit" className={styles.primary_btn_submit} onClick={showSuccesHandler}>Zatwierdź</button>
-              
+                <h2 className={styles.h2_}>Opis dolegliwości</h2>
+                <textarea id="issues" name="issues" rows="10" cols="80"></textarea>
             </div>
             <div className={styles.right}>
               <h2 className={styles.h2_}>Kalendarz</h2>
@@ -99,6 +81,8 @@ function MakeAppointmentPage() {
                 <Calendar onChange={handleDateChange} value={selectedDate}/>
                 <p>Wybrana data: {selectedDate.toDateString()}</p>
               </div>
+              {succesIsShown && <SuccessSubmit onHideCart={hideSuccesHandler}/>}
+                <button type="submit" className={styles.primary_btn_submit} onClick={showSuccesHandler}>Zatwierdź</button>
             </div> 
           </div>
           </Form>}
