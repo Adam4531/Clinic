@@ -2,8 +2,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .models import Employee, Role, Degree
-from .serializers import EmployeeSerializer, RoleSerializer, DegreeSerializer
+from .models import Role, Degree
+from .serializers import RoleSerializer, DegreeSerializer
 from ..authorization.models import User
 from ..authorization.serializers import UserSerializer
 

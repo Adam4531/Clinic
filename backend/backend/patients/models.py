@@ -1,7 +1,5 @@
 from django.db import models
 
-from ..authorization.models import User
-
 
 class Time_of_activity(models.Model):
     date_start = models.DateField()

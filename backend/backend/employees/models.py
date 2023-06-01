@@ -1,7 +1,5 @@
 from django.db import models
 
-from ..authorization.models import User
-
 
 class Role(models.Model):
     name = models.CharField(max_length=50, unique=True)

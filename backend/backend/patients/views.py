@@ -2,8 +2,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .models import Patient, Allergy, Time_of_activity
-from .serializers import PatientSerializer, AllergySerializer, TimeOfActivitySerializer
+from .models import Allergy, Time_of_activity
+from .serializers import AllergySerializer, TimeOfActivitySerializer
 from ..authorization.models import User
 from ..authorization.serializers import UserSerializer
 

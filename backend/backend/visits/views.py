@@ -4,7 +4,6 @@ from rest_framework.reverse import reverse
 
 from .serializers import MedicineSerializer, VisitSerializer, RecommendationSerializer
 from .models import Medicine, Visit, Recommendation
-from ..patients.models import Patient
 
 
 class MedicineList(generics.ListCreateAPIView):
