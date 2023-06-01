@@ -7,7 +7,6 @@ class User(AbstractUser):
     password = models.CharField(max_length=255)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    is_employee = models.BooleanField()
     is_receptionist = models.BooleanField()
     username = None
 

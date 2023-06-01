@@ -19,7 +19,7 @@ class Recommendation(models.Model):
     dosage = models.CharField(max_length=50, blank=True, default='')
     additional_information = models.TextField(blank=True, default='')
     medicines = models.ManyToManyField(Medicine, blank=True, null=True)
-    patient = models.OneToOneField(Patient, on_delete=models.DO_NOTHING, blank=True, null=True)
+    patient = models.ForeignKey(Patient, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
         return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.medicines} {self.dosage}, {self.description} {self.additional_information}'

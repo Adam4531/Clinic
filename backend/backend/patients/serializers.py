@@ -5,9 +5,12 @@ from ..patients.models import Patient, Allergy, Time_of_activity
 
 
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
+    recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
+    # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
+
     class Meta:
         model = Patient
-        fields = "__all__"
+        fields = ['pesel','phone_number','age','allergies','user','recommendations']
 
     def validate(self, value):
         if len(value['pesel']) != 11:

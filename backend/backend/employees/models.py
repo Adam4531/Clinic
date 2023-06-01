@@ -19,9 +19,9 @@ class Degree(models.Model):
 
 class Employee(models.Model):
 
-    class RoleEnum(models.TextChoices):
-        Doctor = 'Doktor'
-        Receptionist = 'Recepcjonista'
+    # class RoleEnum(models.TextChoices):
+    #     Doctor = 'Doktor'
+    #     Receptionist = 'Recepcjonista'
 
     class DoctorSpecializationEnum(models.TextChoices):
         Family_doctor = 'Lekarz rodzinny'
