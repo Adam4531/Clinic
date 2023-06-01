@@ -11,7 +11,8 @@ class User(AbstractUser):
     password = models.CharField(max_length=255)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    is_receptionist = models.BooleanField()
+    is_receptionist = models.BooleanField(blank=True, null=True, default=False)
+    is_staff = models.BooleanField(blank=True, null=True, default=False)
 
     #employee
     class DoctorSpecializationEnum(models.TextChoices):
@@ -30,7 +31,7 @@ class User(AbstractUser):
     role = models.ForeignKey(Role, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     #patient
-    pesel = models.CharField(max_length=11, unique=True)
+    pesel = models.CharField(max_length=11, blank=True, null=True, unique=True)
     phone_number = models.CharField(max_length=11, unique=True)
     age = models.IntegerField(blank=True, null=True) #TODO fix it to be read_only and have to be automatically calculated
     allergies = models.ManyToManyField(Allergy, blank=True, null=True)
