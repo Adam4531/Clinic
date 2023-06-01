@@ -2,32 +2,32 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .models import Role, Degree, Employee
-from .serializers import RoleSerializer, DegreeSerializer, EmployeeSerializer
+from .models import Employee
+from .serializers import EmployeeSerializer
 
 
-class RoleList(generics.ListCreateAPIView):
-    queryset = Role.objects.all()
-    serializer_class = RoleSerializer
-    name = 'role-list'
-
-
-class RoleDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Role.objects.all()
-    serializer_class = RoleSerializer
-    name = 'role-detail'
-
-
-class DegreeList(generics.ListCreateAPIView):
-    queryset = Degree.objects.all()
-    serializer_class = DegreeSerializer
-    name = 'degree-list'
-
-
-class DegreeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Degree.objects.all()
-    serializer_class = DegreeSerializer
-    name = 'degree-detail'
+# class RoleList(generics.ListCreateAPIView):
+#     queryset = Role.objects.all()
+#     serializer_class = RoleSerializer
+#     name = 'role-list'
+#
+#
+# class RoleDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Role.objects.all()
+#     serializer_class = RoleSerializer
+#     name = 'role-detail'
+#
+#
+# class DegreeList(generics.ListCreateAPIView):
+#     queryset = Degree.objects.all()
+#     serializer_class = DegreeSerializer
+#     name = 'degree-list'
+#
+#
+# class DegreeDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Degree.objects.all()
+#     serializer_class = DegreeSerializer
+#     name = 'degree-detail'
 
 
 class EmployeeList(generics.ListCreateAPIView):
@@ -46,7 +46,8 @@ class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
 
     def get(self, request, *args, **kwargs):
-        return Response({'roles': reverse(RoleList.name, request=request),
-                         'degrees': reverse(DegreeList.name, request=request),
+        return Response({
+                         # 'roles': reverse(RoleList.name, request=request),
+                         # 'degrees': reverse(DegreeList.name, request=request),
                          'employees': reverse(EmployeeList.name, request=request),
                          })
