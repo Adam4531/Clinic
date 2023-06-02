@@ -66,7 +66,7 @@ function MakeAppointmentPage() {
                 <h2 className={styles.h2_}>Wybierz Lekarza</h2>
                 <select className={styles.doctors} id="doctors" name="doctor">
                   {crewFetch.map((doctor)=>(
-                    <option value={doctor.url} key={doctor.id}>{doctor.specialization}</option>
+                    <option value={doctor.url} key={doctor.id}>{doctor.user}</option>
                   ))}
                   
                 </select>

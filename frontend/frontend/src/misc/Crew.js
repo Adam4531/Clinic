@@ -18,7 +18,6 @@ function CrewPage() {
       .then((data) => {
         setCrew(data);
       });
-      
   }, []);
   console.log(crewFetch)
  return (

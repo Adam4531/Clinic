@@ -33,7 +33,7 @@ class Employee(models.Model):
         Internist = 'Internista'
 
     employee_image = models.ImageField(upload_to='employees/')
-    employed_at = models.DateField()
+    employed_at = models.DateField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     specialization = models.CharField(max_length=15, choices=DoctorSpecializationEnum.choices, blank=True, default="")
     title_of_degree = models.ForeignKey(Degree, on_delete=models.DO_NOTHING, blank=True, null=True)
