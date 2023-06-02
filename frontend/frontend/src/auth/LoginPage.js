@@ -67,7 +67,7 @@ export async function action({ request }) {
       last_name: data.get("last_name"),
       email: data.get("email"),
       password: data.get("password"),
-      is_employee: false,
+      is_staff: false,
       is_receptionist: false,
     };
     console.log(authData)
@@ -108,13 +108,17 @@ export async function action({ request }) {
     localStorage.setItem("expiration", expiration.toISOString());
     const user = await fetch("http://127.0.0.1:8000/auth/user/", {
       method: "GET",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         SameSite: "none",
       },
     });
     const username = await user.json();
-    localStorage.setItem("owner", username.pk);
+    
+    localStorage.setItem("owner", username.id);
+    localStorage.setItem("is_employee", username.is_staff);
+    localStorage.setItem("is_receptionist", username.is_receptionist);
     return redirect("");
   }
 }
