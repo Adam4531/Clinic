@@ -20,7 +20,7 @@ from .serializers import UserSerializer
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    filterset_fields = ['email']
+    filterset_fields = ['email', 'is_staff', 'is_receptionist']
     name = 'user-list'
 
 

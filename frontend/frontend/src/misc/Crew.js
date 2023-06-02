@@ -6,7 +6,7 @@ function CrewPage() {
   const [crewFetch, setCrew] = useState([]);
   useEffect(() => {
     // Fetch the Payroll Data related to the logged in User
-    fetch('http://127.0.0.1:8000/employees/employees', {
+    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false', {
       method: "GET",
       credentials: 'include',
       headers: {
@@ -28,7 +28,7 @@ function CrewPage() {
             <NavLink to={`/appointments-register/${doctor.id}`}><div className="tile" id="doctor1">
             <img src={doctor.employee_image} alt={doctor.user}></img>
             <div className="desc">
-              <span className="head">{doctor.user}</span>
+              <span className="head">{doctor.first_name} {doctor.last_name}</span>
               <span className="subhead">{doctor.title_of_degree}</span>
               <span className="doc_desc">{doctor.specialization}</span>
             </div>

@@ -5,7 +5,7 @@ function SuccessSubmit(props) {
     
     const didSubmitModalContent = <Fragment>
         <div className='alert'>
-            <p>Wizyta dnia dd.mm.yyyy na godzinę: XX:XX została umówiona pomyślnie!</p>
+            <p>Wizyta dnia {props.dataSuc} na godzinę: {props.timeSuc} została umówiona pomyślnie!</p>
             <button className='btn_confirm' onClick={props.onHideCart}>OK</button>
         </div>
 </Fragment>

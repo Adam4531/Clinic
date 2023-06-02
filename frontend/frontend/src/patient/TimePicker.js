@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './TimePicker.module.css';
 
-const TimePicker = () => {
-  const [selectedTime, setSelectedTime] = useState('');
+const TimePicker = (props) => {
 
-  const handleTimeChange = (event) => {
-    setSelectedTime(event.target.value);
-  };
+ 
 
   return (
-    <select className={styles.time_select} value={selectedTime} onChange={handleTimeChange}>
+    <select className={styles.time_select} value={props.value} onChange={props.onChange}>
       <option value="">Wybierz godzinę</option>
       {generateTimeOptions()}
     </select>

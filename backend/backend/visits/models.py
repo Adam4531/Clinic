@@ -17,7 +17,7 @@ class Recommendation(models.Model):
     description = models.TextField(blank=True, default='')
     dosage = models.CharField(max_length=50, blank=True, default='')
     additional_information = models.TextField(blank=True, default='')
-    medicines = models.ManyToManyField(Medicine, blank=True, null=True)
+    medicines = models.ManyToManyField(Medicine, blank=True)
     patient = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
@@ -25,7 +25,8 @@ class Recommendation(models.Model):
 
 
 class Visit(models.Model):
-    date = models.DateTimeField(unique=True)
+    date = models.DateField(unique=True)
+    time = models.TimeField(auto_now=False, auto_now_add=False, unique=True)
     patient = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visit_patient")
     doctor = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visit_doctor", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

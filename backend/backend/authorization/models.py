@@ -32,7 +32,7 @@ class User(AbstractUser):
 
     #patient
     pesel = models.CharField(max_length=11, blank=True, null=True, unique=True)
-    phone_number = models.CharField(max_length=11, unique=True)
+    phone_number = models.CharField(max_length=11)
     age = models.IntegerField(blank=True, null=True) #TODO fix it to be read_only and have to be automatically calculated
     allergies = models.ManyToManyField(Allergy, blank=True, null=True)
 
