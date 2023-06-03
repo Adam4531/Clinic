@@ -27,7 +27,7 @@ function AuthForm() {
           <input type="text" id="email-input" name="email" placeholder="Wpisz e-mail..." required></input>
           <input type="password" id="passwd-input" name="password" placeholder="Wpisz hasło..." required></input>
         
-        {/* <button id={classes.btn_forgotten_passwd}>Zapomniałem hasła</button> */}
+        <button id={classes.btn_forgotten_passwd}>Zapomniałem hasła</button>
         <button id={classes.btn_submit} disabled={isSubmitting}>{isSubmitting ? 'Submitting..' : 'Autoryzacja'}</button>
       </Form>
       </div>

@@ -108,7 +108,7 @@ const Navbar = (props) => {
       <NavLink to="/auth?mode=login"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
       </div>}
       {token && <div>
-            <button className={styles["btn-login"]} onClick={() => toggleOptions}>Profil</button>
+            <button className={styles["btn-profile"]} onClick={() => toggleOptions(!toggle)}>Profil</button>
             {toggle && (<div className={styles["option-list"]}>
               <Form action='/edit' method='post'>
                 <button className={styles["btn-option"]}>Edytuj profil</button>

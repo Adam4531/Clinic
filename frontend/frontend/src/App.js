@@ -22,6 +22,7 @@ import HomeReception from "./reception/HomeReception";
 import VisitsReception from "./reception/VisitsReception";
 import { checkAuthLoader, tokenLoader } from './util/auth';
 import {action as logoutAction} from './auth/logout'
+import {action as editAction} from './UI/edit_redirect'
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       
       { path: "recommendations", element: <RecommendationsPage />,loader: checkAuthLoader  },
       { path: 'auth', element: <LoginPage />, action: authAction },
-      { path: "edit", element: <EditProfilePage />,loader: checkAuthLoader  },
+      { path: "edit", element: <EditProfilePage />,loader: checkAuthLoader, action: editAction  },
 
       { path: "doctor", element: <HomeDoctor />,loader: checkAuthLoader  },
       { path: "history", element: <HistoryDoctor />,loader: checkAuthLoader  },

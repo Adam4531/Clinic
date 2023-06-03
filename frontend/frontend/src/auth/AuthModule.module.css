@@ -70,7 +70,8 @@ input {
     border: 2px solid #014FA1;
     border-radius: 20px;
     margin-top: 10%;
-    width: 70%;
+    /* width: 70%; */
+    padding-inline: 0.7rem;
     color: #014FA1;
 }
 
@@ -86,7 +87,8 @@ input {
     margin-top: 5%;
     margin-bottom: 10%;
     color: #fff;
-    width: 40%;
+    /* width: 40%; */
+    padding-inline: 0.7rem;
 }
 
 #btn_submit:hover {
