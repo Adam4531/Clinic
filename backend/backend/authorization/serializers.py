@@ -5,12 +5,13 @@ from .models import User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    # allergies = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='allergy-detail')
     # recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
     # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'email', 'password', 'is_staff', 'is_receptionist']
+        fields = ['id', 'first_name', 'last_name', 'email', 'is_staff', 'is_receptionist','age','phone_number', 'allergies']
         extra_kwargs = {
             'password': {'write_only': True}
         }
