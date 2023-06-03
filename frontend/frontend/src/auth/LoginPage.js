@@ -83,42 +83,42 @@ export async function action({ request }) {
     if (!response.ok) {
       throw json({ message: "Could not authenticate user." }, { status: 500 });
     }
-    const response2 = await fetch("http://127.0.0.1:8000/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        SameSite: "none",
-      },
-      body: JSON.stringify({
-        email: data.get("email"),
-        password: data.get("password"),
-      }),
-    });
-    if (response2.status === 422 || response2.status === 401) {
-      return response2;
-    }
+    // const response2 = await fetch("http://127.0.0.1:8000/auth/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     SameSite: "none",
+    //   },
+    //   body: JSON.stringify({
+    //     email: data.get("email"),
+    //     password: data.get("password"),
+    //   }),
+    // });
+    // if (response2.status === 422 || response2.status === 401) {
+    //   return response2;
+    // }
 
-    if (!response2.ok) {
-      throw json({ message: "Could not authenticate user." }, { status: 500 });
-    }
+    // if (!response2.ok) {
+    //   throw json({ message: "Could not authenticate user." }, { status: 500 });
+    // }
 
   
-    const expiration = new Date();
-    expiration.setHours(expiration.getHours() + 1);
-    localStorage.setItem("expiration", expiration.toISOString());
-    const user = await fetch("http://127.0.0.1:8000/auth/user/", {
-      method: "GET",
-      credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-        SameSite: "none",
-      },
-    });
-    const username = await user.json();
+    // const expiration = new Date();
+    // expiration.setHours(expiration.getHours() + 1);
+    // localStorage.setItem("expiration", expiration.toISOString());
+    // const user = await fetch("http://127.0.0.1:8000/auth/user/", {
+    //   method: "GET",
+    //   credentials: 'include',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     SameSite: "none",
+    //   },
+    // });
+    // const username = await user.json();
     
-    localStorage.setItem("owner", username.id);
-    localStorage.setItem("is_employee", username.is_staff);
-    localStorage.setItem("is_receptionist", username.is_receptionist);
-    return redirect("");
+    // localStorage.setItem("owner", username.id);
+    // localStorage.setItem("is_employee", username.is_staff);
+    // localStorage.setItem("is_receptionist", username.is_receptionist);
+    return redirect("/auth?mode=login");
   }
 }
