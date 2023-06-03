@@ -55,3 +55,37 @@
   .navbar-option a.active {
   color: var(--color-primary-800);
 }
+
+.option-list {
+  color: #014fa1;
+  position: fixed;
+  top: 4.64rem;
+  right: 1rem;
+  background-color: #ECF5FF;
+  border: 1px solid #ECF5FF;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 1px 1px 5px #000, -1px -1px #000;
+  padding: 0.5rem 1rem;
+  z-index: 1;
+}
+
+.option-list > * {
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.option-list > *:hover {
+  background-color: #fff;
+}
+
+.btn-option {
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
+  color: #014fa1;
+}
+
+.btn-option:hover {
+  cursor: pointer;
+  font-weight: 550;
+}

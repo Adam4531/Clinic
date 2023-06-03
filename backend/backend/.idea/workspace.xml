@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c799669-ea6b-4d39-a297-9f1490f8a6e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/employees/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/employees/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/UI/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/UI/Navbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthModule.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthModule.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/misc/Crew.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/misc/Crew.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/patient/MakeAppointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/patient/MakeAppointment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

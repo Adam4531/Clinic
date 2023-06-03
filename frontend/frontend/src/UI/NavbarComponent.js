@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import styles from "./Navbar.module.css";
 import { Form, NavLink, useLoaderData } from 'react-router-dom';
 
 const Navbar = (props) => {
   const token = useLoaderData('root')
+  const [toggle, toggleOptions] = useState(false)
 
   return (
     <nav className={styles.navbar} style={{ backgroundColor: "#014FA1" }}>
@@ -107,9 +108,15 @@ const Navbar = (props) => {
       <NavLink to="/auth?mode=login"><button className={styles["btn-login"]}>Zaloguj się</button></NavLink>
       </div>}
       {token && <div>
-            <Form className={styles["navbar-buttons"]} action='/logout' method='post'>
-              <button className={styles["btn-login"]} >Wyloguj</button>
-            </Form>
+            <button className={styles["btn-login"]} onClick={() => toggleOptions}>Profil</button>
+            {toggle && (<div className={styles["option-list"]}>
+              <Form action='/edit' method='post'>
+                <button className={styles["btn-option"]}>Edytuj profil</button>
+              </Form>
+              <Form action='/logout' method='post'>
+                <button className={styles["btn-option"]}>Wyloguj</button>
+              </Form>
+            </div>)}
       </div>}
     </nav>
   );
