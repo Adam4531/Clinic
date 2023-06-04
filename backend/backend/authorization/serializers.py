@@ -4,14 +4,13 @@ from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from .models import User
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # allergies = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='allergy-detail')
+class UserSerializer(serializers.ModelSerializer):
     # recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
-    # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
+    visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'email', 'is_staff', 'is_receptionist','age','phone_number', 'allergies']
+        fields = ['id', 'first_name', 'last_name', 'password', 'email', 'is_staff', 'is_receptionist','age','phone_number', 'allergies','visits']
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -37,9 +36,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError("Last name field can not be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Last name field can have maximum 50 characters!")
-        # if value['is_staff'] == False and value['is_receptionist'] == True:
-        #     raise serializers.ValidationError(
-        #         "Field 'is_receptionist' can not be true while field 'is_employee' is false")
+        # FIXME validation bellow trigger a KeyError due unknown data like 'pesel' etc.
         # if len(value['pesel']) != 11:
         #     raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
         # if len(value['phone_number']) != 9:
@@ -49,20 +46,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         # if value['age'] > 100:
         #     raise serializers.ValidationError("Field 'age' cannot be than 100 number!")
         return value
-
-    # def validate_empty_values(self, data):
-    #     if data['is_staff'] == False and data['is_receptionist'] == True:
-    #         raise serializers.ValidationError(
-    #             "Field 'is_receptionist' can not be true while field 'is_employee' is false")
-    #     if len(data['pesel']) != 11:
-    #         raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
-    #     if len(data['phone_number']) != 9:
-    #         raise serializers.ValidationError("Field 'phone_number' has to be exactly 9 characters long!")
-    #     if data['age'] <= 0:
-    #         raise serializers.ValidationError("Field 'age' cannot be empty or negative number!")
-    #     if data['age'] > 100:
-    #         raise serializers.ValidationError("Field 'age' cannot be than 100 number!")
-    #     return data
 
 
 class TokenObtainPairSerializer(TokenObtainSerializer):

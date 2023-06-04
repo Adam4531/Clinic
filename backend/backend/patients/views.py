@@ -9,7 +9,7 @@ from ..authorization.serializers import UserSerializer
 
 
 class PatientList(generics.ListCreateAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.all().filter(is_staff=False)
     serializer_class = UserSerializer
     filterset_fields = ['age', 'phone_number', 'allergies', 'age', 'pesel']
     name = 'patient-list'
