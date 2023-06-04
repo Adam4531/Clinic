@@ -80,7 +80,7 @@ function MakeAppointmentPage() {
 
   const isValid = () => {
     if (dataValid) {
-      return (selectedDoc > 0) & !dataValid[0];
+      return (selectedDoc > 0) && !dataValid[0] && selectedTime;
     }
     return false;
   };
@@ -125,8 +125,9 @@ function MakeAppointmentPage() {
     });
     if (response.status === 422 || response.status === 401) {
       return response;
+    }else{
+      setSuccesIsShown(true);
     }
-    setSuccesIsShown(true);
   };
   const hideSuccesHandler = () => {
     setSuccesIsShown(false);
@@ -169,7 +170,7 @@ function MakeAppointmentPage() {
               {/* <Calendar/> */}
               <div className={styles.date}>
                 <TimePicker onChange={handleTimeChange} value={selectedTime} />
-                <Calendar onChange={handleDateChange} value={selectedDate} />
+                <Calendar onChange={handleDateChange} value={selectedDate} /> 
                 <p>
                   Wybrana data: {selectedDate.toDateString()} {selectedTime}
                 </p>
@@ -177,6 +178,7 @@ function MakeAppointmentPage() {
                     element && <p>Podana data i godzina są zajęte wybierz ponownie</p>
                 )) }</div>}
                 {!selectedDoc && <p>Proszę wybrać doktora</p>}
+                {!selectedTime && <p>Proszę wybrać datę</p>}
               </div>
               {succesIsShown && (
                 <SuccessSubmit

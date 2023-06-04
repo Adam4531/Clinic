@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function VisitsPage() {
   const [visitUncomingFetch, setVisitUncoming] = useState([]);
   const [visitPastFetch, setVisitPast] = useState([]);
-  const [nameFetch, setName] = useState('');
+  // const [nameFetch, setName] = useState('');
   useEffect(() => {
     const currentDate = new Date();
     fetch(
