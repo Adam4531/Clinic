@@ -8,7 +8,7 @@ function EditProfilePage(props) {
   // Dane do pobrania:
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
-  const [passwd, setPasswd] = useState('');
+  // const [passwd, setPasswd] = useState('');
   const [phone, setPhone] = useState('');
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
@@ -22,9 +22,9 @@ function EditProfilePage(props) {
   const handleAgeChange = (event) =>{
     setAge(event.target.value);
   };
-  const handlePasswdChange = (event) =>{
-    setPasswd(event.target.value);
-  };
+  // const handlePasswdChange = (event) =>{
+  //   setPasswd(event.target.value);
+  // };
   const handlePhoneChange = (event) =>{
     setPhone(event.target.value);
   };
@@ -60,6 +60,11 @@ function EditProfilePage(props) {
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
+        setEmail(data.email)
+        setAge(data.age);
+        setFname(data.first_name);
+        setLname(data.last_name);
+        setPhone(data.phone_number);
         console.log(data);
       });
   }, []);
@@ -72,12 +77,12 @@ function EditProfilePage(props) {
       age: age,
       first_name: fname,
       last_name: lname,
-      phone_number: phone,
-      allergies: allergies
+      phone_number: phone
     };
+    console.log(data)
     fetch(`http://127.0.0.1:8000/auth/users/${localStorage.getItem("owner")}`,
     {
-      method: "PATCH",
+      method: "PUT",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -113,9 +118,9 @@ function EditProfilePage(props) {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                     <input type="password" id="passwd-input" name="passwd" onChange={handlePasswdChange} placeholder="Hasło"></input>
-                  </td>
+                  </td> */}
                   <td>
                     <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
                   </td>

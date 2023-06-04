@@ -1,26 +1,46 @@
 import styles from "./HomeDoctor.module.css";
 import 'react-calendar/dist/Calendar.css';
 import Calendar from "react-calendar";
-import React, { useState } from "react";
-import DateTimePicker from "react-datetime-picker";
-import { NavLink} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
 import AddRecc from "./AddRecc";
 
-// function DateTimePickerExample() {
-//   const [date, setDate] = useState(new Date());
 
-//   const handleDateChange = (newDate) => {
-//     setDate(newDate);
-//   };
-// }
 
 function HomeDoctor() {
   const [succesIsShown, setSuccesIsShown]=useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [visitFetched, setVisit] = useState([]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, "0");
+  }
+
+  function formatDate(date) {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join("-");
+  }
+
+  useEffect(()=>{
+    const date = formatDate(selectedDate)
+    console.log(date)
+    fetch(`http://127.0.0.1:8000/visits/visits?date=&patient=&doctor=${localStorage.getItem('owner')}&recommendation=`,
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        SameSite: "none",
+      },
+    }).then((res) => res.json())
+    .then((data) => {setVisit(data)})
+  },[])
 
   const showSuccesHandler = (event) =>{
     event.preventDefault();
@@ -40,16 +60,14 @@ function HomeDoctor() {
             <h2 className={styles.h2_}>Dzisiejsze wizyty</h2>
             <div className={styles.body}>
               <div className={styles.upcoming}>
-                <div className={styles.upcoming_visit}>
-                  <span className={styles.date}>Data: </span>
-                  <span className={styles.doctor}>Lekarz: </span>
+                {visitFetched.map((data)=>(
+                  <div className={styles.upcoming_visit}>
+                  <span className={styles.date}>Data: {data.date}</span>
+                  <span className={styles.doctor}>Pacjent: {data.patient}</span>
                   <button onClick={showSuccesHandler} className={styles.details}>Dodaj zalecenie</button>
                 </div>
-                <div className={styles.upcoming_visit}>
-                  <span className={styles.date}>Data: </span>
-                  <span className={styles.doctor}>Lekarz: </span>
-                  <button onClick={showSuccesHandler} className={styles.details}>Dodaj zalecenie</button>
-                </div>
+                ))}
+                
               </div>
             </div>
             <form>
@@ -60,7 +78,10 @@ function HomeDoctor() {
           </div>
           <div className={styles.right}>
             <h2 className={styles.h2_}>Kalendarz</h2>
-            <Calendar/>
+            <Calendar onChange={handleDateChange} value={selectedDate} />
+            <p>
+                  Wybrana data: {selectedDate.toDateString()}
+                </p>
           </div>
         </div>
       </form>

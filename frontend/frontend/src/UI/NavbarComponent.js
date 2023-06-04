@@ -14,7 +14,7 @@ const Navbar = (props) => {
       </div>
       <div className={styles["navbar-options"]}>
         <div className={styles["navbar-option"]}>
-        <NavLink
+        {token && localStorage.getItem('is_employee') === 'false' && localStorage.getItem('is_receptionist') === 'false' && <NavLink
               to="/crew"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
@@ -22,7 +22,7 @@ const Navbar = (props) => {
               end
             >
               Zespół
-            </NavLink>
+            </NavLink>}
         </div>
         {token && localStorage.getItem('is_employee') === 'false' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
         <NavLink
