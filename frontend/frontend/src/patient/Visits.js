@@ -5,6 +5,7 @@ function VisitsPage() {
   const [visitUncomingFetch, setVisitUncoming] = useState([]);
   const [visitPastFetch, setVisitPast] = useState([]);
   // const [nameFetch, setName] = useState('');
+ 
   useEffect(() => {
     const currentDate = new Date();
     fetch(
@@ -108,6 +109,7 @@ function VisitsPage() {
   //   setVisitUncoming(names)
   //   setVisitPast(names2)
   // },[nameFetch, visitUncomingFetch])
+
   
   return (
     <div className={styles.container}>
