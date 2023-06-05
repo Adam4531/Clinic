@@ -31,7 +31,7 @@ class User(AbstractUser):
     role = models.ForeignKey(Role, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     #patient
-    pesel = models.CharField(max_length=11, unique=True)
+    pesel = models.CharField(max_length=11, unique=True, null=True, blank=True)
     phone_number = models.CharField(max_length=9, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     allergies = models.ManyToManyField(Allergy, blank=True, null=True,)
