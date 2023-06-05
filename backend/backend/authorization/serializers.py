@@ -6,11 +6,12 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     # recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
-    visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
+    # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'password', 'email', 'is_staff', 'is_receptionist','age','phone_number', 'allergies','visits']
+        fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist', 'age',
+                  'phone_number', 'allergies']  # visits
         extra_kwargs = {
             'password': {'write_only': True}
         }

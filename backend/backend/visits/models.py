@@ -24,7 +24,7 @@ class Medicine(models.Model):
     patient = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name} {self.quantity_of_tablets} {self.dose}'
+        return f'{self.name} {self.quantity_of_tablets} {self.dose}, {self.patient}'
 
 
 class Recommendation(models.Model):

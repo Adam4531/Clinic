@@ -5,10 +5,9 @@ from ..visits.models import Medicine, Visit, Recommendation
 
 class MedicineSerializer(serializers.HyperlinkedModelSerializer):
     patient = serializers.SerializerMethodField()
-
     class Meta:
         model = Medicine
-        fields = ['id', 'name', 'quantity_of_tablets', 'dose', 'patient']
+        fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
 
     def get_patient(self, obj):
         patient = obj.patient
