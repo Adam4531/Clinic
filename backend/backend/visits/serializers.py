@@ -35,14 +35,11 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class VisitSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
-    doctor = serializers.SerializerMethodField()
 
     class Meta:
         model = Visit
         fields = ["id", "url", "date", "created_at", "updated_at",
                   "description", "is_confirmed", "patient", "doctor"]
-
     def get_patient(self, obj):
         patient = obj.patient
         return {
@@ -50,7 +47,6 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def get_doctor(self, obj):

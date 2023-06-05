@@ -33,82 +33,6 @@ function VisitsPage() {
         });
       });
   }, []);
-  
-  //To wgl blokuje pod stronę wizyty jakby internetu się nie miało
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const updatedData = await Promise.all(
-  //         visitUncomingFetch.map(async (item) => {
-  //           const doktorPromise = fetch(item.doctor,
-  //             {
-  //               method: "GET",
-  //               credentials: "include",
-  //               headers: {
-  //                 "Content-Type": "application/json",
-  //                 SameSite: "none",
-  //               },
-  //             });
-  
-  //           const [doktorResponse] = await Promise.all([
-  //             doktorPromise,
-  //           ]);
-  
-  //           const doktorData = await doktorResponse;
-  //           console.log(doktorData)
-  //           return {
-  //             ...item,
-  //             doctor: doktorData.first_name,
-  //           };
-  //         })
-  //       );
-  
-  //       setVisitUncoming(updatedData);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-  
-  //   fetchData();
-  // }, [visitUncomingFetch]);
-
-//To powoduje ze sie nie renderuje ale to poczatek (czegos)
-  // useEffect(()=>{
-  //   const names = visitUncomingFetch.map((datas) => {
-  //     console.log(datas.doctor)
-  //     fetch(datas.doctor,
-  //       {
-  //         method: "GET",
-  //         credentials: "include",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           SameSite: "none",
-  //         },
-  //       }
-  //     ).then((res) => res.json()).then(data =>{
-  //       setName(data.first_name + ' ' + data.last_name)
-  //     })
-  //     return {...datas, doctor: nameFetch}
-  //   });
-  //   const names2 = visitUncomingFetch.map((datas) => {
-  //     console.log(datas.doctor)
-  //     fetch(datas.doctor,
-  //       {
-  //         method: "GET",
-  //         credentials: "include",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           SameSite: "none",
-  //         },
-  //       }
-  //     ).then((res) => res.json()).then(data =>{
-  //       setName(data.first_name + ' ' + data.last_name)
-  //     })
-  //     return {...datas, doctor: nameFetch}
-  //   });
-  //   setVisitUncoming(names)
-  //   setVisitPast(names2)
-  // },[nameFetch, visitUncomingFetch])
 
   
   return (
@@ -123,7 +47,7 @@ function VisitsPage() {
             <NavLink
             to={`${visit.id}`} ><div className={styles.upcoming_visit} key={visit.url}>
               <span className={styles.date}>Data: {visit.date}</span>
-              <span className={styles.doctor}>Lekarz: {visit.doctor}</span>
+              <span className={styles.doctor}>Lekarz: {visit.doctor.first_name} {visit.doctor.last_name}</span>
             </div>
             </NavLink>
           ))}
