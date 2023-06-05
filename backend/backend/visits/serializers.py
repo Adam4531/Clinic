@@ -4,7 +4,7 @@ from ..visits.models import Medicine, Visit, Recommendation
 
 
 class MedicineSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
+
     class Meta:
         model = Medicine
         fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
@@ -16,7 +16,6 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def to_representation(self, instance):
@@ -35,8 +34,6 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class VisitSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
-    doctor = serializers.SerializerMethodField()
 
     class Meta:
         model = Visit
@@ -73,8 +70,6 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
-    visit = serializers.SerializerMethodField()
 
     class Meta:
         model = Recommendation

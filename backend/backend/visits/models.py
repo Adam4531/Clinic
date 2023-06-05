@@ -32,9 +32,10 @@ class Recommendation(models.Model):
     description = models.TextField(blank=True, default='')
     dosage = models.CharField(max_length=50, blank=True, default='')
     additional_information = models.TextField(blank=True, default='')
+    doctor = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     # medicines = models.ManyToManyField(Medicine, blank=True)
     patient = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='visits')
     visit = models.OneToOneField(Visit, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.medicines} {self.dosage}, {self.description} {self.additional_information}'
+        return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.dosage}, {self.description} {self.additional_information}'
