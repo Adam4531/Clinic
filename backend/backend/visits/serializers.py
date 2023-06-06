@@ -4,7 +4,7 @@ from ..visits.models import Medicine, Visit, Recommendation
 
 
 class MedicineSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
+
     class Meta:
         model = Medicine
         fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
@@ -16,7 +16,6 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def to_representation(self, instance):
@@ -35,14 +34,11 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class VisitSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
-    doctor = serializers.SerializerMethodField()
 
     class Meta:
         model = Visit
         fields = ["id", "url", "date", "created_at", "updated_at",
                   "description", "is_confirmed", "patient", "doctor"]
-
     def get_patient(self, obj):
         patient = obj.patient
         return {
@@ -50,7 +46,7 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
+            "email": patient.email
         }
 
     def get_doctor(self, obj):
@@ -59,7 +55,8 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "id": doctor.id,
             "first_name": doctor.first_name,
             "last_name": doctor.last_name,
-            "specialization": doctor.specialization
+            "specialization": doctor.specialization,
+            "email": doctor.email
         }
 
     def to_representation(self, instance):
@@ -73,8 +70,6 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
-    patient = serializers.SerializerMethodField()
-    visit = serializers.SerializerMethodField()
 
     class Meta:
         model = Recommendation
@@ -87,7 +82,6 @@ class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def get_visit(self, obj):

@@ -100,7 +100,8 @@ class UserView(APIView):
             raise AuthenticationFailed("Unauthenticated!")
 
         user = User.objects.filter(id=payload['id']).first()
-        serializer = UserSerializer(user)
+        context = {'request': request}
+        serializer = UserSerializer(user, context=context)
 
         return Response(serializer.data)
 

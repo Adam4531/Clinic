@@ -1,8 +1,10 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
+from .filters import VisitFilter
 from .models import Medicine, Visit, Recommendation
 from .serializers import MedicineSerializer, VisitSerializer, RecommendationSerializer
 from ..authorization.models import User
@@ -24,31 +26,9 @@ class MedicineDetail(generics.RetrieveUpdateDestroyAPIView):
 class VisitList(generics.ListCreateAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
-    filterset_fields = ['date', 'patient', 'doctor']
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = VisitFilter
     name = 'visit-list'
-
-    # def post(self, request, *args, **kwargs): #TODO
-    #     patient_id = request.data.get('patient')[39:]
-    #     patient = Patient.objects.get(id=patient_id)
-    #     recommendation = Recommendation.objects.create(patient=patient)
-    #     recommendation_serializer = RecommendationSerializer(data=recommendation)
-    #
-    #     if recommendation_serializer.is_valid():
-    #         saved_recommendation = recommendation_serializer.save()
-    #         request.data['recommendation'] = saved_recommendation
-    #
-    #         visit_serializer = VisitSerializer(data=request.data)
-    #         if visit_serializer.is_valid():
-    #             visit_serializer.save()
-    #
-    #             return Response({
-    #             "status": status.HTTP_201_CREATED,
-    #             "message": "Visit and recommendation created!"
-    #             })
-    #     return Response({
-    #         "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
-    #         "message": "Visit and recommendation not created!"
-    #     })
 
 
 class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -68,16 +48,6 @@ class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recommendation.objects.all()
     serializer_class = RecommendationSerializer
     name = 'recommendation-detail'
-
-
-class MedicinesByUser(APIView): #TODO
-
-    def get(self, request, id):
-        user = User.objects.get(pk=id)
-        # response = User.objects.select_related('medicines__recommendation')
-        response = Medicine.objects.select_related('recommendation__patient').filter(recommendation__patient__email=user.email)
-
-        return Response(response)
 
 
 class ApiRoot(generics.GenericAPIView):
