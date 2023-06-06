@@ -11,7 +11,9 @@
     align-self: center;
 }
 
-
+.info {
+    font-weight: 600;
+}
 
 .recommendations, .details {
     width: 50vw;
@@ -21,6 +23,7 @@
     margin: 0 3vw;
     background-color: rgba(255, 255, 255, 0.5);
     padding-bottom: 25px;
+    position: relative;
 }
 
 .recommendations {
@@ -28,7 +31,7 @@
     align-items: center;
 }
 
-.recommendation {
+.recommendation, .visit {
     margin-top: 15px;
     padding: 5px 5px;
     width: 90%;
@@ -37,7 +40,6 @@
     flex-direction: column;
     justify-content: center;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .rec_info {
@@ -45,6 +47,24 @@
     margin: 5px 15px;
     color: #014FA1;
 }
+
+.recommendation:hover {
+    cursor: pointer;
+}
+
+.details {
+    overflow: hidden;
+}
+
+.visits {
+    overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #014FA1;
+    margin: 5px 15px;
+    padding-inline: 1rem;
+    height: 10rem;
+}
+
 .primary_btn_submit {
     background-color: #014FA1;
     border: 1px solid #014FA1;
