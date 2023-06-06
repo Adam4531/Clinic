@@ -4,6 +4,7 @@
     <list default="true" id="3b76db63-c48d-4c28-8dc2-6a61b94683a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authorization/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/filters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visits/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visits/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/serializers.py" afterDir="false" />
     </list>

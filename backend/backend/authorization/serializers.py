@@ -2,22 +2,22 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 
 from .models import User
+from ..visits.serializers import VisitSerializer, RecommendationSerializer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
-    # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
-    # medicines = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='medicine-detail')
+    visits = VisitSerializer(many=True, read_only=True)
+    # visits_doctor = VisitSerializer(many=True, read_only=True)
+    recommendations = RecommendationSerializer(many=True, read_only=True)
+    medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
 
-    # recommendations = serializers.SlugRelatedField(many=True, read_only=True, view_name='')
-    # visits =
-    # medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
     # allergies = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
-                  'phone_number', 'allergies', 'medicines', 'visits']
+                  'phone_number', 'allergies','medicines','specialization','visits','recommendations']
+
         extra_kwargs = {
             'password': {'write_only': True}
         }
