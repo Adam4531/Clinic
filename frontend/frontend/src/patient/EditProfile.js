@@ -87,7 +87,7 @@ function EditProfilePage(props) {
     console.log(data)
     fetch(`http://127.0.0.1:8000/auth/users/${localStorage.getItem("owner")}`,
     {
-      method: "PUT",
+      method: "PATCH",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
