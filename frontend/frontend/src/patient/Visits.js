@@ -58,7 +58,7 @@ function VisitsPage() {
              <NavLink
              to={`past/${visit.id}`} ><div className={styles.past_visit} key={visit.url}>
               <span className={styles.date}>Data: {visit.date}</span>
-              <span className={styles.doctor}>Lekarz: {visit.doctor}</span>
+              <span className={styles.doctor}>Lekarz: {visit.doctor.first_name} {visit.doctor.last_name}</span>
             </div>
             </NavLink>
           ))}

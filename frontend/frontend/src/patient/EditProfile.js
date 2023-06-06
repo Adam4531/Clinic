@@ -23,9 +23,6 @@ function EditProfilePage(props) {
   const handlePeselChange = (event) =>{
     setPesel(event.target.value);
   };
-  // const handlePasswdChange = (event) =>{
-  //   setPasswd(event.target.value);
-  // };
   const handlePhoneChange = (event) =>{
     setPhone(event.target.value);
   };
@@ -70,6 +67,7 @@ function EditProfilePage(props) {
         setLname(data.last_name);
         setPhone(data.phone_number);
         setDateOfBirth(data.date_of_birth);
+        setAllergies(data.allergies);
         console.log(data);
       });
   }, []);
@@ -79,15 +77,15 @@ function EditProfilePage(props) {
     event.preventDefault();
     const data = {
       email: email,
-      pesel: pesel,
       first_name: fname,
       last_name: lname,
-      phone_number: phone
+      phone_number: phone,
+      allergies: allergies
     };
     console.log(data)
     fetch(`http://127.0.0.1:8000/auth/users/${localStorage.getItem("owner")}`,
     {
-      method: "PUT",
+      method: "PATCH",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
