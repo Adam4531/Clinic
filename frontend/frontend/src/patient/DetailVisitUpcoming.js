@@ -50,7 +50,7 @@ function DetailVisitUpcoming(props) {
     <div className="container">
       {visitFetch && <div className="details_box">
         <span className="date">Data: {visitFetch.date}</span>
-        <span className="doctor">Lekarz: {visitFetch.doctor}</span>
+        <span className="doctor">Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}</span>
         <span className="extra">
           Dodatkowe informacje: {visitFetch.description}
         </span>
