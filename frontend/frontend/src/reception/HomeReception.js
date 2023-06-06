@@ -19,7 +19,7 @@ function HomeReception(props) {
       setDoctor(data);
       console.log(data);
     });
-    fetch('http://127.0.0.1:8000/visits/visits?is_confirmed=false', {
+    fetch('http://127.0.0.1:8000/visits/visits?date=&patient=&doctor=&is_confirmed=false', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -41,30 +41,35 @@ function HomeReception(props) {
     setSuccesIsShown(false);
     console.log('dodano wizyte')
   }
-  
     return (
         <div className={styles.container}>
           <div className={styles.body}>
+            <div className={styles.empty}>
             <div className={styles.doctors}>
               <h2 className={styles.h2_}>Lekarze</h2>
               {doctor.map((doc) => 
               <div className={styles.doctor}>
-                <div className={styles.rec_info}>Lekarz: {doc.first_name} {doc.last_name}</div>
+                <div className={styles.rec_info}>Lekarz: <span className={styles.info}>{doc.first_name} {doc.last_name}</span></div>
+                <div className={styles.rec_info}>Specjalizacja: <span className={styles.info}>{doc.specialization}</span></div>
               </div>
               )}
-              <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
+             
+            </div>
+            <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
                 Zarządzaj lekarzami
               </button>
             </div>
+            <div className={styles.empty}>
             <div className={styles.visits}>
               <h2 className={styles.h2_}>Wizyty do potwierdzenia</h2>
               {visit.map((vis) =>
                 <div className={styles.visit}>
-                <div className={styles.rec_info}>Data: {vis.date}</div>
+                  <div className={styles.rec_info}>Data: <span className={styles.info}>{vis.date}</span></div>
+                  <div className={styles.rec_info}>Pacjent: <span className={styles.info}>{vis.patient.first_name} {vis.patient.last_name}</span></div>
               </div>
               )}
-              
-              <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
+            </div>
+            <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
                 Zarządzaj wizytami
               </button>
               <button onClick={showSuccesHandler} className={styles.second_btn_submit}>
