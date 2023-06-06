@@ -1,8 +1,10 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
+from .filters import VisitFilter
 from .models import Medicine, Visit, Recommendation
 from .serializers import MedicineSerializer, VisitSerializer, RecommendationSerializer
 from ..authorization.models import User
@@ -24,7 +26,8 @@ class MedicineDetail(generics.RetrieveUpdateDestroyAPIView):
 class VisitList(generics.ListCreateAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
-    filterset_fields = ['date', 'patient', 'doctor']
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = VisitFilter
     name = 'visit-list'
 
 

@@ -46,6 +46,7 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
+            "email": patient.email
         }
 
     def get_doctor(self, obj):
@@ -54,7 +55,8 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "id": doctor.id,
             "first_name": doctor.first_name,
             "last_name": doctor.last_name,
-            "specialization": doctor.specialization
+            "specialization": doctor.specialization,
+            "email": doctor.email
         }
 
     def to_representation(self, instance):
