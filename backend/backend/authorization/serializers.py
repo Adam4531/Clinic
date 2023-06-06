@@ -4,14 +4,21 @@ from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from .models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     # recommendations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='recommendation-detail')
     # visits = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='visit-detail')
+    # medicines = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='medicine-detail')
+
+    # recommendations = serializers.SlugRelatedField(many=True, read_only=True, view_name='')
+    # visits = serializers.SlugRelatedField(many=True, read_only=True, view_name='visit-detail')
+    medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
+    # allergies = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
-                  'phone_number', 'allergies']  # visits
+                  'phone_number', 'allergies','medicines']
+        # 'visits','recommendations'
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -37,15 +44,6 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Last name field can not be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Last name field can have maximum 50 characters!")
-        # FIXME validation bellow trigger a KeyError due unknown data like 'pesel' etc.
-        # if len(value['pesel']) != 11:
-        #     raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
-        # if len(value['phone_number']) != 9:
-        #     raise serializers.ValidationError("Field 'phone_number' has to be exactly 9 characters long!")
-        # if value['age'] <= 0:
-        #     raise serializers.ValidationError("Field 'age' cannot be empty or negative number!")
-        # if value['age'] > 100:
-        #     raise serializers.ValidationError("Field 'age' cannot be than 100 number!")
         return value
 
 

@@ -9,5 +9,4 @@ urlpatterns = [
     path('medicines', views.MedicineList.as_view(), name=views.MedicineList.name),
     path('medicines/<int:pk>', views.MedicineDetail.as_view(), name=views.MedicineDetail.name),
     path('', views.ApiRoot.as_view(), name=views.ApiRoot.name),
-    path('user-medicine/<int:id>', views.MedicinesByUser.as_view(), name='user-medicine')
 ]

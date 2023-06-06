@@ -9,19 +9,21 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
         model = Medicine
         fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
 
-    def get_patient(self, obj):
-        patient = obj.patient
-        return {
-            "id": patient.id,
-            "first_name": patient.first_name,
-            "last_name": patient.last_name,
-            "pesel": patient.pesel,
-        }
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['patient'] = self.get_patient(instance)
-        return representation
+    # def get_patient(self, obj):
+    #     if obj is None:
+    #         return None
+    #     patient = obj.patient
+    #     return {
+    #         "id": patient.id,
+    #         "first_name": patient.first_name,
+    #         "last_name": patient.last_name,
+    #         "pesel": patient.pesel,
+    #     }
+    #
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['patient'] = self.get_patient(instance)
+    #     return representation
 
     def validate(self, value):
         if value['name'] == 0:
@@ -46,6 +48,7 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
+            "email": patient.email
         }
 
     def get_doctor(self, obj):
@@ -54,7 +57,8 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "id": doctor.id,
             "first_name": doctor.first_name,
             "last_name": doctor.last_name,
-            "specialization": doctor.specialization
+            "specialization": doctor.specialization,
+            "email": doctor.email
         }
 
     def to_representation(self, instance):
@@ -67,36 +71,35 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
         return value
 
 
-class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
+class RecommendationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recommendation
-        fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit']
+        fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit','doctor']
 
-    def get_patient(self, obj):
-        patient = obj.patient
-        return {
-            "id": patient.id,
-            "first_name": patient.first_name,
-            "last_name": patient.last_name,
-            "pesel": patient.pesel,
-            "age": patient.age,
-        }
-
-    def get_visit(self, obj):
-        visit = obj.visit
-        return {
-            "id": visit.id,
-            "date": visit.date,
-            "description": visit.description,
-            "is_confirmed": visit.is_confirmed,
-        }
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['patient'] = self.get_patient(instance)
-        representation['visit'] = self.get_visit(instance)
-        return representation
+    # def get_patient(self, obj):
+    #     patient = obj.patient
+    #     return {
+    #         "id": patient.id,
+    #         "first_name": patient.first_name,
+    #         "last_name": patient.last_name,
+    #         "pesel": patient.pesel,
+    #     }
+    #
+    # def get_visit(self, obj):
+    #     visit = obj.visit
+    #     return {
+    #         "id": visit.id,
+    #         "date": visit.date,
+    #         "description": visit.description,
+    #         "is_confirmed": visit.is_confirmed,
+    #     }
+    #
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['patient'] = self.get_patient(instance)
+    #     representation['visit'] = self.get_visit(instance)
+    #     return representation
 
     def validate(self, value):
         if value['prescription_code'] == 0:
