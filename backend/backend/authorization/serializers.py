@@ -46,12 +46,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return value
 
 
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['visits'] = self.get_visits(instance)
-        return representation
-
-
 class TokenObtainPairSerializer(TokenObtainSerializer):
     @classmethod
     def get_token(cls, user):
