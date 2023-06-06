@@ -80,13 +80,16 @@ class RecommendationSerializer(serializers.ModelSerializer):
         fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit', 'doctor']
 
     def get_patient(self, obj):
-        patient = obj.patient
-        return {
-            "id": patient.id,
-            "first_name": patient.first_name,
-            "last_name": patient.last_name,
-            "pesel": patient.pesel,
-        }
+        try:
+            patient = obj.patient
+            return {
+                "id": patient.id,
+                "first_name": patient.first_name,
+                "last_name": patient.last_name,
+                "pesel": patient.pesel,
+            }
+        except patient.DoesNotExist:
+            return None
 
     def get_visit(self, obj):
         visit = obj.visit
