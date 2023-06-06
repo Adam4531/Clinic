@@ -24,11 +24,12 @@ function AuthForm() {
           {data && data.message && <p>{data.message}</p>}
           {!isLogin && <input type="text" id="first-input" name="first_name" placeholder="Wpisz imię..." required></input>}
           {!isLogin && <input type="text" id="last-input" name="last_name" placeholder="Wpisz nazwisko..." required></input>}
+          {!isLogin && <input type="text" id="last-input" name="pesel" placeholder="Wpisz pesel..." required></input>}
           <input type="text" id="email-input" name="email" placeholder="Wpisz e-mail..." required></input>
           <input type="password" id="passwd-input" name="password" placeholder="Wpisz hasło..." required></input>
         
-        <button id={classes.btn_forgotten_passwd}>Zapomniałem hasła</button>
-        <button id={classes.btn_submit} disabled={isSubmitting}>{isSubmitting ? 'Submitting..' : 'Autoryzacja'}</button>
+        
+        <button id={classes.btn_submit} disabled={isSubmitting}>{isLogin ? 'Zaloguj' : 'Zarejestruj'}</button>
       </Form>
       </div>
       </div>
