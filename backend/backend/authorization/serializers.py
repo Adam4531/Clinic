@@ -12,6 +12,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     # recommendations = serializers.SlugRelatedField(many=True, read_only=True, view_name='')
     # visits = serializers.SlugRelatedField(many=True, read_only=True, view_name='visit-detail')
     medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
+    # allergies = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = User
