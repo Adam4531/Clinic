@@ -1,4 +1,3 @@
-from django.db import models
 from ..visits.models import Visit
 from ..employees.models import Role,Degree
 from django.shortcuts import render
@@ -10,8 +9,8 @@ from xhtml2pdf import pisa
 # Create your models here.
 def show_visits(request):
     visit = Visit.objects.all()
-    role = Role.object.all()
-    degree = Degree.object.all()
+    role = Role.objects.all()
+    degree = Degree.objects.all()
 
     context = {
         'visit': visit,
@@ -19,7 +18,7 @@ def show_visits(request):
         'degree': degree,
     }
 
-    return render(request, 'showInfo.html', context)
+    return render(request, 'main/showInfo.html', context)
 
 
 def pdf_report_create(request):
@@ -28,7 +27,7 @@ def pdf_report_create(request):
     degree = Degree.objects.all()
 
 
-    template_path = '../../Clinic/templates/pdfReport.html'
+    template_path = 'main/pdfReport.html'
 
     context = {
         'visit': visit,
