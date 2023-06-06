@@ -9,7 +9,7 @@ from .models import Medicine, Visit, Recommendation
 class MedicineList(generics.ListCreateAPIView):
     queryset = Medicine.objects.all()
     serializer_class = MedicineSerializer
-    filterset_fields = ['name', 'quantity_of_tablets', 'doses']
+    filterset_fields = ['name', 'quantity_of_tablets',]
     name = 'medicine-list'
 
 
