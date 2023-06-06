@@ -53,7 +53,8 @@
 
   .navbar-option a:hover,
   .navbar-option a.active {
-  color: var(--color-primary-800);
+  /* color: var(--color-primary-800); */
+  color: #9ff6fc;
 }
 
 .btn-profile {
