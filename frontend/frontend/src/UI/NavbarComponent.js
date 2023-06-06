@@ -65,7 +65,7 @@ const Navbar = (props) => {
               }
               end
             >
-              Strona głowna lekarza
+              Panel lekarza
             </NavLink>
             {/* Potem będzie ukryte */}
         </div>}
@@ -77,7 +77,7 @@ const Navbar = (props) => {
               }
               end
             >
-              historia lekarza
+              Historia leczenia
             </NavLink>
         </div>}
         {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'true' && <div className={styles["navbar-option"]}>
