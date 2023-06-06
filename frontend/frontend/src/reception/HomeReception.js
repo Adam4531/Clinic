@@ -49,8 +49,8 @@ function HomeReception(props) {
               <h2 className={styles.h2_}>Lekarze</h2>
               {doctor.map((doc) => 
               <div className={styles.doctor}>
-                <div className={styles.rec_info}>Lekarz: <span className={styles.info}>{doc.first_name} {doc.last_name}</span></div>
-                <div className={styles.rec_info}>Specjalizacja: <span className={styles.info}>{doc.specialization}</span></div>
+                <div className={styles.rec_info}><span className={styles.info}>Lekarz: </span>{doc.first_name} {doc.last_name}</div>
+                <div className={styles.rec_info}><span className={styles.info}>Specjalizacja: </span>{doc.specialization}</div>
               </div>
               )}
              
@@ -64,8 +64,8 @@ function HomeReception(props) {
               <h2 className={styles.h2_}>Wizyty do potwierdzenia</h2>
               {visit.map((vis) =>
                 <div className={styles.visit}>
-                  <div className={styles.rec_info}>Data: <span className={styles.info}>{vis.date}</span></div>
-                  <div className={styles.rec_info}>Pacjent: <span className={styles.info}>{vis.patient.first_name} {vis.patient.last_name}</span></div>
+                  <div className={styles.rec_info}><span className={styles.info}>Data: </span>{vis.date}</div>
+                  <div className={styles.rec_info}><span className={styles.info}>Pacjent: </span>{vis.patient.first_name} {vis.patient.last_name}</div>
               </div>
               )}
             </div>
