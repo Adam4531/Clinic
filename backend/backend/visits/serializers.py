@@ -39,7 +39,6 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
         model = Visit
         fields = ["id", "url", "date", "created_at", "updated_at",
                   "description", "is_confirmed", "patient", "doctor"]
-
     def get_patient(self, obj):
         patient = obj.patient
         return {

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c799669-ea6b-4d39-a297-9f1490f8a6e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/UI/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/UI/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization/migrations/0002_alter_user_phone_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authorization/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employees/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patients/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/migrations/0002_alter_medicine_dose_alter_recommendation_patient.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/migrations/0003_alter_medicine_dose.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/migrations/0004_remove_recommendation_medicines_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,17 +23,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2QayKBm1B2FeCBYKlPakFoXs7km" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,6 +59,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

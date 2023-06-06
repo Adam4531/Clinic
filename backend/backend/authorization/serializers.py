@@ -15,7 +15,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id','url', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
+        fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
                   'phone_number', 'allergies','medicines']
         # 'visits','recommendations'
         extra_kwargs = {
