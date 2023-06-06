@@ -30,16 +30,13 @@ function DetailVisitPast() {
                Data: {visitFetch.date}
             </span>
             <span className="doctor">
-              Lekarz: {visitFetch.doctor}
+              Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}
             </span>
             <span className="extra">
               Dodatkowe informacje: {visitFetch.description}
             </span>
             <span className="control_visit">
               Data wizyty kontrolnej: {visitFetch.updated_at}
-            </span>
-            <span className="recommendations">
-              Zalecenia: {visitFetch.recommendation}
             </span>
             <div className="button_box">
               <NavLink to='/visits' className="btn_back">Cofnij</NavLink>

@@ -7,24 +7,22 @@ function EditProfilePage(props) {
 
   // Dane do pobrania:
   const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
+  const [pesel, setPesel] = useState('');
   // const [passwd, setPasswd] = useState('');
   const [phone, setPhone] = useState('');
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [allergies, setAllergies] = useState([]);
   const [drugs, setDrugs] = useState('');
+  const [date_of_birth, setDateOfBirth] = useState('');
 
   // Pobieranie danych:
   const handleEmailChange = (event) =>{
     setEmail(event.target.value);
   };
-  const handleAgeChange = (event) =>{
-    setAge(event.target.value);
+  const handlePeselChange = (event) =>{
+    setPesel(event.target.value);
   };
-  // const handlePasswdChange = (event) =>{
-  //   setPasswd(event.target.value);
-  // };
   const handlePhoneChange = (event) =>{
     setPhone(event.target.value);
   };
@@ -40,6 +38,9 @@ function EditProfilePage(props) {
   const handleDrugsChange = (event) =>{
     setDrugs(event.target.value);
   };
+  const handleBirthChange = (event) =>{
+    setDateOfBirth(event.target.value);
+  }
 
   const hideSuccesHandler = () =>{
     setSuccesIsShown(false);
@@ -61,10 +62,12 @@ function EditProfilePage(props) {
       .then((data) => {
         setUser(data);
         setEmail(data.email)
-        setAge(data.age);
+        setPesel(data.age);
         setFname(data.first_name);
         setLname(data.last_name);
         setPhone(data.phone_number);
+        setDateOfBirth(data.date_of_birth);
+        setAllergies(data.allergies);
         console.log(data);
       });
   }, []);
@@ -74,15 +77,15 @@ function EditProfilePage(props) {
     event.preventDefault();
     const data = {
       email: email,
-      age: age,
       first_name: fname,
       last_name: lname,
-      phone_number: phone
+      phone_number: phone,
+      allergies: allergies
     };
     console.log(data)
     fetch(`http://127.0.0.1:8000/auth/users/${localStorage.getItem("owner")}`,
     {
-      method: "PUT",
+      method: "PATCH",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
@@ -110,23 +113,7 @@ function EditProfilePage(props) {
               <table className={styles.table}>
                 <tbody>
                 <tr>
-                  <td>
-                    <input defaultValue={user.email} type="text" id="email-input" name="email" onChange={handleEmailChange} placeholder="Email"></input>
-                  </td>
-                  <td>
-                    <input defaultValue={user.age} type="text" id="age-input" name="age" onChange={handleAgeChange} placeholder="Wiek"></input>
-                  </td>
-                </tr>
-                <tr>
-                  {/* <td>
-                    <input type="password" id="passwd-input" name="passwd" onChange={handlePasswdChange} placeholder="Hasło"></input>
-                  </td> */}
-                  <td>
-                    <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
+                <td>
                     <input defaultValue={user.first_name} type="text" id="name-input" name="name" onChange={handleFnameChange} placeholder="Imię"></input>
                   </td>
                   <td>
@@ -135,12 +122,28 @@ function EditProfilePage(props) {
                 </tr>
                 <tr>
                   <td>
+                    <input defaultValue={user.pesel} type="text" id="pesel-input" name="pesel" onChange={handlePeselChange} placeholder="PESEL" disabled></input>
+                  </td>
+                  <td>
+                    <input defaultValue={user.email} type="text" id="email-input" name="email" onChange={handleEmailChange} placeholder="Email"></input>
+                  </td>
+                  {/* <td>
+                    <input defaultValue={user.date_of_birth} type="text" id="birth-input" name="birth" onChange={handleBirthChange} placeholder="Data urodzenia" disabled></input>
+                  </td> */}
+                </tr>
+                <tr>
+                  <td>
+                    <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
+                  </td>
+                  <td>
                     <input defaultValue={user.allergies} type="text" id="allergies-input" name="allergies" onChange={handleAllergiesChange} placeholder="Alergie"></input>
                   </td>
+                </tr>
+                {/* <tr>
                   <td>
                     <input type="text" id="drugs-input" name="drugs" onChange={handleDrugsChange} placeholder="Stosowane leki"></input>
                   </td>
-                </tr>
+                </tr> */}
                 </tbody>
               </table>
               {succesIsShown && <SuccessEdit onHideCart={hideSuccesHandler}/>}

@@ -46,6 +46,10 @@
     position: relative;
 }
 
+.recommendation:hover {
+    cursor: pointer
+}
+
 .rec_info {
     font-size: 0.9rem;
     margin: 0.5rem 1rem;

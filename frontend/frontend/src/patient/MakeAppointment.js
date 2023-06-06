@@ -17,7 +17,7 @@ function MakeAppointmentPage() {
   const [selectedDoc, setDoc] = useState(params.id);
   const [selectedDesc, setDesc] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [dataValid, setDataValid] = useState();
+  const [dataValid, setDataValid] = useState(false);
 
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
@@ -49,7 +49,7 @@ function MakeAppointmentPage() {
 
   useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/visits/visits?date=&patient=&doctor=${selectedDoc}&recommendation=`,
+      `http://127.0.0.1:8000/visits/visits?date=&patient=&doctor=${selectedDoc}`,
       {
         method: "GET",
         credentials: "include",
@@ -64,7 +64,7 @@ function MakeAppointmentPage() {
         setVisits(data);
       });
   }, [selectedDoc]);
-
+console.log(visitsFetch)
   useEffect(() => {
     const date = formatDate(selectedDate) + "T" + selectedTime + ":00Z";
     var bool;
@@ -79,10 +79,9 @@ function MakeAppointmentPage() {
   console.log(dataValid);
 
   const isValid = () => {
-    if (dataValid) {
-      return (selectedDoc > 0) && !dataValid[0] && selectedTime;
-    }
-    return false;
+   
+      return (selectedDoc > 0) && selectedTime;
+ 
   };
 
   const handleDateChange = (date) => {
@@ -107,13 +106,11 @@ function MakeAppointmentPage() {
       date: formatDate(selectedDate) + "T" + selectedTime + ":00Z",
       description: selectedDesc,
       is_confirmed: false,
-      patient: `http://127.0.0.1:8000/auth/users/${localStorage.getItem(
-        "owner"
-      )}`,
-      doctor: `http://127.0.0.1:8000/auth/users/${selectedDoc}`,
-      recommendation: null,
+      patient: localStorage.getItem("owner"),
+      doctor: selectedDoc,
+      recommendation: null
     };
-    // console.log(data);
+    console.log(data);
     const response = fetch("http://127.0.0.1:8000/visits/visits", {
       method: "POST",
       credentials: "include",

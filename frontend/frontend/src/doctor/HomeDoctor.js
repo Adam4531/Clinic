@@ -30,7 +30,9 @@ function HomeDoctor() {
   useEffect(()=>{
     const date = formatDate(selectedDate)
     console.log(date)
-    fetch(`http://127.0.0.1:8000/visits/visits?date=&patient=&doctor=${localStorage.getItem('owner')}&recommendation=`,
+    fetch(`http://127.0.0.1:8000/visits/visits?date=${date}&patient=&doctor=${localStorage.getItem(
+      "owner"
+    )}`,
     {
       method: "GET",
       credentials: "include",
@@ -40,7 +42,7 @@ function HomeDoctor() {
       },
     }).then((res) => res.json())
     .then((data) => {setVisit(data)})
-  },[])
+  },[selectedDate])
 
   const showSuccesHandler = (event) =>{
     event.preventDefault();
@@ -63,7 +65,7 @@ function HomeDoctor() {
                 {visitFetched.map((data)=>(
                   <div className={styles.upcoming_visit}>
                   <span className={styles.date}>Data: {data.date}</span>
-                  <span className={styles.doctor}>Pacjent: {data.patient}</span>
+                  <span className={styles.doctor}>Pacjent: {data.patient.first_name} {data.patient.last_name}</span>
                   <button onClick={showSuccesHandler} className={styles.details}>Dodaj zalecenie</button>
                 </div>
                 ))}
