@@ -20,6 +20,11 @@
     position: relative;
 }
 
+input:disabled {
+    /* background-color: #cad7de; */
+    background-color: rgba(202, 215, 222, 0.5);
+}
+
 table {
     align-self: center;
 }
