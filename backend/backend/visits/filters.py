@@ -8,5 +8,4 @@ class VisitFilter(django_filters.FilterSet):
 
     class Meta:
         model = Visit
-        fields = ['date','patient','doctor']
-
+        fields = ['date', 'patient', 'doctor']

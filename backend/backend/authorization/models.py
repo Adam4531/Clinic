@@ -34,7 +34,9 @@ class User(AbstractUser):
     pesel = models.CharField(max_length=11, unique=True, null=True, blank=True)
     phone_number = models.CharField(max_length=9, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
-    allergies = models.ManyToManyField(Allergy, blank=True, null=True,)
+    # allergies = models.ManyToManyField(Allergy, blank=True, null=True,)
+    allergies = models.TextField(blank=True, default="")
+
 
     username = None
 

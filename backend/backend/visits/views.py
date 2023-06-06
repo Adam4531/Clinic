@@ -50,16 +50,6 @@ class RecommendationDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'recommendation-detail'
 
 
-class MedicinesByUser(APIView): #TODO
-
-    def get(self, request, id):
-        user = User.objects.get(pk=id)
-        # response = User.objects.select_related('medicines__recommendation')
-        response = Medicine.objects.select_related('recommendation__patient').filter(recommendation__patient__email=user.email)
-
-        return Response(response)
-
-
 class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
 
