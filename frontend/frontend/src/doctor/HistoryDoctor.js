@@ -50,7 +50,6 @@ function HistoryDoctor(props) {
               <span className={styles.rec_info}>Nazwisko: {patientFetch[selectedRecIndex].last_name}</span>
               <span className={styles.rec_info}>Pesel: {patientFetch[selectedRecIndex].pesel}</span>
               <span className={styles.rec_info}>Alergie: {patientFetch[selectedRecIndex].allergies}</span>
-              {/* <span className={styles.rec_info}>Stosowane leki:</span> */}
               <span className={styles.rec_info}>Historia wizyt:</span>
               </div>}
             </div>

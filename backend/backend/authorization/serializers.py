@@ -10,15 +10,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     # medicines = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='medicine-detail')
 
     # recommendations = serializers.SlugRelatedField(many=True, read_only=True, view_name='')
-    # visits = serializers.SlugRelatedField(many=True, read_only=True, view_name='visit-detail')
-    medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
+    # visits =
+    # medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
     # allergies = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
-                  'phone_number', 'allergies','medicines']
-        # 'visits','recommendations'
+                  'phone_number', 'allergies', 'medicines', 'visits']
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -45,6 +44,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Last name field can have maximum 50 characters!")
         return value
+
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['visits'] = self.get_visits(instance)
+        return representation
 
 
 class TokenObtainPairSerializer(TokenObtainSerializer):

@@ -25,6 +25,7 @@ function RecommendationsPage(props) {
       });
   }, []);
 
+  
   const handleRecommendationClick = (index) => {
     setSelectedRecIndex(index);
   };

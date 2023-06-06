@@ -41,6 +41,7 @@ class VisitSerializer(serializers.ModelSerializer):
         model = Visit
         fields = ["id", "date", "created_at", "updated_at",
                   "description", "is_confirmed", "patient", "doctor"]
+
     def get_patient(self, obj):
         patient = obj.patient
         return {
@@ -50,8 +51,6 @@ class VisitSerializer(serializers.ModelSerializer):
             "pesel": patient.pesel,
             "email": patient.email
         }
-
-
 
     def get_doctor(self, obj):
         doctor = obj.doctor
