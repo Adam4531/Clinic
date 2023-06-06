@@ -5,8 +5,8 @@ from ..authorization.models import User
 
 class Visit(models.Model):
     date = models.DateTimeField(unique=True)
-    patient = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visit_patient")
-    doctor = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visit_doctor", blank=True, null=True)
+    patient = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visits")
+    doctor = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="visits_doctor", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True, default='')
