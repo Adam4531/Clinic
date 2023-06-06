@@ -6,8 +6,8 @@ from ..visits.serializers import VisitSerializer, RecommendationSerializer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    visits_patient = VisitSerializer(many=True, read_only=True)
-    visits_doctor = VisitSerializer(many=True, read_only=True)
+    visits = VisitSerializer(many=True, read_only=True)
+    # visits_doctor = VisitSerializer(many=True, read_only=True)
     recommendations = RecommendationSerializer(many=True, read_only=True)
 
     medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
@@ -16,7 +16,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
-                  'phone_number', 'allergies','medicines','specialization','visits_patient','visits_doctor','recommendations']
+                  'phone_number', 'allergies','medicines','specialization','visits','recommendations']
         extra_kwargs = {
             'password': {'write_only': True}
         }
