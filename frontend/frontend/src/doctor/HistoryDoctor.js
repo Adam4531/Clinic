@@ -53,22 +53,13 @@ function HistoryDoctor(props) {
               <div className={styles.rec_info}><span className={styles.info}>Alergie: </span>{patient[index].allergies}</div>
               <div className={styles.rec_info}><span className={styles.info}>Stosowane leki: </span>{patient[index].medicines}</div>
               <div className={styles.rec_info}><span className={styles.info}>Historia wizyt:</span></div>
-
-              <div className={styles.rec_info}>Imię: <span className={styles.info}>{patient[index].first_name}</span></div>
-              <div className={styles.rec_info}>Nazwisko: <span className={styles.info}>{patient[index].last_name}</span></div>
-              <div className={styles.rec_info}>PESEL: <span className={styles.info}>{patient[index].pesel}</span></div>
-              <div className={styles.rec_info}>Numer telefonu: <span className={styles.info}>{patient[index].phone_number}</span></div>
-              <div className={styles.rec_info}>Alergie: <span className={styles.info}>{patient[index].allergies}</span></div>
-              {/* <div className={styles.rec_info}>Stosowane leki: <span className={styles.info}>{patient[index].medicines}</span></div> */}
-              <div className={styles.rec_info}>Historia wizyt:</div>
-
               <div className={styles.visits}>
-              {patient[index].visits.map((visit) =>
-              <div className={styles.visit}>
-                  <div className={styles.rec_info}><span className={styles.info}>Data: </span>{visit.date}</div> 
-                  <div className={styles.rec_info}><span className={styles.info}>Lekarz: </span>{visit.doctor.first_name} {visit.doctor.last_name}</div>
-              </div>
-              )}
+                {patient[index].visits.map((visit) =>
+                <div className={styles.visit}>
+                    <div className={styles.rec_info}><span className={styles.info}>Data: </span>{visit.date}</div> 
+                    <div className={styles.rec_info}><span className={styles.info}>Lekarz: </span>{visit.doctor.first_name} {visit.doctor.last_name}</div>
+                </div>
+                )}
               </div>
             </div>
           )}
