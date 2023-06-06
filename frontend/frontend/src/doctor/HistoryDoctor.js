@@ -1,58 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./HisotryDoctor.module.css";
-import AddRecc from "./AddRecc";
 function HistoryDoctor(props) {
-  const [succesIsShown, setSuccesIsShown]=useState(false);
-
-  const showSuccesHandler = (event) =>{
-    event.preventDefault();
-    setSuccesIsShown(true);
-  }
-  const hideSuccesHandler = () =>{
-    setSuccesIsShown(false);
-    console.log('dodano wizyte')
-  }
+  const [patientFetch, setPatient]=useState(false);
+  const [selectedRecIndex, setSelectedRecIndex] = useState(null);
+  useEffect(() => {
+    fetch(
+      `http://127.0.0.1:8000/patients/patient`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          SameSite: "none",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setPatient(data);
+      });
+  }, []);
+  console.log(patientFetch)
+  const handleRecommendationClick = (index) => {
+    setSelectedRecIndex(index);
+  };
+  
   
     return (
         <div className={styles.container}>
-          {succesIsShown && <AddRecc onHideCart={hideSuccesHandler}/>}
+          
           <div>
             <h1 className={styles.h1_}>Historia</h1>
           </div>
           <div className={styles.body}>
             <div className={styles.recommendations}>
               <h2 className={styles.h2_}>Lista pacjentów</h2>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
+              {patientFetch && <div>
+              {patientFetch.map((data, index)=>(
+                <div key={data.id} className={styles.recommendation} onClick={() => handleRecommendationClick(index)}>
+                <span className={styles.rec_info}>Imię i nazwisko: {data.first_name}  {data.last_name}</span>
               </div>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
-              </div>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
-              </div>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
-              </div>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
-              </div>
-              <div className={styles.recommendation}>
-                <span className={styles.rec_info}>Imię i nazwisko:</span>
-              </div>
-              
+              ))}
+              </div>}
             </div>
             <div className={styles.details}>
               <h2 className={styles.h2_}>Historia leczenia wybranego pacjenta</h2>
-              <span className={styles.rec_info}>Imię:</span>
-              <span className={styles.rec_info}>Nazwisko:</span>
-              <span className={styles.rec_info}>Numer telefonu:</span>
-              <span className={styles.rec_info}>Alergie:</span>
-              <span className={styles.rec_info}>Stosowane leki:</span>
+              {selectedRecIndex !== null && <div>
+              <span className={styles.rec_info}>Imię: {patientFetch[selectedRecIndex].first_name}</span>
+              <span className={styles.rec_info}>Nazwisko: {patientFetch[selectedRecIndex].last_name}</span>
+              <span className={styles.rec_info}>Pesel: {patientFetch[selectedRecIndex].pesel}</span>
+              <span className={styles.rec_info}>Alergie: {patientFetch[selectedRecIndex].allergies}</span>
+              {/* <span className={styles.rec_info}>Stosowane leki:</span> */}
               <span className={styles.rec_info}>Historia wizyt:</span>
-              <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
-                Dodaj zalecenia
-              </button>
+              </div>}
             </div>
           </div>
         </div>
