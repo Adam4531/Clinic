@@ -71,35 +71,35 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
         return value
 
 
-class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
+class RecommendationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recommendation
         fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit']
 
-    def get_patient(self, obj):
-        patient = obj.patient
-        return {
-            "id": patient.id,
-            "first_name": patient.first_name,
-            "last_name": patient.last_name,
-            "pesel": patient.pesel,
-        }
-
-    def get_visit(self, obj):
-        visit = obj.visit
-        return {
-            "id": visit.id,
-            "date": visit.date,
-            "description": visit.description,
-            "is_confirmed": visit.is_confirmed,
-        }
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['patient'] = self.get_patient(instance)
-        representation['visit'] = self.get_visit(instance)
-        return representation
+    # def get_patient(self, obj):
+    #     patient = obj.patient
+    #     return {
+    #         "id": patient.id,
+    #         "first_name": patient.first_name,
+    #         "last_name": patient.last_name,
+    #         "pesel": patient.pesel,
+    #     }
+    #
+    # def get_visit(self, obj):
+    #     visit = obj.visit
+    #     return {
+    #         "id": visit.id,
+    #         "date": visit.date,
+    #         "description": visit.description,
+    #         "is_confirmed": visit.is_confirmed,
+    #     }
+    #
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['patient'] = self.get_patient(instance)
+    #     representation['visit'] = self.get_visit(instance)
+    #     return representation
 
     def validate(self, value):
         if value['prescription_code'] == 0:
