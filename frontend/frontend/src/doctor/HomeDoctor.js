@@ -29,7 +29,6 @@ function HomeDoctor() {
 
   useEffect(()=>{
     const date = formatDate(selectedDate)
-    console.log(date)
     fetch(`http://127.0.0.1:8000/visits/visits?date=${date}&patient=&doctor=${localStorage.getItem(
       "owner"
     )}`,
@@ -55,7 +54,7 @@ function HomeDoctor() {
   return (
     
     <div className={styles.container}>
-      {succesIsShown && <AddRecc onHideCart={hideSuccesHandler}/>}
+      {/* {succesIsShown && <AddRecc onHideCart={hideSuccesHandler}/>} */}
       <form>
         <div className={styles.body}>
           <div className={styles.left}>
@@ -66,7 +65,8 @@ function HomeDoctor() {
                   <div className={styles.upcoming_visit}>
                   <span className={styles.date}>Data: {data.date}</span>
                   <span className={styles.doctor}>Pacjent: {data.patient.first_name} {data.patient.last_name}</span>
-                  <button onClick={showSuccesHandler} className={styles.details}>Dodaj zalecenie</button>
+                  <button onClick={showSuccesHandler}  className={styles.details}>Dodaj zalecenie</button>
+                  {succesIsShown && <AddRecc onHideCart={hideSuccesHandler} visit={data}/>}
                 </div>
                 ))}
                 

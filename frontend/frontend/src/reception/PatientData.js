@@ -53,12 +53,12 @@ function HistoryDoctor(props) {
               <div className={styles.rec_info}><span className={styles.info}>Stosowane leki: </span>{patient[index].medicines}</div>
               <div className={styles.rec_info}><span className={styles.info}>Historia wizyt:</span></div>
               <div className={styles.visits}>
-              {patient[index].visits.map((visit) =>
-              <div className={styles.visit}>
-                  <div className={styles.rec_info}><span className={styles.info}>Data: </span>{visit.date}</div> 
-                  <div className={styles.rec_info}><span className={styles.info}>Lekarz: </span>{visit.doctor.first_name} {visit.doctor.last_name}</div>
-              </div>
-              )}
+                {patient[index].visits.map((visit) =>
+                <div className={styles.visit}>
+                    <div className={styles.rec_info}><span className={styles.info}>Data: </span>{visit.date}</div> 
+                    <div className={styles.rec_info}><span className={styles.info}>Lekarz: </span>{visit.doctor.first_name} {visit.doctor.last_name}</div>
+                </div>
+                )}
               </div>
             </div>
           )}
