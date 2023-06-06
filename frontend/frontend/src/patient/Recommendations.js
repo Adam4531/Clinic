@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 function RecommendationsPage(props) {
   const [rec, setRec] = useState([]);
   const [selectedRecIndex, setSelectedRecIndex] = useState(null);
-  // const [visit, setVisit] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/visits/recomendations', {
+    fetch(`http://127.0.0.1:8000/visits/recomendations`, {
       method: "GET",
       credentials: 'include',
       headers: {
