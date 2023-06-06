@@ -32,10 +32,10 @@ table td {
 
 .btn_save_changes {
     align-self: center;
-    background-color: #014FA1;
-    border: 2px solid #014FA1;
+    background-color: transparent;
+    border: 1px solid #014FA1;
     border-radius: 20px;
-    color: #fff;
+    color: #014FA1;
     margin-top: 30px;
     height: 30px;
     width: 40%;
@@ -43,6 +43,8 @@ table td {
 
 .btn_save_changes:hover {
     cursor: pointer;
+    color: #fff;
+    background-color: #014FA1;
 }
 
 h3 {
