@@ -27,29 +27,6 @@ class VisitList(generics.ListCreateAPIView):
     filterset_fields = ['date', 'patient', 'doctor']
     name = 'visit-list'
 
-    # def post(self, request, *args, **kwargs): #TODO
-    #     patient_id = request.data.get('patient')[39:]
-    #     patient = Patient.objects.get(id=patient_id)
-    #     recommendation = Recommendation.objects.create(patient=patient)
-    #     recommendation_serializer = RecommendationSerializer(data=recommendation)
-    #
-    #     if recommendation_serializer.is_valid():
-    #         saved_recommendation = recommendation_serializer.save()
-    #         request.data['recommendation'] = saved_recommendation
-    #
-    #         visit_serializer = VisitSerializer(data=request.data)
-    #         if visit_serializer.is_valid():
-    #             visit_serializer.save()
-    #
-    #             return Response({
-    #             "status": status.HTTP_201_CREATED,
-    #             "message": "Visit and recommendation created!"
-    #             })
-    #     return Response({
-    #         "status": status.HTTP_422_UNPROCESSABLE_ENTITY,
-    #         "message": "Visit and recommendation not created!"
-    #     })
-
 
 class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Visit.objects.all()
