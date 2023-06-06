@@ -50,7 +50,7 @@ function HistoryDoctor(props) {
                   <div className={styles.rec_info}>PESEL: <span className={styles.info}>{patient[index].pesel}</span></div>
                   <div className={styles.rec_info}>Numer telefonu: <span className={styles.info}>{patient[index].phone_number}</span></div>
                   <div className={styles.rec_info}>Alergie: <span className={styles.info}>{patient[index].allergies}</span></div>
-                  <div className={styles.rec_info}>Stosowane leki: <span className={styles.info}>{patient[index].medicines}</span></div>
+                  {/* <div className={styles.rec_info}>Stosowane leki: <span className={styles.info}>{patient[index].medicines}</span></div> */}
                   <div className={styles.rec_info}>Historia wizyt:</div>
                   <div className={styles.visits}>
                   {patient[index].visits.map((visit) =>
