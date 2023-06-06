@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c799669-ea6b-4d39-a297-9f1490f8a6e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization/migrations/0002_alter_user_phone_number.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authorization/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employees/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patients/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0002_alter_medicine_dose_alter_recommendation_patient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0003_alter_medicine_dose.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0004_remove_recommendation_medicines_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization/migrations/0003_remove_user_age_user_date_of_birth.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/migrations/0005_recommendation_doctor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visits/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/visits/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/auth/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/auth/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
