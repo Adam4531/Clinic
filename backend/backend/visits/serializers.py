@@ -9,19 +9,21 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
         model = Medicine
         fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
 
-    def get_patient(self, obj):
-        patient = obj.patient
-        return {
-            "id": patient.id,
-            "first_name": patient.first_name,
-            "last_name": patient.last_name,
-            "pesel": patient.pesel,
-        }
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['patient'] = self.get_patient(instance)
-        return representation
+    # def get_patient(self, obj):
+    #     if obj is None:
+    #         return None
+    #     patient = obj.patient
+    #     return {
+    #         "id": patient.id,
+    #         "first_name": patient.first_name,
+    #         "last_name": patient.last_name,
+    #         "pesel": patient.pesel,
+    #     }
+    #
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['patient'] = self.get_patient(instance)
+    #     return representation
 
     def validate(self, value):
         if value['name'] == 0:
