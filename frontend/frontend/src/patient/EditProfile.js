@@ -122,28 +122,28 @@ function EditProfilePage(props) {
                 </tr>
                 <tr>
                   <td>
-                    <input defaultValue={user.pesel} type="text" id="age-input" name="age" onChange={handlePeselChange} placeholder="PESEL" disabled></input>
+                    <input defaultValue={user.pesel} type="text" id="pesel-input" name="pesel" onChange={handlePeselChange} placeholder="PESEL" disabled></input>
                   </td>
-                  <td>
-                    <input defaultValue={user.date_of_birth} type="text" id="birth-input" name="birth" onChange={handleBirthChange} placeholder="Data urodzenia" disabled></input>
-                  </td>
-                </tr>
-                <tr>
                   <td>
                     <input defaultValue={user.email} type="text" id="email-input" name="email" onChange={handleEmailChange} placeholder="Email"></input>
                   </td>
-                  <td>
-                    <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
-                  </td>
+                  {/* <td>
+                    <input defaultValue={user.date_of_birth} type="text" id="birth-input" name="birth" onChange={handleBirthChange} placeholder="Data urodzenia" disabled></input>
+                  </td> */}
                 </tr>
                 <tr>
                   <td>
+                    <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
+                  </td>
+                  <td>
                     <input defaultValue={user.allergies} type="text" id="allergies-input" name="allergies" onChange={handleAllergiesChange} placeholder="Alergie"></input>
                   </td>
+                </tr>
+                {/* <tr>
                   <td>
                     <input type="text" id="drugs-input" name="drugs" onChange={handleDrugsChange} placeholder="Stosowane leki"></input>
                   </td>
-                </tr>
+                </tr> */}
                 </tbody>
               </table>
               {succesIsShown && <SuccessEdit onHideCart={hideSuccesHandler}/>}
