@@ -107,7 +107,8 @@ console.log(visitsFetch)
       description: selectedDesc,
       is_confirmed: false,
       patient: localStorage.getItem("owner"),
-      doctor: selectedDoc
+      doctor: selectedDoc,
+      recommendation: null
     };
     console.log(data);
     const response = fetch("http://127.0.0.1:8000/visits/visits", {
