@@ -39,6 +39,10 @@ table td {
     width: 40%;
 }
 
+.btn_save_changes:hover {
+    cursor: pointer;
+}
+
 h3 {
     font-style: normal;
     font-weight: 400;
