@@ -39,7 +39,7 @@ function RecommendationsPage(props) {
               {rec.map((result, index) => (
               <div className={styles.recommendation} key={result.url} onClick={() => handleRecommendationClick(index)}>
                 <div className={styles.rec_info}>Data: {result.visit.date}</div>
-                <div className={styles.rec_info}>Lekarz: {result.visit.doctor}</div>
+                <div className={styles.rec_info}>Lekarz: {result.doctor.first_name} {result.doctor.last_name}</div>
               </div>
               ))}
             </div>
