@@ -6,6 +6,14 @@ function RecommendationsPage(props) {
   const [selectedRecIndex, setSelectedRecIndex] = useState(null);
 
   useEffect(() => {
+    fetch(`http://127.0.0.1:8000/visits/recomendations`, {
+      method: "GET",
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+        SameSite: "none",
+      },
+    })
     fetch(
       `http://127.0.0.1:8000/visits/recomendations?prescription_code=&dosage=&patient=${localStorage.getItem(
         "owner"
