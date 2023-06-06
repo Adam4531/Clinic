@@ -47,7 +47,6 @@ class VisitSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def get_doctor(self, obj):
@@ -82,7 +81,6 @@ class RecommendationSerializer(serializers.HyperlinkedModelSerializer):
             "first_name": patient.first_name,
             "last_name": patient.last_name,
             "pesel": patient.pesel,
-            "age": patient.age,
         }
 
     def get_visit(self, obj):

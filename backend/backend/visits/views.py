@@ -28,7 +28,6 @@ class VisitList(generics.ListCreateAPIView):
     name = 'visit-list'
 
 
-
 class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Visit.objects.all()
     serializer_class = VisitSerializer
