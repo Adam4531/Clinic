@@ -40,7 +40,7 @@ class VisitDetail(generics.RetrieveUpdateDestroyAPIView):
 class RecommendationList(generics.ListCreateAPIView):
     queryset = Recommendation.objects.all()
     serializer_class = RecommendationSerializer
-    filterset_fields = ['prescription_code', 'dosage', 'medicines', 'visit']
+    filterset_fields = ['prescription_code', 'dosage', 'visit']
     name = 'recommendation-list'
 
 

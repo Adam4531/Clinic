@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function RecommendationsPage(props) {
   const [rec, setRec] = useState([]);
   const [selectedRecIndex, setSelectedRecIndex] = useState(null);
-  const [visit, setVisit] = useState([]);
+  // const [visit, setVisit] = useState([]);
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/visits/recomendations', {
@@ -19,19 +19,6 @@ function RecommendationsPage(props) {
       .then((data) => {
         setRec(data);
       });
-
-    fetch('http://127.0.0.1:8000/visits/visits', {
-      method: "GET",
-      credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-        SameSite: "none",
-      },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        setVisit(data);
-    })
   }, []);
 
   const handleRecommendationClick = (index) => {
@@ -51,8 +38,8 @@ function RecommendationsPage(props) {
               {/* trzeba pobrać dane z wizyt, ale backend się wysypał */}
               {rec.map((result, index) => (
               <div className={styles.recommendation} key={result.url} onClick={() => handleRecommendationClick(index)}>
-                <div className={styles.rec_info}>Data: {visit.date}</div>
-                <div className={styles.rec_info}>Lekarz: {visit.doctor}</div>
+                <div className={styles.rec_info}>Data: {result.visit.date}</div>
+                <div className={styles.rec_info}>Lekarz: {result.visit.doctor}</div>
               </div>
               ))}
             </div>
@@ -60,7 +47,7 @@ function RecommendationsPage(props) {
               <h2 className={styles.h2_}>Szczegóły wybranego zalecenia</h2>
               {selectedRecIndex !== null && (
                 <div>
-                  <div className={styles.rec_info}>Leki i dawkowanie: {rec[selectedRecIndex].medicines} {rec[selectedRecIndex].dosage}</div>
+                  <div className={styles.rec_info}>Leki i dawkowanie: {rec[selectedRecIndex].dosage}</div>
                   <div className={styles.rec_info}>Kod recepty: {rec[selectedRecIndex].prescription_code}</div>
                   <div className={styles.rec_info}>Zalecenia zmiany stylu życia: {rec[selectedRecIndex].description}</div>
                   <div className={styles.rec_info}>Skierowania do specjalisty: {rec[selectedRecIndex].additional_information}</div>
