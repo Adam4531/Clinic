@@ -8,7 +8,7 @@ from xhtml2pdf import pisa
 
 # Create your models here.
 def show_visits(request):
-    visit = Visit.objects.all()
+    visit = Visit.objects.filter(doctor=request.user)
     role = Role.objects.all()
     degree = Degree.objects.all()
 
