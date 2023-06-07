@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from rest_framework import serializers
 
 from ..visits.models import Medicine, Visit, Recommendation
@@ -9,21 +11,6 @@ class MedicineSerializer(serializers.HyperlinkedModelSerializer):
         model = Medicine
         fields = ["id", "name", "quantity_of_tablets", "dose", "patient"]
 
-    # def get_patient(self, obj):
-    #     if obj is None:
-    #         return None
-    #     patient = obj.patient
-    #     return {
-    #         "id": patient.id,
-    #         "first_name": patient.first_name,
-    #         "last_name": patient.last_name,
-    #         "pesel": patient.pesel,
-    #     }
-    #
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['patient'] = self.get_patient(instance)
-    #     return representation
 
     def validate(self, value):
         if value['name'] == 0:
@@ -40,7 +27,16 @@ class VisitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Visit
         fields = ["id", "date", "created_at", "updated_at",
-                  "description", "is_confirmed", "patient", "doctor"]
+                  "description", "is_confirmed", "patient", "doctor", "visit_control"]
+        extra_kwargs = {
+            'visit_control': {'read_only': True}
+        }
+
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data)
+        instance.visit_control = instance.date + timedelta(days=14)
+        instance.save()
+        return instance
 
     def get_patient(self, obj):
         patient = obj.patient
