@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c8cad12-4421-406c-a493-aaec0686b669" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0002_alter_visit_patient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0003_alter_visit_doctor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0003_visit_visit_control_alter_visit_doctor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0004_alter_visit_visit_control.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/visits/migrations/0005_alter_visit_visit_control.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
