@@ -75,7 +75,7 @@ function VisitsReception(props) {
                 <div className={styles.vis_info}><span className={styles.info}>Data i godzina:</span> {visit[visitIndex].date}</div>
                 <div className={styles.vis_info}><span className={styles.info}>Pacjent:</span> {visit[visitIndex].patient.first_name} {visit[visitIndex].patient.last_name}</div>
                 <div className={styles.vis_info}><span className={styles.info}>Lekarz:</span> {visit[visitIndex].doctor.first_name} {visit[visitIndex].doctor.last_name}</div>
-                <div className={styles.vis_info}><span className={styles.info}>Opis pacjenta:</span> {visit[visitIndex].description}</div>
+                <div className={styles.vis_info}><span className={styles.info}>Opis dolegliwości:</span> {visit[visitIndex].description}</div>
                 <div className={styles.btns}>
                 {visit[visitIndex].is_confirmed === false && <button className={styles.primary_btn_submit} onClick={showSuccesHandler}>Potwierdź wizytę</button>}
                 {visit[visitIndex].is_confirmed === false && <button className={styles.second_btn_submit} onClick={showDateHandler}>Modyfikuj datę</button>}

@@ -8,6 +8,7 @@
 
 .h1_, .h2_ {
     color: #014FA1;
+    align-self: center;
 }
 
 .body {
@@ -23,7 +24,7 @@
     height: 65vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     margin: 0 3vw;
     background-color: rgba(255, 255, 255, 0.5);
     overflow-y: scroll;
@@ -31,14 +32,22 @@
 }
 
 .upcoming_visit, .past_visit {
-    margin-top: 15px;
-    padding: 5px 5px;
-    width: 90%;
+    margin: 0.8rem 2rem;
+    padding: 0.5rem;
+    /* width: 90%; */
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+}
+
+.info {
+    font-weight: 600;
 }
 
 .date, .doctor {

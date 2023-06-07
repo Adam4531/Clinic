@@ -1,15 +1,12 @@
 .container {
     display: flex;
-    flex-direction: column;
-    width: 100vw;
     position: relative;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 5rem;
 }
 
 .h1_, .h2_ {
     color: #014FA1;
-    align-self: left;
 }
 
 .addDoctor, .deleteDoctor{
@@ -17,19 +14,27 @@
     height: 65vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 0 3vw;
     padding-bottom: 25px;
-    
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 1rem;
+    position: relative;
 }
 
 .btn_confirm {
     width: 40%;
     padding: 5px 0;
-    margin-top: 10px;
+    /* margin-top: 5rem; */
+    margin-top: auto;
+    margin-bottom: 3rem;
     background-color: #014FA1;
     border: 1px solid #014FA1;
     border-radius: 25px;
     color: #fff;
+    font-size: 1rem;
 }
 
 .rec_info {
@@ -37,57 +42,26 @@
     margin: 5px 15px;
     color: #014FA1;
 }
-.primary_btn_submit {
-    background-color: #014FA1;
-    border: 1px solid #014FA1;
-    color: #fff;
-    border-radius: 20px;
-    width: 25%;
-    margin-left: 10px;
-    margin-top: 5%;
-    padding: 1%;
-}
-.primary_btn_submit:hover {
+
+.btn_confirm:hover {
     background-color: transparent;
     color: #014FA1;
 }
-.second_btn_submit {
-    background-color: #a10101;
-    border: 1px solid #a10101;
-    color: #fff;
-    border-radius: 20px;
-    width: 25%;
-    margin-left: 10px;
-    margin-top: 5%;
-    padding: 1%;
-}
-.second_btn_submit:hover {
-    background-color: transparent;
-    color: #a10101;
-}
-.form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-.form p {
-    margin: 0;
-    padding: 0;
-  }
-  
-label {
-    font-weight: bold;
-  }
-  
-input {
-    padding: 5px;
+
+.input, .select {
+    /* width: 5rem; */
+    padding: 0.2rem 1rem;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
+
+.select {
+    background-color: #ECF5FF;
+    height: 3rem;
+    padding-inline: 1.4rem;
+    margin-top: 25px;
+}
   
-.input {
-    width: 200px;
-  }
 .body {
     width: 100%;
     display: flex;
