@@ -93,7 +93,7 @@ const Navbar = (props) => {
         </div>}
         {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'true' && <div className={styles["navbar-option"]}>
         <NavLink
-              to="/visitsreception"
+              to="/patients"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
               }

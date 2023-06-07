@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./HomeReception.module.css";
 function HomeReception(props) {
   const [succesIsShown, setSuccesIsShown]=useState(false);
@@ -55,9 +56,9 @@ function HomeReception(props) {
               )}
              
             </div>
-            <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
+            <NavLink to='/editdoctor' className={styles.primary_btn_submit}>
                 Zarządzaj lekarzami
-              </button>
+              </NavLink>
             </div>
             <div className={styles.empty}>
             <div className={styles.visits}>
@@ -69,9 +70,9 @@ function HomeReception(props) {
               </div>
               )}
             </div>
-            <button onClick={showSuccesHandler} className={styles.primary_btn_submit}>
+            <NavLink to='/visitsreception' className={styles.primary_btn_submit}>
                 Zarządzaj wizytami
-              </button>
+              </NavLink>
               <button onClick={showSuccesHandler} className={styles.second_btn_submit}>
                 Generuj listę wszystkich dzisiejszych wizyt
               </button>
