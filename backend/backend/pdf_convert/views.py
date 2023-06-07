@@ -6,9 +6,8 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 
 
-# Create your models here.
 def show_visits(request):
-    visit = Visit.objects.filter(doctor=request.user)
+    visit = Visit.objects.filter() #doctor=request.user
     role = Role.objects.all()
     degree = Degree.objects.all()
 
