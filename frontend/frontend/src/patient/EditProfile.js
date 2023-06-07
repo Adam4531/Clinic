@@ -114,18 +114,18 @@ function EditProfilePage(props) {
                 <tbody>
                 <tr>
                 <td>
-                    <input defaultValue={user.first_name} type="text" id="name-input" name="name" onChange={handleFnameChange} placeholder="Imię"></input>
+                    <input defaultValue={user.first_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+' type="text" id="name-input" name="name" onChange={handleFnameChange} placeholder="Imię"></input>
                   </td>
                   <td>
-                    <input defaultValue={user.last_name} type="text" id="surname-input" name="surname" onChange={handleLnameChange} placeholder="Nazwisko"></input>
+                    <input defaultValue={user.last_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+' type="text" id="surname-input" name="surname" onChange={handleLnameChange} placeholder="Nazwisko"></input>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input defaultValue={user.pesel} type="text" id="pesel-input" name="pesel" onChange={handlePeselChange} placeholder="PESEL" disabled></input>
+                    <input defaultValue={user.pesel} title="Wymagany format: 11 cyfr" pattern='[0-9]{11}' type="text" id="pesel-input" name="pesel" onChange={handlePeselChange} placeholder="PESEL" disabled></input>
                   </td>
                   <td>
-                    <input defaultValue={user.email} type="text" id="email-input" name="email" onChange={handleEmailChange} placeholder="Email"></input>
+                    <input defaultValue={user.email} title="Przykład: example@example.ex" pattern='[A-Za-z0-9.-_]+@[a-z0-9]+.[a-z]{2,4}' type="text" id="email-input" name="email" onChange={handleEmailChange} placeholder="Email"></input>
                   </td>
                   {/* <td>
                     <input defaultValue={user.date_of_birth} type="text" id="birth-input" name="birth" onChange={handleBirthChange} placeholder="Data urodzenia" disabled></input>
@@ -133,7 +133,7 @@ function EditProfilePage(props) {
                 </tr>
                 <tr>
                   <td>
-                    <input defaultValue={user.phone_number} type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
+                    <input defaultValue={user.phone_number} title="Wymagany format: 9 cyfr" pattern='[0-9]{9}' type="text" id="phone-input" name="phone" onChange={handlePhoneChange} placeholder="Numer telefonu"></input>
                   </td>
                   <td>
                     <input defaultValue={user.allergies} type="text" id="allergies-input" name="allergies" onChange={handleAllergiesChange} placeholder="Alergie"></input>
