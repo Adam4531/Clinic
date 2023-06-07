@@ -90,7 +90,10 @@ function MakeAppointmentPage() {
 
   const isValid = () => {
     if (dataValid) {
-      return (selectedDoc > 0) & !dataValid[0];
+      const bool = dataValid.find(element => element === true)
+        return (selectedDoc > 0 & !bool);
+      
+      
     }
     return false;
   };
@@ -126,11 +129,13 @@ function MakeAppointmentPage() {
       },
       body: JSON.stringify(data),
     });
-    if (response.status === 422 || response.status === 401 || !response.ok) {
+    if (response.status === 422 || response.status === 401 ) {
       return response;
-    } else {
+    } 
       setSuccesIsShown(true);
-    }
+    
+      
+    
   };
   const hideSuccesHandler = () => {
     setSuccesIsShown(false);
@@ -194,7 +199,7 @@ function MakeAppointmentPage() {
                   </div>
                 )}
                 {!selectedDoc && <p>Proszę wybrać doktora</p>}
-                {!selectedTime && <p>Proszę wybrać datę</p>}
+                {!selectedTime && !selectedDate && <p>Proszę wybrać datę</p>}
               </div>
               {succesIsShown && (
                 <SuccessSubmit

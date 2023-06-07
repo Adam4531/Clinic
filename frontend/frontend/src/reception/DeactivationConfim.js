@@ -11,7 +11,7 @@ function DeactivationConfirm(props) {
   }
 
 
-    const onSubmit = () =>{
+    const onSubmit = async() =>{
         const data = {
             first_name: props.doctor.first_name,
             last_name: props.doctor.last_name,
@@ -20,7 +20,7 @@ function DeactivationConfirm(props) {
             
           };
         console.log(data)
-        const response = fetch("http://127.0.0.1:8000/auth/deactivate", {
+        const response = await fetch("http://127.0.0.1:8000/auth/deactivate", {
       method: "PUT",
       credentials: "include",
       headers: {

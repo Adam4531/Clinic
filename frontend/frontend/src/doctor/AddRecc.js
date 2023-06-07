@@ -4,6 +4,7 @@ import Modal from "../UI/Modal";
 import { Fragment } from "react";
 import classes from "./AddRecc.module.css";
 import ErrorUp from "../UI/ErrorUp";
+import { renderIntoDocument } from "react-dom/test-utils";
 
 
 function AddRecc(props) {
@@ -31,7 +32,7 @@ function AddRecc(props) {
     setErrorIsShown(false);
     console.log('dziala')
   }
-  const submitForm = () => {
+  const submitForm = async() => {
     const data = {
       prescription_code: prescription_code,
       description: description,
@@ -42,7 +43,7 @@ function AddRecc(props) {
       doctor: props.visit.doctor.id
   }
   console.log(data)
-  const response = fetch("http://127.0.0.1:8000/visits/recomendations", {
+  const  response = await fetch("http://127.0.0.1:8000/visits/recomendations", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -51,15 +52,18 @@ function AddRecc(props) {
       },
       body: JSON.stringify(data),
     });
+    
     if (response.status === 422 || response.status === 401) {
       return response;
     }
-    if(!response.ok){
-      setErrorIsShown(true)
-    }else{
-      props.onHideCart() 
+    console.log(response)
+  if(!response.ok){
+    setErrorIsShown(true)
+    return response
+  }
+  props.onHideCart() 
 
-    }
+   
     
     
   };

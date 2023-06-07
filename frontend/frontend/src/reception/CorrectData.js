@@ -11,7 +11,7 @@ function SuccessDoctor(props) {
   }
 
 
-    const onSubmit = () =>{
+    const onSubmit = async() =>{
         const data = {
             first_name: props.doctor.first_name,
             last_name: props.doctor.last_name,
@@ -23,7 +23,7 @@ function SuccessDoctor(props) {
             specialization: props.doctor.specialization
           };
         console.log(data)
-        const response = fetch("http://127.0.0.1:8000/auth/register", {
+        const response = await fetch("http://127.0.0.1:8000/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
