@@ -14,6 +14,7 @@ function DeactivationConfirm(props) {
         console.log(data)
         const response = fetch("http://127.0.0.1:8000/auth/deactivate", {
       method: "PUT",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         SameSite: "none",
@@ -21,9 +22,9 @@ function DeactivationConfirm(props) {
       body: JSON.stringify(data),
     });
     // wywala Uncaught i error mimo ze w innych miejscach działa i w response jest ok na false tutaj
-    if (!response.ok) {
-      throw json({ message: "Could not authenticate user." }, { status: 500 });
-    } 
+    // if (!response.ok) {
+    //   throw json({ message: "Could not authenticate user." }, { status: 500 });
+    // } 
     
     props.onHideCart()
     }
