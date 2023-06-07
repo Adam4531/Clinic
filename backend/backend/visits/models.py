@@ -11,6 +11,7 @@ class Visit(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True, default='')
     is_confirmed = models.BooleanField(default=False)
+    visit_control = models.DateTimeField(blank=True, null=True,)
 
     def __str__(self):
         return f'Visit at: {self.date}, patient: {self.patient}, doctor: {self.doctor}, description: {self.description}'
