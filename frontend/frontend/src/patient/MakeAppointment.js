@@ -1,13 +1,21 @@
 import styles from "./MakeAppointment.module.css";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import TimePicker from "./TimePicker";
 import SuccessSubmit from "./SuccessSubmitAppointment";
 import { Form, useParams } from "react-router-dom";
 
 function MakeAppointmentPage() {
   const params = useParams();
+
+  const formatDate = useCallback((date) => {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join("-");
+  },[])
 
   const [succesIsShown, setSuccesIsShown] = useState(false);
   const [succData, setDataSucc] = useState("");
@@ -64,25 +72,29 @@ function MakeAppointmentPage() {
         setVisits(data);
       });
   }, [selectedDoc]);
-console.log(visitsFetch)
+  console.log(visitsFetch);
   useEffect(() => {
-    const date = formatDate(selectedDate) + "T" + selectedTime + ":00Z";
+    const date = formatDate(selectedDate) + "T" + selectedTime + ":00";
     var bool;
     if (visitsFetch.length > 0) {
       bool = visitsFetch.map((element) => {
-        return element.date.toString() === date;
+        console.log(element.date)
+        console.log(date)
+        return element.date === date;
       });
     }
     setDataValid(bool);
-  }, [visitsFetch, selectedDate, selectedTime]);
+  }, [visitsFetch, selectedDate, selectedTime, formatDate]);
 
   console.log(dataValid);
 
   const isValid = () => {
-   
-      return (selectedDoc > 0) && selectedTime;
- 
+    if (dataValid) {
+      return (selectedDoc > 0) & !dataValid[0];
+    }
+    return false;
   };
+  console.log(dataValid)
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -91,13 +103,7 @@ console.log(visitsFetch)
     return num.toString().padStart(2, "0");
   }
 
-  function formatDate(date) {
-    return [
-      date.getFullYear(),
-      padTo2Digits(date.getMonth() + 1),
-      padTo2Digits(date.getDate()),
-    ].join("-");
-  }
+  
 
   const showSuccesHandler = (event) => {
     event.preventDefault();
@@ -108,7 +114,7 @@ console.log(visitsFetch)
       is_confirmed: false,
       patient: localStorage.getItem("owner"),
       doctor: selectedDoc,
-      recommendation: null
+      recommendation: null,
     };
     console.log(data);
     const response = fetch("http://127.0.0.1:8000/visits/visits", {
@@ -120,9 +126,9 @@ console.log(visitsFetch)
       },
       body: JSON.stringify(data),
     });
-    if (response.status === 422 || response.status === 401) {
+    if (response.status === 422 || response.status === 401 || !response.ok) {
       return response;
-    }else{
+    } else {
       setSuccesIsShown(true);
     }
   };
@@ -149,7 +155,11 @@ console.log(visitsFetch)
                 <option value="">Wybierz opcję</option>
                 {crewFetch.map((doctor) => (
                   <option value={doctor.id} key={doctor.id}>
-                    {doctor.first_name + " " + doctor.last_name + ", " +doctor.specialization }
+                    {doctor.first_name +
+                      " " +
+                      doctor.last_name +
+                      ", " +
+                      doctor.specialization}
                   </option>
                 ))}
               </select>
@@ -167,13 +177,22 @@ console.log(visitsFetch)
               {/* <Calendar/> */}
               <div className={styles.date}>
                 <TimePicker onChange={handleTimeChange} value={selectedTime} />
-                <Calendar onChange={handleDateChange} value={selectedDate} /> 
+                <Calendar onChange={handleDateChange} value={selectedDate} />
                 <p>
                   Wybrana data: {selectedDate.toDateString()} {selectedTime}
                 </p>
-                {dataValid && <div>{dataValid.map((element)=>(
-                    element && <p>Podana data i godzina są zajęte wybierz ponownie</p>
-                )) }</div>}
+                {dataValid && (
+                  <div>
+                    {dataValid.map(
+                      (element) =>
+                        element && (
+                          <p>
+                            Podana data i godzina są zajęte wybierz ponownie
+                          </p>
+                        )
+                    )}
+                  </div>
+                )}
                 {!selectedDoc && <p>Proszę wybrać doktora</p>}
                 {!selectedTime && <p>Proszę wybrać datę</p>}
               </div>
