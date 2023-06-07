@@ -52,7 +52,7 @@ function VisitsReception(props) {
       setVisit(data);
       console.log(data);
     })
-  })
+  },[])
 
   const handleIndexChange = (id) => {
     setVisitIndex(id);
