@@ -1,8 +1,16 @@
 import Modal from '../UI/Modal'
-import { Fragment } from 'react';
-import { json } from "react-router-dom";
+import { Fragment, useState } from 'react';
+import ErrorUp from '../UI/ErrorUp'
 
 function DeactivationConfirm(props) {
+  const [errorIsShown, setErrorIsShown]=useState(false);
+
+  const hideErrorHandler = () =>{
+    setErrorIsShown(false);
+    console.log('dziala')
+  }
+
+
     const onSubmit = () =>{
         const data = {
             first_name: props.doctor.first_name,
@@ -22,11 +30,13 @@ function DeactivationConfirm(props) {
       body: JSON.stringify(data),
     });
     // wywala Uncaught i error mimo ze w innych miejscach działa i w response jest ok na false tutaj
-    // if (!response.ok) {
-    //   throw json({ message: "Could not authenticate user." }, { status: 500 });
-    // } 
+    if (!response.ok) {
+      setErrorIsShown(true)
+    } else{
+      props.onHideCart()
+    }
     
-    props.onHideCart()
+    
     }
     
     const didSubmitModalContent = <Fragment>
@@ -42,6 +52,7 @@ function DeactivationConfirm(props) {
         <Modal onClose={props.onHideCart}>
         {didSubmitModalContent}
         </Modal>
+        {errorIsShown && <ErrorUp onHideCart={hideErrorHandler}/>}
         </>
       );
     }

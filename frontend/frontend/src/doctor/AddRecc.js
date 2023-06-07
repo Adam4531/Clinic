@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import Modal from "../UI/Modal";
 import { Fragment } from "react";
 import classes from "./AddRecc.module.css";
+import ErrorUp from "../UI/ErrorUp";
+
+
 function AddRecc(props) {
+  const [errorIsShown, setErrorIsShown]=useState(false);
+
   const [prescription_code, setPrescription_code] = useState("");
   const [description, setDescription] = useState("");
   const [dosage, setDosage] = useState("");
@@ -21,6 +26,11 @@ function AddRecc(props) {
   const handleInfoChange = (event) => {
     setAdditional_information(event.target.value);
   };
+
+  const hideErrorHandler = () =>{
+    setErrorIsShown(false);
+    console.log('dziala')
+  }
   const submitForm = () => {
     const data = {
       prescription_code: prescription_code,
@@ -43,9 +53,14 @@ function AddRecc(props) {
     });
     if (response.status === 422 || response.status === 401) {
       return response;
+    }
+    if(!response.ok){
+      setErrorIsShown(true)
     }else{
       props.onHideCart() 
+
     }
+    
     
   };
 
@@ -112,6 +127,7 @@ function AddRecc(props) {
   return (
     <>
       <Modal onClose={props.onHideCart}>{didSubmitModalContent}</Modal>
+      {errorIsShown && <ErrorUp onHideCart={hideErrorHandler}/>}
     </>
   );
 }

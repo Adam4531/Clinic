@@ -1,14 +1,15 @@
 import { useState, useTransition, useEffect } from "react";
 import SuccessEdit from "./SuccessEdit";
 import styles from "./EditProfile.module.css";
+import ErrorUp from "../UI/ErrorUp";
 
 function EditProfilePage(props) {  
   const [succesIsShown, setSuccesIsShown]=useState(false);
+  const [errorIsShown, setErrorIsShown]=useState(false);
 
   // Dane do pobrania:
   const [email, setEmail] = useState('');
   const [pesel, setPesel] = useState('');
-  // const [passwd, setPasswd] = useState('');
   const [phone, setPhone] = useState('');
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
@@ -46,6 +47,15 @@ function EditProfilePage(props) {
     setSuccesIsShown(false);
     console.log('dziala')
   }
+  const hideErrorHandler = () =>{
+    setErrorIsShown(false);
+    console.log('dziala')
+  }
+
+  const showErrorHandler = (event) => {
+    event.preventDefault();
+    setErrorIsShown(true);
+  } 
 
   const [user, setUser] = useState("");
   useEffect(() => {
@@ -96,9 +106,15 @@ function EditProfilePage(props) {
     .then((response) => {
       if (response.status === 422 || response.status === 401) {
         return response;
-      } else {
+      } 
+      if(!response.ok){
+        setErrorIsShown(true)
+        return response
+      }else{
         setSuccesIsShown(true);
       }
+        
+      
     })
     .catch((error) => {
       console.log(error);
@@ -147,6 +163,7 @@ function EditProfilePage(props) {
                 </tbody>
               </table>
               {succesIsShown && <SuccessEdit onHideCart={hideSuccesHandler}/>}
+              {errorIsShown && <ErrorUp onHideCart={hideErrorHandler}/>}
               <button className={styles.btn_save_changes} onClick={showSuccesHandler}>Zapisz</button>
             </form>
           </div>

@@ -79,7 +79,7 @@ function EditDoctor(props) {
       specialization: specialization,
     };
     setDoctor(data);
-
+    
     setSuccesIsShown(true);
   };
   const hideSuccesHandler = () => {

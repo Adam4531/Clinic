@@ -51,6 +51,7 @@ function HomeDoctor() {
     setSuccesIsShown(false);
     console.log('dodano wizyte')
   }
+  console.log(visitFetched)
   return (
     
     <div className={styles.container}>
@@ -65,7 +66,7 @@ function HomeDoctor() {
                   <div className={styles.upcoming_visit}>
                   <span className={styles.date}>Data: {data.date}</span>
                   <span className={styles.doctor}>Pacjent: {data.patient.first_name} {data.patient.last_name}</span>
-                  <button onClick={showSuccesHandler}  className={styles.details}>Dodaj zalecenie</button>
+                   <button onClick={showSuccesHandler}  className={styles.details}>Dodaj zalecenie</button>
                   {succesIsShown && <AddRecc onHideCart={hideSuccesHandler} visit={data}/>}
                 </div>
                 ))}
