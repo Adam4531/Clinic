@@ -1,10 +1,10 @@
 .container {
     display: flex;
     background-color: #ECF5FF;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
 }
-
+ 
 .info {
     background: url('../assets/homepageimg.png');
     width: 65%;

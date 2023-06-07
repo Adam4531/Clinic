@@ -1,13 +1,22 @@
-import styles from "./HomePage.css";
+import styles from "./HomePage.module.css";
 
 function HomePage() {
   return (
-    <div className="container">
-      <div className="info">
-        <div className="gradient">
-          <p className="about">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper lobortis aliquam. Mauris malesuada magna ac odio aliquam sagittis. Donec a tellus nec eros tristique ornare quis ac ex. Mauris finibus convallis justo. Sed scelerisque enim at ante dapibus, quis gravida erat iaculis. Proin tempor vehicula malesuada. Duis tempor dui nec turpis suscipit, eget tristique magna mollis. Nulla vel iaculis turpis. Vestibulum sed eros ligula. Curabitur nulla leo, efficitur sit amet felis at, varius elementum odio. Suspendisse posuere, ante at elementum vulputate, enim ligula tristique urna, vulputate sodales dui justo sit amet diam.
-            Integer a nunc nec justo elementum hendrerit. Donec interdum porttitor laoreet. Aliquam quis vestibulum enim. Duis iaculis purus lorem, sit amet pulvinar leo varius sed. Aenean iaculis purus vitae dolor consequat commodo
+    <div className={styles.container}>
+      <div className={styles.info}>
+        <div className={styles.gradient}>
+          <p className={styles.about}>
+           Dziękujemy za wybór naszej przychodni zdrowia "U Zięby". Naszym głównym celem jest zapewnienie Ci kompleksowej opieki
+           medycznej. Oprócz dwóch lekarzy internistów, w naszych szeregach znajdują się również inni specjaliści. Dzięki temu
+           możemy zaspokoić różnorodne potrzeby zdrowotne naszych pacjentów. Założenie konta w naszej przychodni to prosta procedura
+           rejestracji. Posiadając konto, zyskasz wiele korzyści, takich jak łatwa rejestracja wizyty u wybranego specjalisty, dostęp
+           do listy zaleceń i historii wcześniej przepisanych leków przez naszych lekarzy. Nasza strona internetowa umożliwia również
+           przeglądanie zarówno odbytych, jak i przyszłych wizyt. Dzięki temu zawsze będziesz mieć pełną kontrolę nad swoim harmonogramem
+           medycznym. Przychodnia "U Zięby" to miejsce, w którym nowoczesność idzie w parze z wygodą. Jednak to nasz zespół wysoko
+           wykwalifikowanych pracowników jest naszą prawdziwą wartością dodaną. Każdego dnia oddają oni swoją wiedzę i cenne doświadczenie,
+           dbając o Twoje zdrowie. Jesteśmy dumni z naszego profesjonalizmu i dążymy do utrzymania go na najwyższym poziomie. Nie czekaj dłużej,
+           dołącz już dziś do grona setek zadowolonych pacjentów przychodni "U Zięby". Gwarantujemy, że Twoje zdrowie będzie utrzymane na 
+           najwyższym poziomie, a Ty otrzymasz pełną opiekę medyczną, której potrzebujesz. Czekamy na Ciebie z otwartymi ramionami.
           </p>
         </div>
       </div>
