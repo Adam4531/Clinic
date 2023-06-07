@@ -6,7 +6,7 @@ function CrewPage() {
   const [crewFetch, setCrew] = useState([]);
   useEffect(() => {
     // Fetch the Payroll Data related to the logged in User
-    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false', {
+    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=&is_active=true', {
       method: "GET",
       credentials: 'include',
       headers: {

@@ -2,17 +2,43 @@ import Modal from '../UI/Modal'
 import { Fragment } from 'react';
 
 function ConfimVisit(props) {
+    const onSubmit = () =>{
+        const data = {
+            is_confirmed: true
+        }
+        fetch(`http://127.0.0.1:8000/visits/visits/${props.visit.id}`,
+    {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        SameSite: "none",
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => {
+        if (response.status === 422 || response.status === 401) {
+          return response;
+        } else {
+            props.onHideCart()
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+        
+    }
     
     const didSubmitModalContent = <Fragment>
         <div className='alert'>
             <h2>Potwierdzenie wizyty</h2>
-            <span>Data: </span>
-            <span>Pacjent: </span>
-            <span>Lekarz: </span>
-            <button className='btn_confirm' onClick={props.onHideCart}>OK</button>
+            <span>Data: {props.visit.date}</span>
+            <span>Pacjent: {props.visit.patient.first_name} {props.visit.patient.last_name}</span>
+            <span>Lekarz: {props.visit.doctor.first_name} {props.visit.doctor.last_name}</span>
+            <button className='btn_confirm' onClick={onSubmit}>OK</button>
         </div>
 </Fragment>
-console.log(props)
+console.log(props.visit)
     return (
         <>
         <Modal onClose={props.onHideCart}>

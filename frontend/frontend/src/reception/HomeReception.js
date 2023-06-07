@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./HomeReception.module.css";
+import ConfimVisit from "./ConfirmVisit";
 function HomeReception(props) {
   const [succesIsShown, setSuccesIsShown]=useState(false);
   const [doctor, setDoctor] = useState([]);
   const [visit, setVisit] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=', {
+    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false', {
         method: "GET",
         credentials: "include",
         headers: {
@@ -64,9 +65,14 @@ function HomeReception(props) {
             <div className={styles.visits}>
               <h2 className={styles.h2_}>Wizyty do potwierdzenia</h2>
               {visit.map((vis) =>
-                <div className={styles.visit}>
+                <div className={styles.visit} onClick={showSuccesHandler}>
                   <div className={styles.rec_info}><span className={styles.info}>Data: </span>{vis.date}</div>
                   <div className={styles.rec_info}><span className={styles.info}>Pacjent: </span>{vis.patient.first_name} {vis.patient.last_name}</div>
+                  {succesIsShown && <ConfimVisit
+                  onHideCart={hideSuccesHandler}
+                  visit={vis}
+                  // timeSuc={selectedTime}
+                />}
               </div>
               )}
             </div>
