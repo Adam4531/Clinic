@@ -31,7 +31,7 @@ function MakeAppointmentPage() {
 
   useEffect(() => {
     fetch(
-      "http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false",
+      "http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=&is_active=true",
       {
         method: "GET",
         credentials: "include",
@@ -149,7 +149,7 @@ console.log(visitsFetch)
                 <option value="">Wybierz opcję</option>
                 {crewFetch.map((doctor) => (
                   <option value={doctor.id} key={doctor.id}>
-                    {doctor.first_name + " " + doctor.last_name}
+                    {doctor.first_name + " " + doctor.last_name + ", " +doctor.specialization }
                   </option>
                 ))}
               </select>

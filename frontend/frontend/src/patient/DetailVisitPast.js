@@ -36,7 +36,7 @@ function DetailVisitPast() {
               Dodatkowe informacje: {visitFetch.description}
             </span>
             <span className="control_visit">
-              Data wizyty kontrolnej: {visitFetch.updated_at}
+              Data wizyty kontrolnej: {visitFetch.visit_control}
             </span>
             <div className="button_box">
               <NavLink to='/visits' className="btn_back">Cofnij</NavLink>
