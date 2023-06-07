@@ -38,7 +38,6 @@ function ConfimVisit(props) {
             <button className='btn_confirm' onClick={onSubmit}>OK</button>
         </div>
 </Fragment>
-console.log(props.visit)
     return (
         <>
         <Modal onClose={props.onHideCart}>

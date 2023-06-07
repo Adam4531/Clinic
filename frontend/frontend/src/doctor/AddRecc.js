@@ -31,7 +31,7 @@ function AddRecc(props) {
       visit: props.visit.id,
       doctor: props.visit.doctor.id
   }
-  
+  console.log(data)
   const response = fetch("http://127.0.0.1:8000/visits/recomendations", {
       method: "POST",
       credentials: "include",
@@ -100,7 +100,6 @@ function AddRecc(props) {
       </div>
     </Fragment>
   );
-  console.log(props.visit);
   return (
     <>
       <Modal onClose={props.onHideCart}>{didSubmitModalContent}</Modal>
