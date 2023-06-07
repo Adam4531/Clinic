@@ -52,7 +52,7 @@ form {
     width: 80%;
 }
 
-input {
+.input {
     height: 40px; 
     margin-top: 10%;
     background: #ECF5FF;

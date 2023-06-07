@@ -1,4 +1,4 @@
-import styles from "./DetailVisit.css";
+import styles from "./DetailVisit.module.css";
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 function DetailVisitPast() {
@@ -24,22 +24,22 @@ function DetailVisitPast() {
   }, [params]);
   console.log(visitFetch)
     return (
-        <div className="container">
-          {visitFetch && <div className="details_box">
-            <span class="date">
+        <div className={styles.container}>
+          {visitFetch && <div className={styles.detail_box}>
+            <div class={styles.date}>
                Data: {visitFetch.date}
-            </span>
-            <span className="doctor">
+            </div>
+            <div className={styles.doctor}>
               Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}
-            </span>
-            <span className="extra">
+            </div>
+            <div className={styles.extra}>
               Dodatkowe informacje: {visitFetch.description}
-            </span>
-            <span className="control_visit">
+            </div>
+            <div className={styles.control_visit}>
               Data wizyty kontrolnej: {visitFetch.visit_control}
-            </span>
-            <div className="button_box">
-              <NavLink to='/visits' className="btn_back">Cofnij</NavLink>
+            </div>
+            <div className={styles.button_box}>
+              <NavLink to='/visits' className={styles.btn_back}>Cofnij</NavLink>
             </div>
           </div>}
         </div>

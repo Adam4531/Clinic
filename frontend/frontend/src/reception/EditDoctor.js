@@ -99,7 +99,7 @@ function EditDoctor(props) {
                   <tr>
                     <td>
                       <input
-                        id="email"
+                        id="email-input"
                         className={styles.input}
                         type="text"
                         name="email"

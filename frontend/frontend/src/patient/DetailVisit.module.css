@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.detail_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-top: 5rem;
+    padding: 2rem 3rem;
+    color: #014FA1;
+    font-weight: 500;
+    max-width: 20rem;
+}
+
+.date, .doctor, .extra, .control_visit, .button_box {
+    margin: 1rem;
+}
+
+.button_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn_back {
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid #014FA1;
+    color: #014FA1;
+    border-radius: 20px;
+    padding: 0.2rem 1rem;
+}
+
+.btn_back:visited {
+    color: #014FA1;
+    align-self: center;
+}
+
+.btn_back:hover {
+    color: #fff;
+    background-color: #014FA1;
+    cursor: pointer;
+}
+
+.btn_cancel {
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid red;
+    color: red;
+    border-radius: 20px;
+    padding: 0.2rem 1rem;
+}
+
+.btn_cancel:visited {
+    color: red;
+}
+
+.btn_cancel:hover {
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+}

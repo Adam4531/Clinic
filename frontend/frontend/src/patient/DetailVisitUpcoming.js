@@ -1,4 +1,4 @@
-import styles from "./DetailVisit.css";
+import styles from "./DetailVisit.module.css";
 import { useState, useEffect } from "react";
 import SuccessCancel from "./SuccessCancel";
 import { useParams, NavLink } from "react-router-dom";
@@ -47,19 +47,19 @@ function DetailVisitUpcoming(props) {
     console.log("dziala");
   };
   return (
-    <div className="container">
-      {visitFetch && <div className="details_box">
-        <span className="date">Data: {visitFetch.date}</span>
-        <span className="doctor">Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}</span>
-        <span className="extra">
+    <div className={styles.container}>
+      {visitFetch && <div className={styles.detail_box}>
+        <div className={styles.date}>Data: {visitFetch.date}</div>
+        <div className={styles.doctor}>Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}</div>
+        <div className={styles.extra}>
           Dodatkowe informacje: {visitFetch.description}
-        </span>
-        <div className="button_box">
-          <NavLink to="/visits" className="btn_back">
+        </div>
+        <div className={styles.button_box}>
+          <NavLink to="/visits" className={styles.btn_back}>
             Cofnij
           </NavLink>
           {succesIsShown && <SuccessCancel onHideCart={hideSuccesHandler} date={visitFetch.date} back={backHandler}/>}
-          <button className="btn_cancel" onClick={showSuccesHandler}>
+          <button className={styles.btn_cancel} onClick={showSuccesHandler}>
             Anuluj wizytę
           </button>
         </div>

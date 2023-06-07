@@ -52,49 +52,58 @@ function AddRecc(props) {
   const didSubmitModalContent = (
     <Fragment>
       <div className="alert">
+        <h2 className={classes.h2}>Dodaj zalecenia</h2>
         <Form method="post" className={classes.form}>
-          <p>
-            <label htmlFor="drugs">Leki i dawkowanie</label>
-            <input
-              id="drugs"
-              type="text"
-              value={dosage}
-              onChange={handleDosageChange}
-              required
-            />
-          </p>
-          <p>
-            <label htmlFor="code">Kod recepty</label>
-            <input
-              id="code"
-              type="text"
-              value={prescription_code}
-              onChange={handletPrescriptionChange}
-              required
-            />
-          </p>
-          <p>
-            <label htmlFor="changes">Zmiana stylu życia</label>
-            <input
-              id="changes"
-              type="text"
-              value={description}
-              onChange={handleDescription}
-              required
-            />
-          </p>
-          <p>
-            <label htmlFor="skierowanie">Skierowanie do specjalisty</label>
-            <input
-              id="skierowanie"
-              type="text"
-              value={additional_information}
-              onChange={handleInfoChange}
-              required
-            />
-          </p>
+          <table className={classes.table}>
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    id="drugs"
+                    type="text"
+                    value={dosage}
+                    onChange={handleDosageChange}
+                    required
+                    placeholder="Leki i dawkowanie"
+                  />
+                </td>
+                <td>
+                  <input
+                    id="code"
+                    type="text"
+                    value={prescription_code}
+                    onChange={handletPrescriptionChange}
+                    required
+                    placeholder="Kod recepty"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                 <input
+                    id="changes"
+                    type="text"
+                    value={description}
+                    onChange={handleDescription}
+                    required
+                    placeholder="Zmiana stylu życia"
+                  />
+                </td>
+                <td>
+                  <input
+                    id="skierowanie"
+                    type="text"
+                    value={additional_information}
+                    onChange={handleInfoChange}
+                    required
+                    placeholder="Skierowanie do specjalisty"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </Form>
-        <button className="btn_confirm" onClick={submitForm}>
+        <button className={classes.btn_submit} onClick={submitForm}>
           Dodaj zalecenia
         </button>
       </div>
