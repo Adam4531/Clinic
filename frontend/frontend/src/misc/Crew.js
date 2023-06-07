@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import styles from "./CrewStyles.css";
+import styles from "./CrewStyles.module.css";
 import { useState, useEffect } from 'react';
 
 function CrewPage() {
   const [crewFetch, setCrew] = useState([]);
   useEffect(() => {
     // Fetch the Payroll Data related to the logged in User
-    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=&is_active=true', {
+    fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false&is_active=true', {
       method: "GET",
       credentials: 'include',
       headers: {
@@ -22,54 +22,17 @@ function CrewPage() {
   }, []);
   console.log(crewFetch)
  return (
-        <div className="container">
-          <div className="first_row">
+        <div className={styles.tile_box}>
           {crewFetch.map((doctor)=>(
-            <NavLink to={`/appointments-register/${doctor.id}`}><div className="tile" id="doctor1">
-            <img src={doctor.employee_image} alt={doctor.user}></img>
-            <div className="desc">
-              <span className="head">{doctor.first_name} {doctor.last_name}</span>
-              <span className="subhead">{doctor.title_of_degree}</span>
-              <span className="doc_desc">{doctor.specialization}</span>
+            <NavLink to={`/appointments-register/${doctor.id}`} className={styles.link}><div className={styles.tile} id="doctor1">
+            <div className={styles.desc}>
+              <div className={styles.head}>{doctor.first_name} {doctor.last_name}</div>
+              <div className={styles.subhead}>{doctor.title_of_degree}</div>
+              <div className={styles.doc_desc}>{doctor.specialization}</div>
             </div>
           </div>
           </NavLink>
           ))}
-          {/* <div className="tile" id="doctor2">
-            <img src={require("../assets/doc2.png")} alt="Doctor #2"></img>
-            <div className="desc">
-              <span className="head">Tytuł</span>
-              <span className="subhead">Subhead</span>
-              <span className="doc_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-            </div>
-          </div>
-          <div className="tile" id="doctor3">
-           <img src={require("../assets/doc3.png")} alt="Doctor #3"></img>
-           <div className="desc">
-              <span className="head">Tytuł</span>
-              <span className="subhead">Subhead</span>
-              <span className="doc_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-            </div>
-          </div> */}
-          </div>
-          <div className="second_row">
-          {/* <div className="tile" id="doctor4">
-            <img src={require("../assets/doc4.png")} alt="Doctor #4"></img>
-            <div className="desc">
-              <span className="head">Tytuł</span>
-              <span className="subhead">Subhead</span>
-              <span className="doc_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-            </div>
-          </div>
-          <div className="tile" id="doctor5">
-            <img src={require("../assets/doc5.png")} alt="Doctor #5"></img>
-            <div className="desc">
-              <span className="head">Tytuł</span>
-              <span className="subhead">Subhead</span>
-              <span className="doc_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-            </div>
-          </div> */}
-          </div>
         </div>
       );
     }

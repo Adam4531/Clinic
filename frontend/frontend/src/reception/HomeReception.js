@@ -57,9 +57,11 @@ function HomeReception(props) {
               )}
              
             </div>
-            <NavLink to='/editdoctor' className={styles.primary_btn_submit}>
-                Zarządzaj lekarzami
-              </NavLink>
+            <div className={styles.buttons}>
+               <NavLink to='/editdoctor' className={styles.primary_btn_submit}>
+                  Zarządzaj lekarzami
+                </NavLink>
+              </div>
             </div>
             <div className={styles.empty}>
             <div className={styles.visits}>

@@ -22,11 +22,11 @@ input:disabled {
     background-color: rgba(202, 215, 222, 0.5);
 }
 
-table {
+.table {
     align-self: center;
 }
 
-table td {
+.table td {
     padding-right: 10px;
 }
 

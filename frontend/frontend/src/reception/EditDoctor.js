@@ -90,68 +90,88 @@ function EditDoctor(props) {
     <div className={styles.container}>
       <div className={styles.body}>
         <div className={styles.addDoctor}>
-          <h2 className={styles.h2_}>Wpisz lekarza</h2>
+          <h1 className={styles.h2_}>Wpisz lekarza</h1>
           <Form method="post" className={styles.form}>
-            <p>
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                className={styles.input}
-                type="text"
-                name="email"
-                onChange={handleEmailChange}
-                required
-                placeholder="Email"
-              />
-            </p>
-            <p>
-              <label htmlFor="password">Hasło</label>
-              <input
-                id="password"
-                type="text"
-                onChange={handlePasswordChange}
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="name">Imię</label>
-              <input
-                id="name"
-                type="text"
-                onChange={handleFnameChange}
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="surname">Nazwisko</label>
-              <input id="surname" type="text" onChange={handleLname} required />
-            </p>
-            <p>
-              <label htmlFor="peselNumber">Numer PESEL</label>
-              <input
-                id="peselNumber"
-                type="text"
-                onChange={handlePeselChange}
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="peselNumber">Specjalizacja</label>
-              <select
-                id="doctors"
-                value={specialization}
-                onChange={handleSpecializationChange}
-              >
-                <option value="">Wybierz specjalizację</option>
-                <option value="Chirurg">Chirurg</option>
-                <option value="Lekarz rodzinny">Lekarz rodzinny</option>
-                <option value="Stomatolog">Stomatolog</option>
-                <option value="Dermatolog">Dermatolog</option>
-                <option value="Ortopeda">Ortopeda</option>
-                <option value="Internista">Internista</option>
-                <option value="Pediatra">Pediatra</option>
-              </select>
-            </p>
+            {/* <p> */}
+              {/* <label htmlFor="email">Email</label> */}
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input
+                        id="email"
+                        className={styles.input}
+                        type="text"
+                        name="email"
+                        onChange={handleEmailChange}
+                        required
+                        placeholder="Email"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="password"
+                        className={styles.input}
+                        type="password"
+                        onChange={handlePasswordChange}
+                        required
+                        placeholder="Hasło"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        id="name"
+                        className={styles.input}
+                        type="text"
+                        onChange={handleFnameChange}
+                        required
+                        placeholder="Imię"
+                      />
+                    </td>
+                    <td>
+                      <input 
+                        id="surname" 
+                        className={styles.input}
+                        type="text" 
+                        onChange={handleLname} 
+                        required
+                        placeholder="Nazwisko" 
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        id="peselNumber"
+                        className={styles.input}
+                        type="text"
+                        onChange={handlePeselChange}
+                        required
+                        placeholder="PESEL"
+                      />
+                    </td>
+                    <td>
+                      <select
+                        id="doctors"
+                        value={specialization}
+                        onChange={handleSpecializationChange}
+                        className={styles.select}
+                      >
+                        <option value="">Wybierz specjalizację</option>
+                        <option value="Chirurg">Chirurg</option>
+                        <option value="Lekarz rodzinny">Lekarz rodzinny</option>
+                        <option value="Stomatolog">Stomatolog</option>
+                        <option value="Dermatolog">Dermatolog</option>
+                        <option value="Ortopeda">Ortopeda</option>
+                        <option value="Internista">Internista</option>
+                        <option value="Pediatra">Pediatra</option>
+                      </select> 
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           </Form>
           {succesIsShown && (
             <SuccessDoctor onHideCart={hideSuccesHandler} doctor={doctor} />
@@ -161,39 +181,56 @@ function EditDoctor(props) {
           </button>
         </div>
         <div className={styles.deleteDoctor}>
-          <h2 className={styles.h2_}>Usuń lekarza</h2>
+          <h1 className={styles.h2_}>Usuń lekarza</h1>
           <Form method="post" className={styles.form}>
-            <p>
-              <label htmlFor="fnmae">Imię</label>
-              <input
-                id="fname"
-                type="text"
-                onChange={handleFnameChange_d}
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="lname">Nazwisko</label>
-              <input id="lname" type="text" onChange={handleLname_d} required />
-            </p>
-            <p>
-              <label htmlFor="pass">Hasło</label>
-              <input
-                id="pass"
-                type="text"
-                onChange={handlePasswordChange_d}
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="text"
-                onChange={handleEmailChange_d}
-                required
-              />
-            </p>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      id="fname"
+                      className={styles.input}
+                      type="text"
+                      onChange={handleFnameChange_d}
+                      required
+                      placeholder="Imię"
+                    />
+                  </td>
+                  <td>
+                    <input 
+                      id="lname"
+                      className={styles.input} 
+                      type="text" 
+                      onChange={handleLname_d} 
+                      required 
+                      placeholder="Nazwisko"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      id="pass"
+                      className={styles.input}
+                      type="password"
+                      onChange={handlePasswordChange_d}
+                      required
+                      placeholder="Hasło"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id="email"
+                      className={styles.input}
+                      type="text"
+                      onChange={handleEmailChange_d}
+                      required
+                      placeholder="Email"
+                    />
+                  </td>
+              </tr>
+              </tbody>
+            </table>
           </Form>
           <button
             className={styles.btn_confirm}

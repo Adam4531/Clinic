@@ -46,8 +46,8 @@ function VisitsPage() {
           {visitUncomingFetch.map((visit) => (
             <NavLink
             to={`${visit.id}`} ><div className={styles.upcoming_visit} key={visit.url}>
-              <span className={styles.date}>Data: {visit.date}</span>
-              <span className={styles.doctor}>Lekarz: {visit.doctor.first_name} {visit.doctor.last_name}</span>
+              <span className={styles.date}><span className={styles.info}>Data:</span> {visit.date}</span>
+              <span className={styles.doctor}><span className={styles.info}>Lekarz:</span> {visit.doctor.first_name} {visit.doctor.last_name}</span>
             </div>
             </NavLink>
           ))}
@@ -57,8 +57,8 @@ function VisitsPage() {
           {visitPastFetch.map((visit) => (
              <NavLink
              to={`past/${visit.id}`} ><div className={styles.past_visit} key={visit.url}>
-              <span className={styles.date}>Data: {visit.date}</span>
-              <span className={styles.doctor}>Lekarz: {visit.doctor.first_name} {visit.doctor.last_name}</span>
+              <div className={styles.date}><span className={styles.info}>Data:</span> {visit.date}</div>
+              <div className={styles.doctor}><span className={styles.info}>Lekarz:</span> {visit.doctor.first_name} {visit.doctor.last_name}</div>
             </div>
             </NavLink>
           ))}
