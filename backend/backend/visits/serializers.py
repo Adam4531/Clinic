@@ -87,14 +87,14 @@ class RecommendationSerializer(serializers.ModelSerializer):
         except patient.DoesNotExist:
             return None
 
-    def get_visit(self, obj):
-        visit = obj.visit
-        return {
-            "id": visit.id,
-            "date": visit.date,
-            "description": visit.description,
-            "is_confirmed": visit.is_confirmed,
-        }
+    # def get_visit(self, obj):
+    #     visit = obj.visit
+    #     return {
+    #         "id": visit.id,
+    #         "date": visit.date,
+    #         "description": visit.description,
+    #         "is_confirmed": visit.is_confirmed,
+    #     }
 
     def get_doctor(self, obj):
         doctor = obj.doctor
@@ -109,7 +109,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super(RecommendationSerializer, self).to_representation(instance)
         representation['patient'] = self.get_patient(instance)
-        representation['visit'] = self.get_visit(instance)
+        # representation['visit'] = self.get_visit(instance)
         representation['doctor'] = self.get_doctor(instance)
         return representation
 
