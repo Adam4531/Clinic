@@ -53,8 +53,8 @@ export async function action({ request }) {
       },
     });
     const username = await user.json();
-    
     localStorage.setItem("owner", username.id);
+    localStorage.setItem("email", username.email);
     localStorage.setItem("is_employee", username.is_staff);
     localStorage.setItem("is_receptionist", username.is_receptionist);
     localStorage.setItem("email", username.email);

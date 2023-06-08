@@ -73,7 +73,12 @@ function MakeAppointmentPage() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setVisits(data);
+        if(data.length === 0){
+          setVisits(initialVisit);
+        }else{
+          setVisits(data);
+        }
+        
       });
   }, [selectedDoc]);
   console.log(visitsFetch);
