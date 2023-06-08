@@ -36,7 +36,7 @@ def pdf_report_create(request):
 
     response = HttpResponse(content_type='application/pdf')
 
-    response['Content-Disposition'] = 'filename="products_report.pdf"'
+    response['Content-Disposition'] = 'filename="today_visits_report.pdf"'
 
     template = get_template(template_path)
 
@@ -75,7 +75,7 @@ def pdf_report_create_by_id(request, id):
 
     response = HttpResponse(content_type='application/pdf')
 
-    response['Content-Disposition'] = 'filename="products_report.pdf"'
+    response['Content-Disposition'] = 'filename="today_visits_report.pdf"'
 
     template = get_template(template_path)
 
