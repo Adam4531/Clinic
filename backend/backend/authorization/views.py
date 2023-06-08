@@ -1,15 +1,14 @@
 import datetime
-import jwt
 
+import jwt
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.middleware import csrf
-from django.shortcuts import render
-from rest_framework import generics, authentication, status
+from rest_framework import generics, status
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -18,9 +17,10 @@ from .serializers import UserSerializer
 
 
 class UserList(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    filterset_fields = ['email']
+    filterset_fields = ['email', 'is_staff', 'is_receptionist','is_active']
     name = 'user-list'
 
 
@@ -65,7 +65,7 @@ class LoginView(APIView):
                                     value=data["access"],
                                     expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
                                     secure=True,
-                                    httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                                    httponly=False,
                                     samesite='None'
                                     )
                 payload = {
@@ -75,7 +75,7 @@ class LoginView(APIView):
                 }
 
                 token = jwt.encode(payload, 'secret', algorithm='HS256')
-                response.set_cookie(key='jwt', value=token, httponly=True, samesite='None', secure=True)
+                response.set_cookie(key='jwt', value=token, httponly=False, samesite='None', secure=True)
                 csrf.get_token(request)
                 response.data = {"Success": "Login succesfully!", "data": data}
                 return response
@@ -100,7 +100,8 @@ class UserView(APIView):
             raise AuthenticationFailed("Unauthenticated!")
 
         user = User.objects.filter(id=payload['id']).first()
-        serializer = UserSerializer(user)
+        context = {'request': request}
+        serializer = UserSerializer(user, context=context)
 
         return Response(serializer.data)
 

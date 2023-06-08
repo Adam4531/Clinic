@@ -2,20 +2,22 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .models import Patient, Allergy, Time_of_activity
-from .serializers import PatientSerializer, AllergySerializer, TimeOfActivitySerializer
+from .models import Allergy, Time_of_activity
+from .serializers import AllergySerializer, TimeOfActivitySerializer
+from ..authorization.models import User
+from ..authorization.serializers import UserSerializer
 
 
 class PatientList(generics.ListCreateAPIView):
-    queryset = Patient.objects.all()
-    serializer_class = PatientSerializer
-    filterset_fields = ['user', 'age', 'phone_number', 'allergies', 'age', 'pesel']
+    queryset = User.objects.all().filter(is_staff=False)
+    serializer_class = UserSerializer
+    filterset_fields = ['phone_number', 'allergies', 'pesel']
     name = 'patient-list'
 
 
 class PatientDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Patient.objects.all()
-    serializer_class = PatientSerializer
+    queryset = User.objects.all().filter(is_staff=False)
+    serializer_class = UserSerializer
     name = 'patient-detail'
 
 

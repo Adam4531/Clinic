@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    background-color: #ECF5FF;
+    justify-content: center;
+    position: relative;
+}
+
+.edit_profile_window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 10vh;    
+    justify-content: center;
+    padding: 1rem 3rem;
+    padding-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+input:disabled {
+    background-color: rgba(202, 215, 222, 0.5);
+}
+
+.change_input {
+    align-self: center;
+    width: 12rem;
+}
+
+.table {
+    align-self: center;
+}
+
+.table td {
+    padding-right: 10px;
+}
+
+.btn_save_changes {
+    align-self: center;
+    background-color: transparent;
+    border: 1px solid #014FA1;
+    border-radius: 20px;
+    color: #014FA1;
+    margin-top: 30px;
+    height: 30px;
+    width: 40%;
+}
+
+.btn_save_changes:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #014FA1;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #014FA1;
+}

@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    background-color: #ECF5FF;
+    justify-content: center;
+    position: relative;
+}
+ 
+.info {
+    background: url('../assets/homepageimg.png');
+    width: 65%;
+    height: 75vh;
+    background-color: aqua;
+    padding: 10px;
+    margin: 40px 20px;
+    position: relative;
+}
+
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 47.92%, rgba(255, 255, 255, 0.91) 72.92%);
+}
+
+.about {
+    position: absolute;
+    bottom: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+}
+
+.divider {
+    position: absolute;
+    width: .1px;
+    top: 5vh;
+    height: 80vh;
+    left: 70%;
+    border: 1px solid #5980AC;
+    background-color: #5980AC;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5%;
+    top: 20vh;    
+    height: 50vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5%;
+    top: 10vh;    
+    height: 70vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #014FA1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+input {
+    height: 40px; 
+    margin-top: 10%;
+    background: #ECF5FF;
+    border: 1px solid #014FA1;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#btn_forgotten_passwd, #btn_submit {
+    margin-top: 10%;
+    align-self: flex-end;
+    padding: 3px 0;
+}
+
+#btn_forgotten_passwd {
+    background-color: transparent;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    width: 70%;
+    color: #014FA1;
+}
+
+#btn_submit {
+    background-color: #014FA1;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    color: #fff;
+    width: 40%;
+}

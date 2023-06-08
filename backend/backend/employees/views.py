@@ -2,8 +2,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .models import Role, Degree, Employee
-from .serializers import RoleSerializer, DegreeSerializer, EmployeeSerializer
+from .models import Role, Degree
+from .serializers import RoleSerializer, DegreeSerializer
+from ..authorization.models import User
+from ..authorization.serializers import UserSerializer
 
 
 class RoleList(generics.ListCreateAPIView):
@@ -31,14 +33,14 @@ class DegreeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class EmployeeList(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    queryset = User.objects.all().filter(is_staff=True)
+    serializer_class = UserSerializer
     name = 'employee-list'
 
 
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    queryset = User.objects.all().filter(is_staff=True)
+    serializer_class = UserSerializer
     name = 'employee-detail'
 
 
@@ -46,7 +48,8 @@ class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
 
     def get(self, request, *args, **kwargs):
-        return Response({'roles': reverse(RoleList.name, request=request),
+        return Response({
+                         'roles': reverse(RoleList.name, request=request),
                          'degrees': reverse(DegreeList.name, request=request),
                          'employees': reverse(EmployeeList.name, request=request),
                          })

@@ -1,27 +1,10 @@
 from rest_framework import serializers
-from datetime import date
 
-from ..patients.models import Patient, Allergy, Time_of_activity
-
-
-class PatientSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Patient
-        fields = "__all__"
-
-    def validate(self, value):
-        if len(value['pesel']) != 11:
-            raise serializers.ValidationError("Field 'pesel' has to be exactly 11 characters long!")
-        if len(value['phone_number']) != 9:
-            raise serializers.ValidationError("Field 'phone_number' has to be exactly 9 characters long!")
-        if (value['age']) <= 0:
-            raise serializers.ValidationError("Field 'age' cannot be empty or negative number!")
-        if value['age'] > 100:
-            raise serializers.ValidationError("Field 'age' cannot be than 100 number!")
-        return value
+from ..patients.models import Allergy, Time_of_activity
 
 
 class AllergySerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Allergy
         fields = "__all__"
@@ -40,10 +23,6 @@ class TimeOfActivitySerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
     def validate(self, value):
-        if value['date_start'] < date.today():
-            raise serializers.ValidationError("Field 'date_start' cannot be placed in the future!")
         if value['date_start'] > value['date_end']:
             raise serializers.ValidationError("Field 'date_start' cannot be placed after date_end!")
-        if value['date_end'] < date.today():
-            raise serializers.ValidationError("Field 'data_end' cannot be placed in the past!")
         return value

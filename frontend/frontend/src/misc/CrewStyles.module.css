@@ -1,0 +1,48 @@
+.tile_box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    background-color: #fff;
+    margin: 3rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.head {
+    margin-top: 1rem;
+    align-self: center;
+    font-size: 2rem;
+}
+
+.link, .link:visited {
+    color: #014FA1;
+}
+
+.subhead, .doc_desc {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    align-self: center;
+}
+.doc_desc {
+    position: absolute;
+    bottom: 0;
+}

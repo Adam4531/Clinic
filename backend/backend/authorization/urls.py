@@ -9,4 +9,6 @@ urlpatterns = [
     path('logout', views.LogoutView.as_view(), name='logout'),
     path('register', views.RegisterView.as_view(), name='register'),
     path('user/', views.UserView.as_view(), name='current-user'),
+    path('change-password', views.ChangePasswordView.as_view(), name='change-password'),
+    path('deactivate', views.AccountDeactivationView.as_view(), name='deactivate-account')
 ]

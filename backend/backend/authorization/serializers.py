@@ -2,12 +2,22 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 
 from .models import User
+from ..visits.serializers import VisitSerializer, RecommendationSerializer
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    visits = VisitSerializer(many=True, read_only=True)
+    # visits_doctor = VisitSerializer(many=True, read_only=True)
+    recommendations = RecommendationSerializer(many=True, read_only=True)
+    medicines = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
+
+    # allergies = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'email', 'password']
+        fields = ['id', 'first_name', 'last_name', 'password', 'email', 'pesel', 'is_staff', 'is_receptionist',
+                  'phone_number', 'allergies','medicines','specialization','visits','recommendations', 'is_active']
+
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -33,8 +43,6 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Last name field can not be empty!")
         if len(value['last_name']) > 50:
             raise serializers.ValidationError("Last name field can have maximum 50 characters!")
-        if value['is_employee'] == 0 and value['is_receptionist'] == 1:
-            raise serializers.ValidationError("Field 'is_receptionist' can not be true while field 'is_employee' is false")
         return value
 
 

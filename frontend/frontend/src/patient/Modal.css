@@ -1,0 +1,27 @@
+.alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #014FA1;
+}
+
+.btn_confirm {
+    background-color: transparent;
+    border: 1px solid #014FA1;
+    color: #014FA1;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.btn_confirm:hover {
+    background-color: #014FA1;
+    color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+    .alert{
+        width: auto;
+    }
+    
+  }

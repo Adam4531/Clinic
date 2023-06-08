@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    background-color: #ECF5FF;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    right: 5%; */
+    top: 20vh;    
+    max-height: 50vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    right: 0; */
+    top: 10vh;    
+    max-height: 90vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #014FA1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.input {
+    height: 40px; 
+    margin-top: 10%;
+    background: #ECF5FF;
+    border: 1px solid #014FA1;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#btn_forgotten_passwd, #btn_submit {
+    align-self: flex-end;
+    padding: 3px 0;
+}
+
+#btn_forgotten_passwd {
+    background-color: transparent;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    margin-top: 10%;
+    /* width: 70%; */
+    padding-inline: 0.7rem;
+    color: #014FA1;
+}
+
+#btn_forgotten_passwd:hover {
+    background-color: #014FA1;
+    color: #fff;
+}
+
+#btn_submit {
+    background-color: #014FA1;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    color: #fff;
+    /* width: 40%; */
+    padding-inline: 0.7rem;
+}
+
+#btn_submit:hover {
+    background-color: transparent;
+    color: #014FA1;
+}
