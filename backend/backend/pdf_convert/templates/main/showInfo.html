@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl-PL">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Show Info</title>
+  </head>
+  <body>
+    <div id="current_date">
+    <script>
+        date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        document.getElementById("current_date").innerHTML = day + "." + month + "." + year;
+    </script>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Imie i Nazwisko Lekarza</th>
+                        <th scope="col">Imie i Nazwisko Pacjenta</th>
+                        <th scope="col">Data Wizyty</th>
+                        <th scope="col">Opis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                            {% for visit in visits %}
+                            <tr>
+                                <td>{{ visit.doctor.first_name }} {{ visit.doctor.last_name }}</td>
+                                <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+                                <td>{{ visit.date }}</td>
+                                <td>{{ visit.description }}</td>
+                            </tr>
+
+                            {% endfor %}
+
+                    </tbody>
+                  </table>
+
+            </div>
+        </div>
+
+        <a class="btn btn-primary m-2" href="{% url 'create-pdf' %}">Create PDF</a>
+
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'backend.patients.apps.PatientsConfig',
     'backend.visits.apps.VisitsConfig',
     'backend.authorization.apps.AuthorizationConfig',
+    'backend.pdf_convert.apps.PdfConvertConfig',
     'django_filters',
     'corsheaders',
     'rest_framework_simplejwt',
