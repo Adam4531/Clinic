@@ -11,7 +11,15 @@
     <title>Show Info</title>
   </head>
   <body>
-    <h1>Report Of Products</h1>
+    <div id="current_date">
+    <script>
+        date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+    </script>
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -20,28 +28,21 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Name</th>
-<!--                        <th scope="col">Image</th>-->
-<!--                        <th scope="col">Name</th>-->
-<!--                        <th scope="col">price</th>-->
-<!--                        <th scope="col">Category</th>-->
-<!--                        <th scope="col">Is_Published</th>-->
-<!--                        <th scope="col">Created At</th>-->
+                        <th scope="col">Imie i Nazwisko Lekarza</th>
+                        <th scope="col">Imie i Nazwisko Pacjenta</th>
+                        <th scope="col">Data Wizyty</th>
+                        <th scope="col">Opis</th>
                       </tr>
                     </thead>
                     <tbody>
 
-                     {% for i in employees %}
-
-                        <tr>
-                            <td>{{ employess.name }}</td>
-<!--                            <td> <img height="80px" width="50px" src="{{ product.image.url }}"/></td>-->
-<!--                            <td>{{ product.name }}</td>-->
-<!--                            <td>{{ product.price }}</td>-->
-<!--                            <td>{{ product.category.name }}</td>-->
-<!--                            <td>{{ product.is_published }}</td>-->
-<!--                            <td>{{ product.created_at }}</td>-->
-                        </tr>
+                     {% for user in visits %}
+                            <tr>
+                                <td>{{ user.patient.first_name }}, {{ user.patient.last_name }}</td>
+                                <td>{{ user.doctor.first_name }}, {{ user.doctor.last_name }}</td>
+                                <td>{{ user.date }}</td>
+                                <td>{{ user.description }}</td>
+                            </tr>
 
                       {% endfor %}
 

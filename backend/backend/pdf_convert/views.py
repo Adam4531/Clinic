@@ -1,5 +1,6 @@
 from ..visits.models import Visit
 from ..employees.models import Role,Degree
+from ..authorization.models import User
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -7,31 +8,31 @@ from xhtml2pdf import pisa
 
 
 def show_visits(request):
-    visit = Visit.objects.filter() #doctor=request.user
-    role = Role.objects.all()
-    degree = Degree.objects.all()
+    visits = Visit.objects.all() #doctor=request.user
+    # user = User.objects.filter()
+    # data filter
+
 
     context = {
-        'visit': visit,
-        'role': role,
-        'degree': degree,
+        'visit': visits,
+        # 'user': user,
     }
 
     return render(request, 'main/showInfo.html', context)
 
 
 def pdf_report_create(request):
-    visit = Visit.objects.all()
-    role = Role.objects.all()
-    degree = Degree.objects.all()
+    user = User.objects.filter()
+    visit = Visit.objects.filter()
+    #data filter
+
 
 
     template_path = 'main/pdfReport.html'
 
     context = {
-        'visit': visit,
-        'role': role,
-        'degree': degree,
+        'user': user,
+        'visit': visit
     }
 
     response = HttpResponse(content_type='application/pdf')
