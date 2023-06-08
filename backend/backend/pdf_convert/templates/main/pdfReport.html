@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl-PL">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="ISO-88592">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -11,7 +11,15 @@
     <title>Show Info</title>
   </head>
   <body>
-    <h1>Show Info</h1>
+    <div id="current_date">
+    <script>
+        date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        document.getElementById("current_date").innerHTML = day + "." + month + "." + year;
+    </script>
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -20,30 +28,23 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">Name</th>
-<!--                        <th scope="col">Image</th>-->
-<!--                        <th scope="col">Name</th>-->
-<!--                        <th scope="col">price</th>-->
-<!--                        <th scope="col">Category</th>-->
-<!--                        <th scope="col">Is_Published</th>-->
-<!--                        <th scope="col">Created At</th>-->
+                        <th scope="col">Imie i Nazwisko Lekarza</th>
+                        <th scope="col">Imie i Nazwisko Pacjenta</th>
+                        <th scope="col">Data Wizyty</th>
+                        <th scope="col">Opis</th>
                       </tr>
                     </thead>
                     <tbody>
 
-                     {% for product in products %}
+                            {% for visit in visits %}
+                            <tr>
+                                <td>{{ visit.doctor.first_name }} {{ visit.doctor.last_name }}</td>
+                                <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+                                <td>{{ visit.date }}</td>
+                                <td>{{ visit.description }}</td>
+                            </tr>
 
-                        <tr>
-                            <td>{{ employees.name }}</td>
-<!--                            <td class="m-2"> <img height="80px" width="50px" src="{{ product.image.path }}"/></td>-->
-<!--                            <td><b>{{ product.name }}</b></td>-->
-<!--                            <td>{{ product.price }}</td>-->
-<!--                            <td style="color: blueviolet; margin: 5px">{{ product.category.name }}</td>-->
-<!--                            <td>{{ product.is_published }}</td>-->
-<!--                            <td>{{ product.created_at }}</td>-->
-                        </tr>
-
-                      {% endfor %}
+                            {% endfor %}
 
                     </tbody>
                   </table>

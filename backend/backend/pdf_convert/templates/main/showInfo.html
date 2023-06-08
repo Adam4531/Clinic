@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl-PL">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
         year = date.getFullYear();
         month = date.getMonth() + 1;
         day = date.getDate();
-        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+        document.getElementById("current_date").innerHTML = day + "." + month + "." + year;
     </script>
     </div>
 
@@ -38,10 +38,10 @@
 
                             {% for visit in visits %}
                             <tr>
-                                <td>{{ visit.1.doctor.first_name }} {{ visit.1.doctor.last_name }}</td>
-                                <td>{{ visit.1.patient.first_name }} {{ visit.1.patient.last_name }}</td>
-                                <td>{{ visit.1.date }}</td>
-                                <td>{{ visit.1.description }}</td>
+                                <td>{{ visit.doctor.first_name }} {{ visit.doctor.last_name }}</td>
+                                <td>{{ visit.patient.first_name }} {{ visit.patient.last_name }}</td>
+                                <td>{{ visit.date }}</td>
+                                <td>{{ visit.description }}</td>
                             </tr>
 
                             {% endfor %}
