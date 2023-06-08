@@ -57,6 +57,7 @@ export async function action({ request }) {
     localStorage.setItem("owner", username.id);
     localStorage.setItem("is_employee", username.is_staff);
     localStorage.setItem("is_receptionist", username.is_receptionist);
+    localStorage.setItem("email", username.email);
 
     return redirect("/");
   }

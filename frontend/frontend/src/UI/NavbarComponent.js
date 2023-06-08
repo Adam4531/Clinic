@@ -113,6 +113,9 @@ const Navbar = (props) => {
               <Form action='/edit' method='post'>
                 <button className={styles["btn-option"]}>Edytuj profil</button>
               </Form>
+              <Form action='/changepassword' method='post'>
+                  <button className={styles["btn-option"]}>Zmień hasło</button>
+              </Form>
               <Form action='/logout' method='post'>
                 <button className={styles["btn-option"]}>Wyloguj</button>
               </Form>

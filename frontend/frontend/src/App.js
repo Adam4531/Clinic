@@ -11,6 +11,7 @@ import LoginPage, {
 }  from "./auth/LoginPage";
 
 import EditProfilePage from "./patient/EditProfile";
+import ChangePassword from "./patient/ChangePassword";
 
 import DetailVisitPast from "./patient/DetailVisitPast";
 import DetailVisitUpcoming from "./patient/DetailVisitUpcoming";
@@ -24,6 +25,7 @@ import VisitsReception from "./reception/VisitsReception";
 import { checkAuthLoader, tokenLoader } from './util/auth';
 import {action as logoutAction} from './auth/logout'
 import {action as editAction} from './UI/edit_redirect'
+import {action as changePassword} from './UI/change_passwd'
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
       { path: "recommendations", element: <RecommendationsPage />,loader: checkAuthLoader  },
       { path: 'auth', element: <LoginPage />, action: authAction },
       { path: "edit", element: <EditProfilePage />,loader: checkAuthLoader, action: editAction  },
+      { path: "changepassword", element: <ChangePassword />, loader: checkAuthLoader, action: changePassword},
 
       { path: "doctor", element: <HomeDoctor />,loader: checkAuthLoader  },
       { path: "history", element: <HistoryDoctor />,loader: checkAuthLoader  },

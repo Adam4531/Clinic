@@ -130,10 +130,10 @@ function EditProfilePage(props) {
                 <tbody>
                 <tr>
                 <td>
-                    <input defaultValue={user.first_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+' type="text" id="name-input" name="name" onChange={handleFnameChange} placeholder="Imię"></input>
+                    <input defaultValue={user.first_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+(?: [A-Z][a-z]+)?' type="text" id="name-input" name="name" onChange={handleFnameChange} placeholder="Imię"></input>
                   </td>
                   <td>
-                    <input defaultValue={user.last_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+' type="text" id="surname-input" name="surname" onChange={handleLnameChange} placeholder="Nazwisko"></input>
+                    <input defaultValue={user.last_name} title="Wymagany format: 1 duża litera, pozostałe małe" pattern='[A-Z][a-z]+(?:-[A-Z][a-z]+)?' type="text" id="surname-input" name="surname" onChange={handleLnameChange} placeholder="Nazwisko"></input>
                   </td>
                 </tr>
                 <tr>

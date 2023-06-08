@@ -22,6 +22,11 @@ input:disabled {
     background-color: rgba(202, 215, 222, 0.5);
 }
 
+.change_input {
+    align-self: center;
+    width: 12rem;
+}
+
 .table {
     align-self: center;
 }
