@@ -16,11 +16,15 @@ function MakeAppointmentPage() {
       padTo2Digits(date.getDate()),
     ].join("-");
   },[])
-
+  const initialVisit = [{
+    date: '1999-05-31T10:30:00'
+  },{
+    date: '1999-05-31T10:30:00'
+  }]
   const [succesIsShown, setSuccesIsShown] = useState(false);
   const [succData, setDataSucc] = useState("");
   const [crewFetch, setCrew] = useState([]);
-  const [visitsFetch, setVisits] = useState([]);
+  const [visitsFetch, setVisits] = useState(initialVisit);
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedDoc, setDoc] = useState(params.id);
   const [selectedDesc, setDesc] = useState("");
@@ -78,15 +82,12 @@ function MakeAppointmentPage() {
     var bool;
     if (visitsFetch.length > 0) {
       bool = visitsFetch.map((element) => {
-        console.log(element.date)
-        console.log(date)
         return element.date === date;
       });
     }
     setDataValid(bool);
   }, [visitsFetch, selectedDate, selectedTime, formatDate]);
 
-  console.log(dataValid);
 
   const isValid = () => {
     if (dataValid) {
@@ -97,7 +98,6 @@ function MakeAppointmentPage() {
     }
     return false;
   };
-  console.log(dataValid)
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -119,7 +119,7 @@ function MakeAppointmentPage() {
       doctor: selectedDoc,
       recommendation: null,
     };
-    console.log(data);
+    
     const response = fetch("http://127.0.0.1:8000/visits/visits", {
       method: "POST",
       credentials: "include",
