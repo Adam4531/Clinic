@@ -27,6 +27,25 @@ function HomeDoctor() {
     ].join("-");
   }
 
+  const onSubmit =(event) =>{
+    event.preventDefault();
+    console.log(localStorage.getItem('owner'))
+    fetch(`http://127.0.0.1:8000/pdf/create-pdf/${localStorage.getItem('owner')}`)
+    .then(response => response.blob())
+    .then(blob => {
+      // Tworzenie linku do pobrania pliku
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'products_report.pdf';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+      console.log('Wystąpił błąd podczas pobierania pliku PDF:', error);
+    });
+  }
+
   useEffect(()=>{
     const date = formatDate(selectedDate)
     fetch(`http://127.0.0.1:8000/visits/visits?date=${date}&patient=&doctor=${localStorage.getItem(
@@ -73,11 +92,11 @@ function HomeDoctor() {
                 
               </div>
             </div>
-            <form>
-              <button type="submit" className={styles.primary_btn_submit}>
+            {/* <form> */}
+              <button type="submit" className={styles.primary_btn_submit} onClick={onSubmit}>
                 Generuj listę wizyt
               </button>
-            </form>
+            {/* </form> */}
           </div>
           <div className={styles.right}>
             <h2 className={styles.h2_}>Kalendarz</h2>

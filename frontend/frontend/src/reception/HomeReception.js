@@ -7,6 +7,23 @@ function HomeReception(props) {
   const [doctor, setDoctor] = useState([]);
   const [visit, setVisit] = useState([]);
 
+  const onSubmit =() =>{
+    fetch('http://127.0.0.1:8000/pdf/create-pdf')
+    .then(response => response.blob())
+    .then(blob => {
+      // Tworzenie linku do pobrania pliku
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'products_report.pdf';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    })
+    .catch(error => {
+      console.log('Wystąpił błąd podczas pobierania pliku PDF:', error);
+    });
+  }
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false', {
         method: "GET",
@@ -81,7 +98,7 @@ function HomeReception(props) {
             <NavLink to='/visitsreception' className={styles.primary_btn_submit}>
                 Zarządzaj wizytami
               </NavLink>
-              <button onClick={showSuccesHandler} className={styles.second_btn_submit}>
+              <button onClick={onSubmit} className={styles.second_btn_submit}>
                 Generuj listę wszystkich dzisiejszych wizyt
               </button>
             </div>
