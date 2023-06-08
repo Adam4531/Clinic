@@ -26,11 +26,7 @@ def show_visits(request):
 def pdf_report_create(request):
     today = date.today()
     visits = Visit.objects.filter(date__year=today.year, date__month=today.month,
-                                  date__day=today.day)  # doctor=request.user
-    # print(visits)
-
-
-
+                                  date__day=today.day)
 
     template_path = 'main/pdfReport.html'
 
