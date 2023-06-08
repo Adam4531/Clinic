@@ -14,6 +14,6 @@ Stworzone przez/Created by:
 - Jakub Okuła (Frontend)
 - Adrian Obrycki (Frontend)
 - Łukasz Kałamarski (Frontend)
-- Marta Horabik (Frontend)
 - Norbert Nosek (Backend)
 - Adam Rozwadowski (Backend)
+- Marta Horabik (Backend)
