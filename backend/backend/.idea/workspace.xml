@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c6f5354-50e5-40b3-914e-748b7a7277b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml~ba8deef20ad10a151e79055132455659ca385df0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/UI/NavbarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/UI/NavbarComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/auth/AuthForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/patient/EditProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/patient/EditProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/frontend/src/patient/EditProfile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/frontend/src/patient/EditProfile.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
