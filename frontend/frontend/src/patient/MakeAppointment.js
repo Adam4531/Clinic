@@ -39,7 +39,7 @@ function MakeAppointmentPage() {
 
   useEffect(() => {
     fetch(
-      "http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=&is_active=true",
+      "http://127.0.0.1:8000/auth/users/?email=&is_staff=true&is_receptionist=false&is_active=true",
       {
         method: "GET",
         credentials: "include",

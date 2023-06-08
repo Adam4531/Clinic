@@ -1,9 +1,10 @@
 import styles from "./DetailVisit.module.css";
 import { useState, useEffect } from "react";
 import SuccessCancel from "./SuccessCancel";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, redirect, useNavigate } from "react-router-dom";
 
 function DetailVisitUpcoming(props) {
+  const navigate = useNavigate();
   const [succesIsShown, setSuccesIsShown] = useState(false);
   const [visitFetch, setVisit] = useState();
   const params = useParams();
@@ -44,7 +45,7 @@ function DetailVisitUpcoming(props) {
       console.log(data);
     });
     setSuccesIsShown(false);
-    console.log("dziala");
+    navigate(-1) // niby działa ale w konsoli są błędy więc trzeba potestować czy u was działa
   };
   return (
     <div className={styles.container}>

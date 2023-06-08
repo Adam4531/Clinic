@@ -27,7 +27,8 @@ class VisitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Visit
         fields = ["id", "date", "created_at", "updated_at",
-                  "description", "is_confirmed", "patient", "doctor", "visit_control","is_archieved"]
+                  "description", "is_confirmed", "patient", "doctor", "visit_control"]
+        # "is_archieved"
         extra_kwargs = {
             'visit_control': {'read_only': True}
         }

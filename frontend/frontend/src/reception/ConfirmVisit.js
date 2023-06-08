@@ -1,3 +1,4 @@
+
 import Modal from '../UI/Modal'
 import { Fragment } from 'react';
 
@@ -20,6 +21,7 @@ function ConfimVisit(props) {
         if (response.status === 422 || response.status === 401) {
           return response;
         } else {
+            window.location.reload(false); //uboga wersja ale szybsza niż zmiana na zasadzie dać ten kod w /homerecipe bo kod musi się aktywować po potwierdzeniu że dane są okej na submit a nie od razu po odpaleniu popup'a
             props.onHideCart()
         }
       })
