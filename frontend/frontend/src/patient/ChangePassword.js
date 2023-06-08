@@ -1,4 +1,4 @@
-import { useState, useTransition, useEffect } from "react";
+import { useState } from "react";
 import SuccessEdit from "./SuccessEdit";
 import styles from "./EditProfile.module.css";
 import ErrorUp from "../UI/ErrorUp";
@@ -8,14 +8,11 @@ function ChangePassword(props) {
     const [succesIsShown, setSuccesIsShown]=useState(false);
     const [errorIsShown, setErrorIsShown]=useState(false);
 
-    const [email, setEmail] = useState('');
     const [oldPass, setOldPass] = useState('');
     const [newPass, setNewPass] = useState('');
     const [repeatPass, setRepeatPass] = useState('');
 
-    const handleEmailSet = (event) => {
-        setEmail(event.target.value);
-    }
+    
     const handleOldPassSet = (event) => {
         setOldPass(event.target.value);
     }
@@ -38,10 +35,10 @@ function ChangePassword(props) {
         event.preventDefault();
         setErrorIsShown(true);
       }
-      const showSuccesHandler = (event) => {
+      const showSuccesHandler = async(event) => {
         event.preventDefault();
         const data = {
-            email: email,
+            email: localStorage.getItem('email'),
             password: oldPass,
             new_password: newPass,
             new_password2: repeatPass
@@ -77,7 +74,6 @@ function ChangePassword(props) {
             <div className={styles.edit_profile_window}>
                 <h3 className={styles.h3}>Zmień hasło</h3>
                 <form> 
-                    <input className={styles.change_input} title="Przykład: example@example.ex" pattern='[A-Za-z0-9.-_]+@[a-z0-9]+.[a-z]{2,4}' onChange={handleEmailSet} type="text" id="email" name="email" placeholder="Email" />
                     <input className={styles.change_input} onChange={handleOldPassSet} type="password" id="old" name="old" placeholder="Stare hasło" />
                     <input className={styles.change_input} onChange={handleNewPassSet} type="password" id="new" name="new" placeholder="Nowe hasło" />
                     <input className={styles.change_input} onChange={handleRepeatPassSet} type="password" id="repeat" name="repeat" placeholder="Powtórz nowe hasło" />
