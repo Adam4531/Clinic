@@ -9,6 +9,7 @@ from xhtml2pdf import pisa
 
 def show_visits(request):
     visits = Visit.objects.all() #doctor=request.user
+    print(visits)
     # user = User.objects.filter()
     # data filter
 

@@ -36,15 +36,15 @@
                     </thead>
                     <tbody>
 
-                     {% for user in visits %}
+                            {% for visit in visits %}
                             <tr>
-                                <td>{{ user.patient.first_name }}, {{ user.patient.last_name }}</td>
-                                <td>{{ user.doctor.first_name }}, {{ user.doctor.last_name }}</td>
-                                <td>{{ user.date }}</td>
-                                <td>{{ user.description }}</td>
+                                <td>{{ visit.1.doctor.first_name }} {{ visit.1.doctor.last_name }}</td>
+                                <td>{{ visit.1.patient.first_name }} {{ visit.1.patient.last_name }}</td>
+                                <td>{{ visit.1.date }}</td>
+                                <td>{{ visit.1.description }}</td>
                             </tr>
 
-                      {% endfor %}
+                            {% endfor %}
 
                     </tbody>
                   </table>
