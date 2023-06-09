@@ -79,7 +79,7 @@ console.log(rec)
                 Skierowania do specjalisty:{" "}
                 {rec[selectedRecIndex].additional_information}
               </div>
-              <button onClick={showSuccesHandler}  className={styles.details_but}>Dodaj zalecenie</button>
+              <button onClick={showSuccesHandler}  className={styles.details_but}>Edytuj zalecenie</button>
               {succesIsShown && <PatchRec onHideCart={hideSuccesHandler} visit={rec[selectedRecIndex]}/>}
             </div>
           )}
