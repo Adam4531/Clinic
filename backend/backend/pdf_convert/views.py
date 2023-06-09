@@ -12,7 +12,7 @@ from datetime import date
 
 def show_visits(request):
     today = date.today()
-    visits = Visit.objects.filter(date__year=today.year, date__month=today.month, date__day=today.day) #doctor=request.user
+    visits = Visit.objects.filter(date__year=today.year, date__month=today.month, date__day=today.day, is_confirmed=True) #doctor=request.user
     # print(visits)
 
 
@@ -26,7 +26,7 @@ def show_visits(request):
 def pdf_report_create(request):
     today = date.today()
     visits = Visit.objects.filter(date__year=today.year, date__month=today.month,
-                                  date__day=today.day)
+                                  date__day=today.day, is_confirmed=True)
 
     template_path = 'main/pdfReport.html'
 
@@ -53,7 +53,7 @@ def pdf_report_create(request):
 
 def show_visits_by_id(request, id):
     today = date.today()
-    visits = Visit.objects.filter(date__year=today.year, date__month=today.month, date__day=today.day, doctor__id=id) #doctor=request.user
+    visits = Visit.objects.filter(date__year=today.year, date__month=today.month, date__day=today.day, doctor__id=id, is_confirmed=True) #doctor=request.user
 
     context = {
         'visits': visits,
@@ -65,7 +65,7 @@ def show_visits_by_id(request, id):
 def pdf_report_create_by_id(request, id):
     today = date.today()
     visits = Visit.objects.filter(date__year=today.year, date__month=today.month,
-                                  date__day=today.day, doctor__id=id)
+                                  date__day=today.day, doctor__id=id, is_confirmed=True)
 
     template_path = 'main/pdfReport.html'
 
