@@ -32,6 +32,7 @@ def pdf_report_create(request):
 
     context = {
         'visits': visits,
+        'today': today,
     }
 
     response = HttpResponse(content_type='application/pdf')
