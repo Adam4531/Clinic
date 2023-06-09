@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Modal from "../UI/Modal";
 import { Fragment } from "react";
 import classes from "./AddRecc.module.css";
+import ErrorUp from "./ErrorUp";
 
 function AddRecc(props) {
   const [prescription_code, setPrescription_code] = useState("");
@@ -25,7 +26,12 @@ function AddRecc(props) {
     setAdditional_information(event.target.value);
   };
 
-  const submitForm = () => {
+  const hideErrorHandler = () =>{
+    setSuccesIsShown(false);
+    console.log('dziala')
+  }
+
+  const submitForm = async () => {
     const data = {
       prescription_code: prescription_code,
       description: description,
@@ -35,8 +41,10 @@ function AddRecc(props) {
       visit: props.visit.id,
       doctor: props.visit.doctor.id
   }
+
+
   
-  const response = fetch("http://127.0.0.1:8000/visits/recomendations", {
+  const response = await fetch("http://127.0.0.1:8000/visits/recomendations", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -46,6 +54,10 @@ function AddRecc(props) {
       body: JSON.stringify(data),
     });
     if (response.status === 422 || response.status === 401) {
+      return response;
+    }
+    if(!response.ok){
+      setSuccesIsShown(true)
       return response;
     }else{
       props.onHideCart() 
@@ -115,6 +127,7 @@ function AddRecc(props) {
   return (
     <>
       <Modal onClose={props.onHideCart}>{didSubmitModalContent}</Modal>
+      {succesIsShown && <ErrorUp onHideCart={hideErrorHandler}/>}
     </>
   );
 }
