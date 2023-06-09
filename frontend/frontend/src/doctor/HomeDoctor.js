@@ -50,7 +50,7 @@ function HomeDoctor() {
     const date = formatDate(selectedDate)
     fetch(`http://127.0.0.1:8000/visits/visits?date=${date}&patient=&doctor=${localStorage.getItem(
       "owner"
-    )}`,
+    )}&is_confirmed=true`,
     {
       method: "GET",
       credentials: "include",
