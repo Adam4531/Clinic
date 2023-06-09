@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    background-color: #ECF5FF;
+    justify-content: center;
+    position: relative;
+    width: 100vw;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    right: 5%; */
+    top: 20vh;    
+    height: 50vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    right: 0; */
+    top: 10vh;    
+    height: 70vh;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #014FA1;
+}
+
+.h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.table {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3rem;
+}
+
+input {
+    height: 40px; 
+    margin-top: 10%;
+    background: #ECF5FF;
+    border: 1px solid #014FA1;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#btn_forgotten_passwd, #btn_submit {
+    margin-top: 10%;
+    align-self: flex-end;
+    padding: 3px 0;
+}
+
+#btn_forgotten_passwd {
+    background-color: transparent;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    width: 70%;
+    color: #014FA1;
+}
+
+.btn_submit {
+    background-color: #014FA1;
+    border: 2px solid #014FA1;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+}

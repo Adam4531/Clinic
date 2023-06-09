@@ -33,6 +33,18 @@
     overflow-y: scroll;
     align-items: center;
 }
+.details_but{
+    background-color: #014FA1;
+    border: 1px solid #014FA1;
+    color: #fff;
+    border-radius: 20px;
+    width: 25%;
+    margin-top: 5%;
+    padding: 1%;
+    cursor: pointer;
+    float: right;
+    
+}
 
 .recommendation {
     margin-top: 15px;

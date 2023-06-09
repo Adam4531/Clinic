@@ -34,7 +34,7 @@ class Recommendation(models.Model):
     additional_information = models.TextField(blank=True, default='')
     doctor = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     patient = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='recommendations')
-    visit = models.OneToOneField(Visit, on_delete=models.SET_NULL, blank=True, null=True)
+    visit = models.ForeignKey(Visit, on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):

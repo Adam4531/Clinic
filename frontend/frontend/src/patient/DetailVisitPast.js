@@ -24,22 +24,22 @@ function DetailVisitPast() {
   }, [params]);
   console.log(visitFetch)
     return (
-        <div className="container">
-          {visitFetch && <div className="details_box">
-            <span class="date">
+        <div className={styles.container}>
+          {visitFetch && <div className={styles.detail_box}>
+            <span class={styles.date}>
                Data: {visitFetch.date}
             </span>
-            <span className="doctor">
+            <span className={styles.doctor}>
               Lekarz: {visitFetch.doctor.first_name} {visitFetch.doctor.last_name}
             </span>
-            <span className="extra">
+            <span className={styles.extra}>
               Dodatkowe informacje: {visitFetch.description}
             </span>
-            <span className="control_visit">
+            <span className={styles.control_visit}>
               Data wizyty kontrolnej: {visitFetch.updated_at}
             </span>
-            <div className="button_box">
-              <NavLink to='/visits' className="btn_back">Cofnij</NavLink>
+            <div className={styles.button_box}>
+              <NavLink to='/visits' className={styles.btn_back}>Cofnij</NavLink>
             </div>
           </div>}
         </div>

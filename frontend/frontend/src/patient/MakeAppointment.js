@@ -138,9 +138,6 @@ function MakeAppointmentPage() {
       return response;
     } 
       setSuccesIsShown(true);
-    
-      
-    
   };
   const hideSuccesHandler = () => {
     setSuccesIsShown(false);
