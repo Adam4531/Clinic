@@ -35,6 +35,7 @@ class Recommendation(models.Model):
     doctor = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     patient = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='recommendations')
     visit = models.OneToOneField(Visit, on_delete=models.SET_NULL, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
         return f'Prescription: {self.prescription_code}, Medicine and dosage: {self.dosage}, {self.description} {self.additional_information}'
