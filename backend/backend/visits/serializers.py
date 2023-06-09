@@ -73,7 +73,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recommendation
-        fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit', 'doctor']
+        fields = ['id', 'prescription_code', 'description', 'dosage', 'additional_information', 'patient', 'visit', 'doctor', 'created_at']
 
     def get_patient(self, obj):
         try:

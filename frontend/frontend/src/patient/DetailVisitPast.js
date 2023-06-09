@@ -1,4 +1,4 @@
-import styles from "./DetailVisit.css";
+import styles from "./DetailVisit.module.css";
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 function DetailVisitPast() {

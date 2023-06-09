@@ -51,7 +51,7 @@ console.log(rec)
               key={result.url}
               onClick={() => handleRecommendationClick(index)}
             >
-              {/* <div className={styles.rec_info}>Data: {result.visit.date}</div> */}
+              <div className={styles.rec_info}>Data: {result.created_at}</div>
               <div className={styles.rec_info}>
                 Pacjent: {result.patient.first_name} {result.patient.last_name}
               </div>
