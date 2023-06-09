@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Modal from "../UI/Modal";
 import { Fragment } from "react";
 import classes from "./AddRecc.module.css";
+
 function AddRecc(props) {
   const [prescription_code, setPrescription_code] = useState("");
   const [description, setDescription] = useState("");
   const [dosage, setDosage] = useState("");
   const [additional_information, setAdditional_information] = useState("");
+
+  const [succesIsShown, setSuccesIsShown] = useState(false);
 
   const handletPrescriptionChange = (event) => {
     setPrescription_code(event.target.value);
@@ -21,6 +24,7 @@ function AddRecc(props) {
   const handleInfoChange = (event) => {
     setAdditional_information(event.target.value);
   };
+
   const submitForm = () => {
     const data = {
       prescription_code: prescription_code,
@@ -94,7 +98,6 @@ function AddRecc(props) {
                     type="text"
                     value={additional_information}
                     onChange={handleInfoChange}
-                    required
                     placeholder="Skierowanie do specjalisty"
                   />
                 </td>

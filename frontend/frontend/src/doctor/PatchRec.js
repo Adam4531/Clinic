@@ -94,7 +94,6 @@ function PatchRec(props) {
                     type="text"
                     defaultValue={props.visit.additional_information}
                     onChange={handleInfoChange}
-                    required
                     placeholder="Skierowanie do specjalisty"
                   />
                   </label>
