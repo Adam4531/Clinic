@@ -91,6 +91,17 @@ const Navbar = (props) => {
               Strona główna
             </NavLink>
         </div>}
+        {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'false' && <div className={styles["navbar-option"]}>
+        <NavLink
+              to="/patientsRec"
+              className={({ isActive }) =>
+                isActive ? styles.active : undefined
+              }
+              end
+            >
+              Historia zaleceń
+            </NavLink>
+        </div>}
         {token && localStorage.getItem('is_employee') === 'true' && localStorage.getItem('is_receptionist') === 'true' && <div className={styles["navbar-option"]}>
         <NavLink
               to="/patients"

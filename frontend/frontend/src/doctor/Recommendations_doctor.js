@@ -1,7 +1,7 @@
 import styles from "./Recommendations.module.css";
 import { useEffect, useState } from "react";
 
-function RecommendationsPage(props) {
+function RecommendationsDocPage(props) {
   const [rec, setRec] = useState([]);
   const [selectedRecIndex, setSelectedRecIndex] = useState(null);
 
@@ -15,9 +15,7 @@ function RecommendationsPage(props) {
       },
     })
     fetch(
-      `http://127.0.0.1:8000/visits/recomendations?prescription_code=&dosage=&patient=${localStorage.getItem(
-        "owner"
-      )}&visit=`,
+      `http://127.0.0.1:8000/visits/recomendations`,
       {
         method: "GET",
         credentials: "include",
@@ -55,7 +53,7 @@ console.log(rec)
             >
               {/* <div className={styles.rec_info}>Data: {result.visit.date}</div> */}
               <div className={styles.rec_info}>
-                Lekarz: {result.doctor.first_name} {result.doctor.last_name}
+                Pacjent: {result.patient.first_name} {result.patient.last_name}
               </div>
             </div>
           ))}
@@ -86,4 +84,4 @@ console.log(rec)
   );
 }
 
-export default RecommendationsPage;
+export default RecommendationsDocPage;

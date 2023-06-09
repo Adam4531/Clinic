@@ -17,6 +17,7 @@ import DetailVisitPast from "./patient/DetailVisitPast";
 import DetailVisitUpcoming from "./patient/DetailVisitUpcoming";
 import HomeDoctor from "./doctor/HomeDoctor";
 import HistoryDoctor from "./doctor/HistoryDoctor";
+import RecommendationsDocPage from './doctor/Recommendations_doctor'
 
 import PatientData from "./reception/PatientData";
 import EditDoctor from "./reception/EditDoctor";
@@ -51,7 +52,8 @@ const router = createBrowserRouter([
 
       { path: "doctor", element: <HomeDoctor />,loader: checkAuthLoader  },
       { path: "history", element: <HistoryDoctor />,loader: checkAuthLoader  },
-
+      { path: "patientsRec", element: <RecommendationsDocPage/>,loader: checkAuthLoader  },
+      
       { path: "editdoctor", element: <EditDoctor />,loader: checkAuthLoader  },
       { path: "homereception", element: <HomeReception />,loader: checkAuthLoader  },
       { path: "visitsreception", element: <VisitsReception />,loader: checkAuthLoader  },
